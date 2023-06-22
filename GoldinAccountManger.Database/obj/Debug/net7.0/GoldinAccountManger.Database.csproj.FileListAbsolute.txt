@@ -1,0 +1,12 @@
+C:\Users\GoldinB\source\repos\GoldinAccountManger.API\GoldinAccountManger.Database\bin\Debug\net7.0\GoldinAccountManger.Database.deps.json
+C:\Users\GoldinB\source\repos\GoldinAccountManger.API\GoldinAccountManger.Database\bin\Debug\net7.0\GoldinAccountManger.Database.dll
+C:\Users\GoldinB\source\repos\GoldinAccountManger.API\GoldinAccountManger.Database\bin\Debug\net7.0\GoldinAccountManger.Database.pdb
+C:\Users\GoldinB\source\repos\GoldinAccountManger.API\GoldinAccountManger.Database\obj\Debug\net7.0\GoldinAccountManger.Database.csproj.AssemblyReference.cache
+C:\Users\GoldinB\source\repos\GoldinAccountManger.API\GoldinAccountManger.Database\obj\Debug\net7.0\GoldinAccountManger.Database.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\GoldinB\source\repos\GoldinAccountManger.API\GoldinAccountManger.Database\obj\Debug\net7.0\GoldinAccountManger.Database.AssemblyInfoInputs.cache
+C:\Users\GoldinB\source\repos\GoldinAccountManger.API\GoldinAccountManger.Database\obj\Debug\net7.0\GoldinAccountManger.Database.AssemblyInfo.cs
+C:\Users\GoldinB\source\repos\GoldinAccountManger.API\GoldinAccountManger.Database\obj\Debug\net7.0\GoldinAccountManger.Database.csproj.CoreCompileInputs.cache
+C:\Users\GoldinB\source\repos\GoldinAccountManger.API\GoldinAccountManger.Database\obj\Debug\net7.0\GoldinAccountManger.Database.dll
+C:\Users\GoldinB\source\repos\GoldinAccountManger.API\GoldinAccountManger.Database\obj\Debug\net7.0\refint\GoldinAccountManger.Database.dll
+C:\Users\GoldinB\source\repos\GoldinAccountManger.API\GoldinAccountManger.Database\obj\Debug\net7.0\GoldinAccountManger.Database.pdb
+C:\Users\GoldinB\source\repos\GoldinAccountManger.API\GoldinAccountManger.Database\obj\Debug\net7.0\ref\GoldinAccountManger.Database.dll

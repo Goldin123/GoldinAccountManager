@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "S2VJXLlONe1Gxz1MFsligB+GFKKuv9vDPYIF7VNsBgo=",
+  "Source": "GoldinAccountManger.API",
+  "BasePath": "_content/GoldinAccountManger.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
