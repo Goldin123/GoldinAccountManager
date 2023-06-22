@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldinAccountManger.API", "GoldinAccountManger.API\GoldinAccountManger.API.csproj", "{7D162B95-F997-4AB5-9E21-0E17279DAA90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoldinAccountManager.API", "GoldinAccountManager.API\GoldinAccountManager.API.csproj", "{7D162B95-F997-4AB5-9E21-0E17279DAA90}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{0F833550-EE30-4259-B990-A4629C13CE7D}"
 EndProject
@@ -11,9 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Website", "Website", "{AA32
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{0280C92D-02EF-497B-817D-C07F908AADAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldinAccountManger.Database", "GoldinAccountManger.Database\GoldinAccountManger.Database.csproj", "{8717C38E-1CC4-423F-B7D5-4CC4DE90B696}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoldinAccountManager.Database", "GoldinAccountManager.Database\GoldinAccountManager.Database.csproj", "{8717C38E-1CC4-423F-B7D5-4CC4DE90B696}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldinAccountManger.Website", "GoldinAccountManger.Website\GoldinAccountManger.Website.csproj", "{334C84C0-418F-4411-82F7-D8C9E16858A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoldinAccountManager.Website", "GoldinAccountManager.Website\GoldinAccountManager.Website.csproj", "{334C84C0-418F-4411-82F7-D8C9E16858A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
