@@ -17,6 +17,7 @@ namespace GoldinAccountManager.Database.DB
             optionsBuilder.UseInMemoryDatabase(databaseName: "GoldinAccountManagerDatabase");
         }
         public DbSet<Account> Accounts { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
       
     }
 }

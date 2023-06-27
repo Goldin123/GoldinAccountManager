@@ -42,11 +42,11 @@ namespace GoldinAccountManager.API.Controllers
         [Route("GetAccountById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Get(string id)
+        public async Task<IActionResult> Get(string value)
         {
             try
             {
-                return Ok(await _account.GetAccountByIdAsync(id));
+                return Ok(await _account.GetAccountByIdAsync(value));
             }
             catch (Exception ex)
             {

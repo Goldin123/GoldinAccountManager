@@ -2,6 +2,7 @@
 using GoldinAccountManager.Database.Interface;
 using GoldinAccountManager.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,9 +42,9 @@ namespace GoldinAccountManager.Database.Abstract
                         await db.SaveChangesAsync();
                         return newAccount;
                     }
-                    else 
+                    else
                     {
-                        return new Account(); 
+                        return new Account();
                     }
                 }
             }
@@ -84,14 +85,14 @@ namespace GoldinAccountManager.Database.Abstract
             }
         }
 
-        public async Task<Account> GetAccountByNameAsync(string name)
+        public async Task<Account> GetAccountByIdAsync(int id)
         {
             try
             {
                 using (var db = new GoldinAccountMangerContext())
                 {
                     var account = await (from a in db.Accounts
-                                         where a.FirstName == name
+                                         where a.AccountID == id
                                          select new Account
                                          {
                                              AccountID = a.AccountID,
@@ -123,19 +124,19 @@ namespace GoldinAccountManager.Database.Abstract
                 using (var db = new GoldinAccountMangerContext())
                 {
                     var account = await (from a in db.Accounts
-                                  select new Account
-                                  {
-                                      AccountID = a.AccountID,
-                                      FirstName = a.FirstName,
-                                      LastName = a.LastName,
-                                      Active = a.Active,
-                                      Balance = a.Balance,
-                                      DateCreated = a.DateCreated,
-                                      DateUpdated = a.DateUpdated,
-                                      Email = a.Email,
-                                      IdentityNumber = a.IdentityNumber,
-                                      Telephone = a.Telephone
-                                  }).ToListAsync();
+                                         select new Account
+                                         {
+                                             AccountID = a.AccountID,
+                                             FirstName = a.FirstName,
+                                             LastName = a.LastName,
+                                             Active = a.Active,
+                                             Balance = a.Balance,
+                                             DateCreated = a.DateCreated,
+                                             DateUpdated = a.DateUpdated,
+                                             Email = a.Email,
+                                             IdentityNumber = a.IdentityNumber,
+                                             Telephone = a.Telephone
+                                         }).ToListAsync();
                     return account;
                 }
 
@@ -146,9 +147,33 @@ namespace GoldinAccountManager.Database.Abstract
             }
         }
 
-        public async Task<Account> UpdateAccountAsync(Account account)
+        public async Task<Account> UpdateAccountAsync(AccountRequest account)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var db = new GoldinAccountMangerContext())
+                {
+                    var existingAccount = await (from a in db.Accounts
+                                                 where a.IdentityNumber == account.IdentityNumber
+                                                 select a).SingleOrDefaultAsync();
+                    if (existingAccount != null)
+                    {
+                        existingAccount.FirstName = account.FirstName;
+                        existingAccount.LastName = account.LastName;
+                        existingAccount.IdentityNumber = account.IdentityNumber;
+                        existingAccount.Telephone = account.Telephone;
+                        existingAccount.Email = account.Email;
+                        existingAccount.DateUpdated = DateTime.Now;
+                        await db.SaveChangesAsync();
+                        return existingAccount;
+                    }
+                    return new Account();
+                }
+            }
+            catch (Exception ex)
+            {
+                return new Account();
+            }
         }
     }
 }

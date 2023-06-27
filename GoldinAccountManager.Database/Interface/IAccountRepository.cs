@@ -12,7 +12,7 @@ namespace GoldinAccountManager.Database.Interface
         Task<Account> AddAccountAsync(AccountRequest account);
         Task<List<Account>> GetAllAccountsAsync();
         Task<Account> GetAccountByIdAsync(string id);  
-        Task<Account> GetAccountByNameAsync(string name);
-        Task<Account> UpdateAccountAsync(Account account);
+        Task<Account> GetAccountByIdAsync(int id);
+        Task<Account> UpdateAccountAsync(AccountRequest account);
     }
 }
