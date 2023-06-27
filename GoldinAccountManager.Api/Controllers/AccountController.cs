@@ -11,52 +11,79 @@ namespace GoldinAccountManager.API.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
+        private readonly ILogger<AccountController> _logger;
+
         private readonly IAccountRepository _account;
 
-        public AccountController(IAccountRepository account) 
+        public AccountController(IAccountRepository account, ILogger<AccountController> logger)
         {
             _account = account;
+            _logger = logger;
         }
         // GET: api/<AccountController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        [Route("GetAccounts")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> Get()
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                return Ok(await _account.GetAllAccountsAsync());
+            }
+            catch (Exception ex)
+            {
+                _logger.LogInformation(ex.ToString());
+                return BadRequest(ex.Message);
+            }
         }
-
-        // GET api/<AccountController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        // GET: api/<AccountController>/1234567890123
+        [HttpGet]
+        [Route("GetAccountById")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> Get(string id)
         {
-            return "value";
+            try
+            {
+                return Ok(await _account.GetAccountByIdAsync(id));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogInformation(ex.ToString());
+                return BadRequest(ex.Message);
+            }
         }
-
         // POST api/<AccountController>
         [Route("AddAccount")]
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Account value)
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> Post([FromBody] AccountRequest value)
         {
-            var acc = new Account
+            try
             {
-                AccountID = 1,
-                FirstName = "Test1",
-                LastName = "LastTest"
-            };
-
-            var a = await _account.AddAccountAsync(acc);
-            return CreatedAtAction(nameof(Post), new { id = acc.AccountID }, acc);
+                if (value != null)
+                {
+                    var addAccount = await _account.AddAccountAsync(value);
+                    return CreatedAtAction(nameof(Post), new { id = addAccount }, addAccount);
+                }
+                else { return BadRequest($"Please enter account details."); }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogInformation(ex.ToString());
+                return BadRequest(ex.Message);
+            }
         }
 
         // PUT api/<AccountController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        [Route("UpdateAccount")]
+        public void Put([FromBody] Account value)
         {
         }
 
-        // DELETE api/<AccountController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+       
     }
 }
