@@ -15,7 +15,6 @@ namespace GoldinAccountManager.Database.Abstract
 {
     public class AccountRepository : IAccountRepository
     {
-
         public async Task<Account> AddAccountAsync(AccountRequest account)
         {
             try
@@ -173,6 +172,68 @@ namespace GoldinAccountManager.Database.Abstract
             catch (Exception ex)
             {
                 return new Account();
+            }
+        }
+        public async Task<Account> UpdateAccountAsync(Account account)
+        {
+            try
+            {
+                using (var db = new GoldinAccountMangerContext())
+                {
+                    var existingAccount = await (from a in db.Accounts
+                                                 where a.IdentityNumber == account.IdentityNumber && a.AccountID == account.AccountID
+                                                 select a).SingleOrDefaultAsync();
+                    if (existingAccount != null)
+                    {
+                        existingAccount.FirstName = account.FirstName;
+                        existingAccount.LastName = account.LastName;
+                        existingAccount.IdentityNumber = account.IdentityNumber;
+                        existingAccount.Telephone = account.Telephone;
+                        existingAccount.Email = account.Email;
+                        existingAccount.DateUpdated = DateTime.Now;
+                        await db.SaveChangesAsync();
+                        return existingAccount;
+                    }
+                    return new Account();
+                }
+            }
+            catch (Exception ex)
+            {
+                return new Account();
+            }
+        }
+
+        public async Task UpdateAccountBalanceAsync(int accountId, decimal amount, TransactionType transactionType)
+        {
+            try
+            {
+                using (var db = new GoldinAccountMangerContext())
+                {
+                    using var sqlTransaction = await db.Database.BeginTransactionAsync();
+
+                    try
+                    {
+                        var existingAccount = await GetAccountByIdAsync(accountId);
+                        if (existingAccount != null) 
+                        {
+                            if(transactionType ==TransactionType.Debit)
+                                amount = -1 * amount;
+                            
+                            existingAccount.Balance = existingAccount.Balance +  amount;
+
+                            await UpdateAccountAsync(existingAccount);
+                            
+                            await sqlTransaction.CommitAsync();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        await sqlTransaction.RollbackAsync();
+                    }
+                }
+            } catch (Exception ex) 
+            {
+                throw new Exception(ex.Message);
             }
         }
     }

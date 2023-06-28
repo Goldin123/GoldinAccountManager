@@ -14,5 +14,6 @@ namespace GoldinAccountManager.Database.Interface
         Task<Account> GetAccountByIdAsync(string id);  
         Task<Account> GetAccountByIdAsync(int id);
         Task<Account> UpdateAccountAsync(AccountRequest account);
+        Task UpdateAccountBalanceAsync(int accountId, decimal amount, TransactionType transactionType);
     }
 }
