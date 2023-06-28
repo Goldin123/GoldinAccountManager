@@ -1,5 +1,6 @@
 ﻿using GoldinAccountManager.Database.Interface;
 using GoldinAccountManager.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Principal;
 
@@ -7,6 +8,7 @@ using System.Security.Principal;
 
 namespace GoldinAccountManager.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class AccountController : ControllerBase
