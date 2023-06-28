@@ -44,7 +44,11 @@ namespace GoldinAccountManager.Database.Abstract
                     TransactioTypeId = (int)TransactionType.Credit,
                 };
 
-                return await AddTransaxtion(newTransaction);
+                var trans =  await AddTransaxtion(newTransaction);
+
+                await _account.UpdateAccountBalanceAsync(trans.AccountID, trans.Amount, TransactionType.Credit);
+                
+                return trans;
             }
             catch (Exception ex)
             {
@@ -54,7 +58,34 @@ namespace GoldinAccountManager.Database.Abstract
 
         public async Task<GoldinAccountManager.Model.Transaction> DebitAccountAsync(DebitRequest debitRequest)
         {
-            throw new NotImplementedException();
+            try 
+            {
+                var existingAccount = await _account.GetAccountByIdAsync(debitRequest.AccountId);
+                if(existingAccount == null)
+                    throw new Exception("Account does not exist.");
+               
+                if(existingAccount.Balance<= 0)
+                    throw new Exception("Account has a zero balance.");
+
+                if((existingAccount.Balance - debitRequest.Amount)<0)
+                    throw new Exception("Insufficient funds available.");
+
+                var newTransaction = new GoldinAccountManager.Model.Transaction
+                {
+                    AccountID = debitRequest.AccountId,
+                    Amount = debitRequest.Amount,
+                    TransactioDate = DateTime.Now,
+                    TransactioTypeId = (int)TransactionType.Debit,
+                };
+
+                var trans = await AddTransaxtion(newTransaction);
+
+                await _account.UpdateAccountBalanceAsync(trans.AccountID, trans.Amount, TransactionType.Debit);
+
+                return trans;
+
+            }
+            catch (Exception ex) { throw new Exception(ex.ToString()); }
         }
 
         public async Task<List<GoldinAccountManager.Model.Transaction>> GetAccountStatementAsync(CrebitByCardRequest crebitByCardRequest)
