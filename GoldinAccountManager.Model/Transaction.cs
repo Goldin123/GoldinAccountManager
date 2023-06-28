@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -56,6 +57,23 @@ namespace GoldinAccountManager.Model
         public int AccountId { get; set; }
         [Required]
         public decimal  Amount { get; set; }
+    }
+
+    public class AccountStatement 
+    {
+        public int AccountId { get; set; }
+        public DateTime DateFrom { get; set; }
+        public DateTime DateTo { get; set; }
+        public decimal AccountTotal { get; set; }
+        public List<Transaction> Transactions{ get; set; }
+        public AccountStatement( int accountId, decimal accountTotal,DateTime dateFrom, DateTime dateTo )
+        {
+            AccountId = accountId;
+            AccountTotal = accountTotal;
+            DateFrom = dateFrom;
+            DateTo = dateTo;
+            Transactions = new List<Transaction>();
+        }
     }
 
     public enum CardType 
