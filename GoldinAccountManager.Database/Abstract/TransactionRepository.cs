@@ -1,6 +1,7 @@
 ﻿using GoldinAccountManager.Database.DB;
 using GoldinAccountManager.Database.Interface;
 using GoldinAccountManager.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
@@ -21,8 +22,39 @@ namespace GoldinAccountManager.Database.Abstract
         }
         public async Task<GoldinAccountManager.Model.Transaction> CreditAccountByBankAsync(BankEFTRequest bankEFTRequest)
         {
+            try
+            {
+                var account = await _account.GetAccountByIdAsync(bankEFTRequest.AccountId);
 
-            throw new NotImplementedException();
+                if (account == null)
+                    throw new Exception("Account does not exists");
+
+                //Verify if banking details 
+
+                //Store banking details
+
+                //Add Transaction
+
+                var newTransaction = new GoldinAccountManager.Model.Transaction
+                {
+                    AccountID = bankEFTRequest.AccountId,
+                    Amount = bankEFTRequest.Amount,
+                    TransactioDate = DateTime.Now,
+                    TransactioTypeId = (int)TransactionType.Credit,
+                };
+
+                var trans = await AddTransaxtion(newTransaction);
+
+                await _account.UpdateAccountBalanceAsync(trans.AccountID, trans.Amount, TransactionType.Credit);
+
+                return trans;
+
+            }
+            catch (Exception ex)
+            {
+                throw new NotImplementedException();
+            }
+            
         }
 
         public async Task<GoldinAccountManager.Model.Transaction> CreditAccountByCardAsync(CrebitByCardRequest crebitByCardRequest)
@@ -61,6 +93,7 @@ namespace GoldinAccountManager.Database.Abstract
             try 
             {
                 var existingAccount = await _account.GetAccountByIdAsync(debitRequest.AccountId);
+                
                 if(existingAccount == null)
                     throw new Exception("Account does not exist.");
                
@@ -88,9 +121,39 @@ namespace GoldinAccountManager.Database.Abstract
             catch (Exception ex) { throw new Exception(ex.ToString()); }
         }
 
-        public async Task<List<GoldinAccountManager.Model.Transaction>> GetAccountStatementAsync(CrebitByCardRequest crebitByCardRequest)
+        public async Task<GoldinAccountManager.Model.AccountStatement> GetAccountStatementAsync(int accountId, DateTime dateFrom, DateTime dateTo)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (dateFrom > dateTo)
+                {
+                    var existingAccount = await _account.GetAccountByIdAsync(accountId);
+                    if (existingAccount != null)
+                    {
+                        var accountStatement = new AccountStatement(accountId, 0, dateFrom, dateTo);
+
+                        using (var db = new GoldinAccountMangerContext())
+                        {
+                            var transactions = await (from a in db.Transactions
+                                                      where a.AccountID ==accountId && a.TransactioDate>=dateFrom && a.TransactioDate <= dateTo
+                                                      select a).ToListAsync();
+                            
+                            accountStatement.Transactions = transactions;
+                        
+                            accountStatement.AccountTotal = transactions.Sum(a => a.TransactioTypeId == 1 ? a.Amount : (-1 * a.Amount));
+                        }
+                        return accountStatement;
+                    }
+                    else
+                        throw new Exception("Account does not exist.");
+                }
+                else
+                    throw new Exception("Date from must be greater than date to.");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
         }
 
         private async Task<GoldinAccountManager.Model.Transaction> AddTransaxtion(GoldinAccountManager.Model.Transaction transaction)
@@ -121,7 +184,6 @@ namespace GoldinAccountManager.Database.Abstract
                 }
             }
             return new Model.Transaction();
-
         }
     }
 
