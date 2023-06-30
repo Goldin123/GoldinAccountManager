@@ -14,11 +14,13 @@ namespace GoldinAccountManager.API.Controllers
     {
         private readonly IAccountRepository _account;
         private readonly ITransactionRepository _transaction;
+        private readonly ILogger<TransactionController> _logger;
 
-        public TransactionController(IAccountRepository account,ITransactionRepository transaction) 
+        public TransactionController(IAccountRepository account, ITransactionRepository transaction, ILogger<TransactionController> logger)
         {
             _account = account;
             _transaction = transaction;
+            _logger = logger;
         }
 
         // POST api/<TransactionController>
@@ -26,9 +28,11 @@ namespace GoldinAccountManager.API.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+
         public async Task<IActionResult> Post([FromBody] CrebitByCardRequest value)
         {
-            try 
+            try
             {
                 if (value != null)
                 {
@@ -37,37 +41,114 @@ namespace GoldinAccountManager.API.Controllers
                         var addTransaction = await _transaction.CreditAccountByCardAsync(value);
                         return CreatedAtAction(nameof(Post), new { id = addTransaction }, addTransaction);
                     }
-                    else 
+                    else
                     {
-                        return BadRequest($"Amount should be grater than zero.");
+                        _logger.LogError(ApplicationMessages.AmountShouldBeGreaterThanZero);
+                        return BadRequest(ApplicationMessages.AmountShouldBeGreaterThanZero);
                     }
-
                 }
-                else { return BadRequest($"Please enter credit card details."); }
-
+                else
+                {
+                    _logger.LogError(ApplicationMessages.CardDetailsEntry);
+                    return BadRequest(ApplicationMessages.CardDetailsEntry);
+                }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
+                _logger.LogError(ex.ToString());
                 return BadRequest(ex.Message);
             }
         }
 
         [Route("CreditAccountByBank")]
         [HttpPost]
-        public void Post([FromBody] BankEFTRequest value)
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+
+        public async Task<IActionResult> Post([FromBody] BankEFTRequest value)
         {
+            try
+            {
+                if (value != null)
+                {
+                    if (value.Amount > 0)
+                    {
+                        var creditAccount = await _transaction.CreditAccountByBankAsync(value);
+                        return CreatedAtAction(nameof(Post), new { id = creditAccount }, creditAccount);
+                    }
+                    else
+                    {
+                        _logger.LogError(ApplicationMessages.AmountShouldBeGreaterThanZero);
+                        return BadRequest(ApplicationMessages.AmountShouldBeGreaterThanZero);
+                    }
+                }
+                else
+                {
+                    _logger.LogError(ApplicationMessages.BankingDetailsEntry);
+                    return BadRequest(ApplicationMessages.BankingDetailsEntry);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return BadRequest(ex.Message);
+            }
         }
+
         [Route("DebitAccount")]
         [HttpPost]
-        public void Post([FromBody] DebitRequest value)
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+
+        public async Task<IActionResult> Post([FromBody] DebitRequest value)
         {
+            try
+            {
+                if (value != null)
+                {
+                    if (value.Amount > 0)
+                    {
+                        var debitAccount = await _transaction.DebitAccountAsync(value);
+                        return CreatedAtAction(nameof(Post), new { id = debitAccount }, debitAccount);
+                    }
+                    else
+                    {
+                        _logger.LogError(ApplicationMessages.AmountShouldBeGreaterThanZero);
+                        return BadRequest(ApplicationMessages.AmountShouldBeGreaterThanZero);
+                    }
+                }
+                else
+                {
+                    _logger.LogError(ApplicationMessages.DebitDetailsEntry);
+                    return BadRequest(ApplicationMessages.DebitDetailsEntry);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return BadRequest(ex.Message);
+            }
         }
 
         [Route("GetAccountStatement")]
         [HttpGet]
-        public IEnumerable<string> Get(int accountId,DateTime dateFrom,DateTime dateTo)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+
+        public async Task<IActionResult> Get([FromQuery] AccountStatementRequest accountStatementRequest)
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                return Ok(await _transaction.GetAccountStatementAsync(accountStatementRequest));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return BadRequest(ex.Message);
+            }
         }
 
     }
