@@ -12,6 +12,6 @@ namespace GoldinAccountManager.Database.Interface
         Task<Transaction> CreditAccountByCardAsync(CrebitByCardRequest crebitByCardRequest);
         Task<Transaction> CreditAccountByBankAsync(BankEFTRequest bankEFTRequest);
         Task<Transaction> DebitAccountAsync(DebitRequest  debitRequest);
-        Task<AccountStatement> GetAccountStatementAsync(int accountId, DateTime dateFrom, DateTime dateTo);
+        Task<AccountStatement> GetAccountStatementAsync(AccountStatementRequest accountStatementRequest);
     }
 }

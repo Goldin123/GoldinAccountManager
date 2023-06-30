@@ -43,13 +43,59 @@ namespace GoldinAccountManager.Database.Abstract
                     }
                     else
                     {
-                        return new Account();
+                        throw new Exception(ApplicationMessages.AccountAlreadyExistError);
                     }
                 }
             }
             catch (Exception ex)
             {
-                return new Account();
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<List<Account>> AddAccountsAsync(List<AccountRequest> accounts)
+        {
+            try
+            {
+                var newAccounts = new List<Account>();
+                using (var db = new GoldinAccountMangerContext())
+                {
+                    foreach (var account in accounts)
+                    {
+
+                        var existingAccount = await db.Accounts.Where(a => a.IdentityNumber == account.IdentityNumber).SingleOrDefaultAsync();
+                        if (existingAccount == null)
+                        {
+                            var newAccount = new Account
+                            {
+                                IdentityNumber = account.IdentityNumber,
+                                Active = true,
+                                Balance = 0,
+                                DateCreated = DateTime.Now,
+                                DateUpdated = DateTime.Now,
+                                Email = account.Email,
+                                FirstName = account.FirstName,
+                                LastName = account.LastName,
+                                Telephone = account.Telephone,
+                            };
+
+                            db.Accounts.Add(newAccount);
+                            await db.SaveChangesAsync();
+
+                            newAccounts.Add(newAccount);
+                        }
+                        else
+                        {
+                            throw new Exception(ApplicationMessages.AccountAlreadyExistError);
+                        }
+
+                    }
+                    return newAccounts;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
 
@@ -74,13 +120,17 @@ namespace GoldinAccountManager.Database.Abstract
                                              IdentityNumber = a.IdentityNumber,
                                              Telephone = a.Telephone
                                          }).SingleOrDefaultAsync();
-                    return account;
+                    
+                    if (account?.AccountID > 0)
+                        return account;
+                    else
+                        throw new Exception(ApplicationMessages.AccountNotExistError);
                 }
 
             }
             catch (Exception ex)
             {
-                return new Account();
+                throw new Exception(ex.Message);
             }
         }
 
@@ -106,13 +156,17 @@ namespace GoldinAccountManager.Database.Abstract
                                              Telephone = a.Telephone
 
                                          }).SingleOrDefaultAsync();
-                    return account;
+                   
+                    if (account?.AccountID > 0)
+                        return account;
+                    else
+                        throw new Exception(ApplicationMessages.AccountNotExistError);
                 }
 
             }
             catch (Exception ex)
             {
-                return new Account();
+                throw new Exception(ex.Message);
             }
         }
 
@@ -142,7 +196,7 @@ namespace GoldinAccountManager.Database.Abstract
             }
             catch (Exception ex)
             {
-                return new List<Account>();
+                throw new Exception(ex.Message);
             }
         }
 
@@ -166,12 +220,13 @@ namespace GoldinAccountManager.Database.Abstract
                         await db.SaveChangesAsync();
                         return existingAccount;
                     }
-                    return new Account();
+                    else
+                        throw new Exception(ApplicationMessages.AccountNotExistError);
                 }
             }
             catch (Exception ex)
             {
-                return new Account();
+                throw new Exception(ex.Message);
             }
         }
         public async Task<Account> UpdateAccountAsync(Account account)
@@ -191,15 +246,17 @@ namespace GoldinAccountManager.Database.Abstract
                         existingAccount.Telephone = account.Telephone;
                         existingAccount.Email = account.Email;
                         existingAccount.DateUpdated = DateTime.Now;
+                        existingAccount.Balance = account.Balance;
                         await db.SaveChangesAsync();
                         return existingAccount;
                     }
-                    return new Account();
+                    else
+                        throw new Exception(ApplicationMessages.AccountNotExistError);
                 }
             }
             catch (Exception ex)
             {
-                return new Account();
+                throw new Exception(ex.Message);
             }
         }
 
@@ -209,29 +266,21 @@ namespace GoldinAccountManager.Database.Abstract
             {
                 using (var db = new GoldinAccountMangerContext())
                 {
-                    using var sqlTransaction = await db.Database.BeginTransactionAsync();
 
-                    try
+                    var existingAccount = await GetAccountByIdAsync(accountId);
+                    if (existingAccount != null)
                     {
-                        var existingAccount = await GetAccountByIdAsync(accountId);
-                        if (existingAccount != null) 
-                        {
-                            if(transactionType ==TransactionType.Debit)
-                                amount = -1 * amount;
-                            
-                            existingAccount.Balance = existingAccount.Balance +  amount;
+                        if (transactionType == TransactionType.Debit)
+                            amount = -1 * amount;
 
-                            await UpdateAccountAsync(existingAccount);
-                            
-                            await sqlTransaction.CommitAsync();
-                        }
+                        existingAccount.Balance = existingAccount.Balance + amount;
+
+                        await UpdateAccountAsync(existingAccount);
                     }
-                    catch (Exception ex)
-                    {
-                        await sqlTransaction.RollbackAsync();
-                    }
+
                 }
-            } catch (Exception ex) 
+            }
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }

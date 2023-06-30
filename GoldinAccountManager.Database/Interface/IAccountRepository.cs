@@ -9,6 +9,7 @@ namespace GoldinAccountManager.Database.Interface
 {
     public interface IAccountRepository
     {
+        Task<List<Account>> AddAccountsAsync(List<AccountRequest> account);
         Task<Account> AddAccountAsync(AccountRequest account);
         Task<List<Account>> GetAllAccountsAsync();
         Task<Account> GetAccountByIdAsync(string id);  

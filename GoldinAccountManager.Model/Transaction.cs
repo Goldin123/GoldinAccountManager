@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace GoldinAccountManager.Model
 {
@@ -20,7 +14,7 @@ namespace GoldinAccountManager.Model
         public DateTime TransactioDate { get; set; }
     }
 
-    public class CrebitByCardRequest 
+    public class CrebitByCardRequest
     {
         public int CardTypeId { get; set; }
         [Required]
@@ -37,7 +31,7 @@ namespace GoldinAccountManager.Model
         public int AccountId { get; set; }
     }
 
-    public class BankEFTRequest 
+    public class BankEFTRequest
     {
         public int BankId { get; set; }
         [Required]
@@ -51,22 +45,22 @@ namespace GoldinAccountManager.Model
         public int AccountId { get; set; }
     }
 
-    public class DebitRequest 
+    public class DebitRequest
     {
         [Required]
         public int AccountId { get; set; }
         [Required]
-        public decimal  Amount { get; set; }
+        public decimal Amount { get; set; }
     }
 
-    public class AccountStatement 
+    public class AccountStatement
     {
         public int AccountId { get; set; }
         public DateTime DateFrom { get; set; }
         public DateTime DateTo { get; set; }
         public decimal AccountTotal { get; set; }
-        public List<Transaction> Transactions{ get; set; }
-        public AccountStatement( int accountId, decimal accountTotal,DateTime dateFrom, DateTime dateTo )
+        public List<Transaction> Transactions { get; set; }
+        public AccountStatement(int accountId, decimal accountTotal, DateTime dateFrom, DateTime dateTo)
         {
             AccountId = accountId;
             AccountTotal = accountTotal;
@@ -76,23 +70,31 @@ namespace GoldinAccountManager.Model
         }
     }
 
-    public enum CardType 
+    public class AccountStatementRequest 
     {
-        Debit,
-        Credit,
+        public int AccountId { get; set; }
+        public DateTime DateFrom { get; set; }
+        public DateTime DateTo { get; set; }
+        
     }
-    
-    public enum TransactionType 
+
+    public enum CardType
     {
-        Debit,
-        Credit 
+        Debit = 1,
+        Credit = 2,
     }
-    public enum Bank 
+
+    public enum TransactionType
     {
-        StandardBank,
-        FnB,
-        Absa,
-        Capitec,
-        Nedbank
+        Debit = 1,
+        Credit = 2
+    }
+    public enum Bank
+    {
+        StandardBank = 1,
+        FnB = 2,
+        Absa = 3,
+        Capitec = 4,
+        Nedbank = 5
     }
 }

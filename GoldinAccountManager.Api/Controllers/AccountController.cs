@@ -2,7 +2,6 @@
 using GoldinAccountManager.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Principal;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -26,16 +25,21 @@ namespace GoldinAccountManager.API.Controllers
         [HttpGet]
         [Route("GetAccounts")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> Get()
         {
             try
             {
-                return Ok(await _account.GetAllAccountsAsync());
+                var accounts = await _account.GetAllAccountsAsync();
+                if (accounts?.Count > 0)
+                    return Ok(await _account.GetAllAccountsAsync());
+                else
+                    return NoContent();
             }
             catch (Exception ex)
             {
-                _logger.LogInformation(ex.ToString());
+                _logger.LogError(ex.ToString());
                 return BadRequest(ex.Message);
             }
         }
@@ -44,6 +48,7 @@ namespace GoldinAccountManager.API.Controllers
         [Route("GetAccountById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> Get(string value)
         {
             try
@@ -52,7 +57,7 @@ namespace GoldinAccountManager.API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogInformation(ex.ToString());
+                _logger.LogError(ex.ToString());
                 return BadRequest(ex.Message);
             }
         }
@@ -61,6 +66,7 @@ namespace GoldinAccountManager.API.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> Post([FromBody] AccountRequest value)
         {
             try
@@ -70,11 +76,42 @@ namespace GoldinAccountManager.API.Controllers
                     var addAccount = await _account.AddAccountAsync(value);
                     return CreatedAtAction(nameof(Post), new { id = addAccount }, addAccount);
                 }
-                else { return BadRequest($"Please enter account details."); }
+                else 
+                {
+                    _logger.LogError(ApplicationMessages.AccountDetailsEntry);
+                    return BadRequest(ApplicationMessages.AccountDetailsEntry);
+                }
             }
             catch (Exception ex)
             {
-                _logger.LogInformation(ex.ToString());
+                _logger.LogError(ex.ToString());
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [Route("AddAccounts")]
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<IActionResult> Post([FromBody] List<AccountRequest> values)
+        {
+            try
+            {
+                if (values != null)
+                {
+                    var addAccounts = await _account.AddAccountsAsync(values);
+                    return CreatedAtAction(nameof(Post), new { id = addAccounts }, addAccounts);
+                }
+                else
+                {
+                    _logger.LogError(ApplicationMessages.AccountDetailsEntry);
+                    return BadRequest(ApplicationMessages.AccountDetailsEntry);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
                 return BadRequest(ex.Message);
             }
         }
@@ -82,10 +119,31 @@ namespace GoldinAccountManager.API.Controllers
         // PUT api/<AccountController>/5
         [HttpPut]
         [Route("UpdateAccount")]
-        public void Put([FromBody] Account value)
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<IActionResult> Put([FromBody] AccountRequest value)
         {
+            try
+            {
+                if (value != null)
+                {
+                    var updateAccount = await _account.UpdateAccountAsync(value);
+                    return CreatedAtAction(nameof(Post), new { id = updateAccount }, updateAccount);
+                }
+                else 
+                {
+                    _logger.LogError(ApplicationMessages.AccountDetailsEntry);
+                    return BadRequest(ApplicationMessages.AccountDetailsEntry);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return BadRequest(ex.Message);
+            }
         }
 
-       
+
     }
 }
