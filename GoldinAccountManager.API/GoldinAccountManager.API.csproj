@@ -18,13 +18,17 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="7.0.8" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.2" />
+    <PackageReference Include="StackExchange.Redis" Version="2.6.116" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\GoldinAccountManager.Database\GoldinAccountManager.Database.csproj" />
+    <ProjectReference Include="..\GoldinAccountManager.JwtAuthentification\GoldinAccountManager.JwtAuthentification.csproj" />
     <ProjectReference Include="..\GoldinAccountManager.Model\GoldinAccountManager.Model.csproj" />
+    <ProjectReference Include="..\GoldinAccountManager.RedisCache\GoldinAccountManager.RedisCache.csproj" />
   </ItemGroup>
 
 </Project>

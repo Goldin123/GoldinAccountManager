@@ -19,4 +19,10 @@ namespace GoldinAccountManager.Model
         [Required(ErrorMessage = "Password is required")]
         public string? Password { get; set; }
     }
+
+    public class RegisterResponse 
+    {
+        public bool Valid { get; set; }
+        public string Message { get; set; }
+    }
 }

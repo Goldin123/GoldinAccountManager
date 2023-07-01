@@ -29,6 +29,7 @@ namespace GoldinAccountManager.API.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
         public async Task<IActionResult> Post([FromBody] CrebitByCardRequest value)
         {
@@ -65,6 +66,7 @@ namespace GoldinAccountManager.API.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
         public async Task<IActionResult> Post([FromBody] BankEFTRequest value)
         {
@@ -80,13 +82,15 @@ namespace GoldinAccountManager.API.Controllers
                     else
                     {
                         _logger.LogError(ApplicationMessages.AmountShouldBeGreaterThanZero);
-                        return BadRequest(ApplicationMessages.AmountShouldBeGreaterThanZero);
+                        return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = ApplicationMessages.AmountShouldBeGreaterThanZero }); ;
+
                     }
                 }
                 else
                 {
                     _logger.LogError(ApplicationMessages.BankingDetailsEntry);
-                    return BadRequest(ApplicationMessages.BankingDetailsEntry);
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = ApplicationMessages.BankingDetailsEntry }); ;
+
                 }
             }
             catch (Exception ex)
@@ -101,6 +105,7 @@ namespace GoldinAccountManager.API.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
         public async Task<IActionResult> Post([FromBody] DebitRequest value)
         {
@@ -116,13 +121,15 @@ namespace GoldinAccountManager.API.Controllers
                     else
                     {
                         _logger.LogError(ApplicationMessages.AmountShouldBeGreaterThanZero);
-                        return BadRequest(ApplicationMessages.AmountShouldBeGreaterThanZero);
+                        return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = ApplicationMessages.AmountShouldBeGreaterThanZero }); ;
+
                     }
                 }
                 else
                 {
                     _logger.LogError(ApplicationMessages.DebitDetailsEntry);
-                    return BadRequest(ApplicationMessages.DebitDetailsEntry);
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = ApplicationMessages.DebitDetailsEntry }); ;
+
                 }
             }
             catch (Exception ex)
@@ -142,7 +149,7 @@ namespace GoldinAccountManager.API.Controllers
         {
             try
             {
-                return Ok(await _transaction.GetAccountStatementAsync(accountStatementRequest));
+                    return Ok(await _transaction.GetAccountStatementAsync(accountStatementRequest));
             }
             catch (Exception ex)
             {
