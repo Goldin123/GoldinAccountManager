@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GoldinAccountManager.Database\GoldinAccountManager.Database.csproj" />
+    <ProjectReference Include="..\GoldinAccountManager.JwtAuthentification\GoldinAccountManager.JwtAuthentification.csproj" />
     <ProjectReference Include="..\GoldinAccountManager.Model\GoldinAccountManager.Model.csproj" />
     <ProjectReference Include="..\GoldinAccountManager.RedisCache\GoldinAccountManager.RedisCache.csproj" />
   </ItemGroup>

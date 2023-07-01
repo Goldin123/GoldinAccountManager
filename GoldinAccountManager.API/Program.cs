@@ -1,6 +1,8 @@
 using GoldinAccountManager.API.Auth;
 using GoldinAccountManager.Database.Abstract;
 using GoldinAccountManager.Database.Interface;
+using GoldinAccountManager.JwtAuthentification.Abstract;
+using GoldinAccountManager.JwtAuthentification.Interface;
 using GoldinAccountManager.RedisCache.Abstract;
 using GoldinAccountManager.RedisCache.Interface;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -21,6 +23,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
 builder.Services.AddScoped<ICacheHelperRespository, CacheHelperRespository>();
+builder.Services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();
 
 // Add redis cache
 builder.Services.AddStackExchangeRedisCache(options =>

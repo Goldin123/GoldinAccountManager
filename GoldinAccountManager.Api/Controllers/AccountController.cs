@@ -85,7 +85,7 @@ namespace GoldinAccountManager.API.Controllers
                 else
                 {
                     _logger.LogError(ApplicationMessages.AccountDetailsEntry);
-                    return BadRequest(ApplicationMessages.AccountDetailsEntry);
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = ApplicationMessages.AccountDetailsEntry }); ;
                 }
             }
             catch (Exception ex)
@@ -100,6 +100,8 @@ namespace GoldinAccountManager.API.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+
         public async Task<IActionResult> Post([FromBody] List<AccountRequest> values)
         {
             try
@@ -112,7 +114,7 @@ namespace GoldinAccountManager.API.Controllers
                 else
                 {
                     _logger.LogError(ApplicationMessages.AccountDetailsEntry);
-                    return BadRequest(ApplicationMessages.AccountDetailsEntry);
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = ApplicationMessages.AccountDetailsEntry }); ;
                 }
             }
             catch (Exception ex)
@@ -128,6 +130,7 @@ namespace GoldinAccountManager.API.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Put([FromBody] AccountRequest value)
         {
             try
@@ -140,7 +143,8 @@ namespace GoldinAccountManager.API.Controllers
                 else
                 {
                     _logger.LogError(ApplicationMessages.AccountDetailsEntry);
-                    return BadRequest(ApplicationMessages.AccountDetailsEntry);
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = ApplicationMessages.AccountDetailsEntry }); ;
+
                 }
             }
             catch (Exception ex)
