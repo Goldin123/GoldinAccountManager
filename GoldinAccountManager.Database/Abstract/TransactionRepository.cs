@@ -164,6 +164,8 @@ namespace GoldinAccountManager.Database.Abstract
                         {
                             var transactions = await (from a in db.Transactions
                                                       where a.AccountID == accountStatementRequest.AccountId
+                                                      where a.TransactioDate >= accountStatementRequest.DateFrom
+                                                      where a.TransactioDate < accountStatementRequest.DateTo
                                                       select a).ToListAsync();
 
                             accountStatement.Transactions = transactions;
