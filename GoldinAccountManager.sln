@@ -27,6 +27,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authentication", "Authentic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldinAccountManager.JwtAuthentification", "GoldinAccountManager.JwtAuthentification\GoldinAccountManager.JwtAuthentification.csproj", "{61DFA951-C68D-4743-A77D-A73E42159014}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Banking", "Banking", "{97DC6B0E-010B-4494-B57B-D7AF95D4DA3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldinAccountManager.Banking", "GoldinAccountManager.Banking\GoldinAccountManager.Banking.csproj", "{DC3228D2-E18E-41A9-8100-FF2260979796}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +61,10 @@ Global
 		{61DFA951-C68D-4743-A77D-A73E42159014}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61DFA951-C68D-4743-A77D-A73E42159014}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61DFA951-C68D-4743-A77D-A73E42159014}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC3228D2-E18E-41A9-8100-FF2260979796}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC3228D2-E18E-41A9-8100-FF2260979796}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC3228D2-E18E-41A9-8100-FF2260979796}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC3228D2-E18E-41A9-8100-FF2260979796}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +76,7 @@ Global
 		{0E494E0A-6D09-47FF-9043-7D2D421D3D9F} = {61A8BA55-7F07-4920-8AAC-B624FC57348F}
 		{388FBCF9-7540-4A77-8199-ADBBD49A138F} = {CEA14DF6-14E3-437A-AEAD-24345E0B4D53}
 		{61DFA951-C68D-4743-A77D-A73E42159014} = {577C960F-30A4-4581-9C7C-F34AAFCBF9D4}
+		{DC3228D2-E18E-41A9-8100-FF2260979796} = {97DC6B0E-010B-4494-B57B-D7AF95D4DA3D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AEB74FC3-4170-49B7-AC57-1FE0BDBE72A6}
