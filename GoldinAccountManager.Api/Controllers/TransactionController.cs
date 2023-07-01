@@ -142,7 +142,7 @@ namespace GoldinAccountManager.API.Controllers
         {
             try
             {
-                return Ok(await _transaction.GetAccountStatementAsync(accountStatementRequest));
+                    return Ok(await _transaction.GetAccountStatementAsync(accountStatementRequest));
             }
             catch (Exception ex)
             {

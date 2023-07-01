@@ -3,16 +3,8 @@ using GoldinAccountManager.Database.Helper;
 using GoldinAccountManager.Database.Interface;
 using GoldinAccountManager.Model;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace GoldinAccountManager.Database.Abstract
 {
@@ -21,7 +13,7 @@ namespace GoldinAccountManager.Database.Abstract
         private readonly ILogger<AccountRepository> _logger;
         private readonly IDistributedCache _cache;
         private readonly string _accountsRedisrecordKey = ApplicationMessages.AccountRedisKey;
-        public AccountRepository(ILogger<AccountRepository> logger, IDistributedCache cache) 
+        public AccountRepository(ILogger<AccountRepository> logger, IDistributedCache cache)
         {
             _logger = logger;
             _cache = cache;
@@ -197,7 +189,7 @@ namespace GoldinAccountManager.Database.Abstract
             }
             catch (Exception ex)
             {
-                _logger.LogCritical(ex.Message);   
+                _logger.LogCritical(ex.Message);
                 throw new Exception(ex.Message);
             }
         }
@@ -208,25 +200,25 @@ namespace GoldinAccountManager.Database.Abstract
             {
                 List<Account>? accounts;
                 accounts = await _cache.GetRecordAsync<List<Account>>(_accountsRedisrecordKey);
-                
+
                 if (accounts == null) //No accounts on cache
                 {
                     using (var db = new GoldinAccountMangerContext())
                     {
-                         accounts = await (from a in db.Accounts
-                                             select new Account
-                                             {
-                                                 AccountID = a.AccountID,
-                                                 FirstName = a.FirstName,
-                                                 LastName = a.LastName,
-                                                 Active = a.Active,
-                                                 Balance = a.Balance,
-                                                 DateCreated = a.DateCreated,
-                                                 DateUpdated = a.DateUpdated,
-                                                 Email = a.Email,
-                                                 IdentityNumber = a.IdentityNumber,
-                                                 Telephone = a.Telephone
-                                             }).ToListAsync();
+                        accounts = await (from a in db.Accounts
+                                          select new Account
+                                          {
+                                              AccountID = a.AccountID,
+                                              FirstName = a.FirstName,
+                                              LastName = a.LastName,
+                                              Active = a.Active,
+                                              Balance = a.Balance,
+                                              DateCreated = a.DateCreated,
+                                              DateUpdated = a.DateUpdated,
+                                              Email = a.Email,
+                                              IdentityNumber = a.IdentityNumber,
+                                              Telephone = a.Telephone
+                                          }).ToListAsync();
 
                         if (accounts?.Count > 0)
                         {
@@ -235,7 +227,7 @@ namespace GoldinAccountManager.Database.Abstract
                             await _cache.SetRecordAsync(_accountsRedisrecordKey, accounts);
                             return accounts;
                         }
-                        else 
+                        else
                         {
                             _logger.LogInformation(ApplicationMessages.NoAccountsFound);
                             accounts = new List<Account>();
@@ -252,7 +244,7 @@ namespace GoldinAccountManager.Database.Abstract
             }
             catch (Exception ex)
             {
-                _logger.LogCritical(ex.Message);  
+                _logger.LogCritical(ex.Message);
                 throw new Exception(ex.Message);
             }
         }
@@ -275,7 +267,7 @@ namespace GoldinAccountManager.Database.Abstract
                         existingAccount.Email = account.Email;
                         existingAccount.DateUpdated = DateTime.Now;
                         await db.SaveChangesAsync();
-                        _logger.LogInformation(string.Format(ApplicationMessages.UpdateAccountDetails));
+                        _logger.LogInformation(string.Format(ApplicationMessages.UpdateAccountDetails, existingAccount.AccountID));
                         return existingAccount;
                     }
                     else
@@ -287,7 +279,7 @@ namespace GoldinAccountManager.Database.Abstract
             }
             catch (Exception ex)
             {
-                _logger.LogCritical(ex.Message);  
+                _logger.LogCritical(ex.Message);
                 throw new Exception(ex.Message);
             }
         }
@@ -310,7 +302,7 @@ namespace GoldinAccountManager.Database.Abstract
                         existingAccount.DateUpdated = DateTime.Now;
                         existingAccount.Balance = account.Balance;
                         await db.SaveChangesAsync();
-                        _logger.LogInformation(string.Format(ApplicationMessages.UpdateAccountDetails));
+                        _logger.LogInformation(string.Format(ApplicationMessages.UpdateAccountDetails, existingAccount.AccountID));
 
                         return existingAccount;
                     }
@@ -342,7 +334,7 @@ namespace GoldinAccountManager.Database.Abstract
                             amount = -1 * amount;
 
                         existingAccount.Balance = existingAccount.Balance + amount;
-                        _logger.LogInformation(string.Format(ApplicationMessages.UpdateAccountBalance,currentBalace,existingAccount.Balance));
+                        _logger.LogInformation(string.Format(ApplicationMessages.UpdateAccountBalance, existingAccount.AccountID, currentBalace, existingAccount.Balance));
                         await UpdateAccountAsync(existingAccount);
                     }
                 }
