@@ -20,7 +20,7 @@ namespace GoldinAccountManager.Database.Abstract
     {
         private readonly ILogger<AccountRepository> _logger;
         private readonly IDistributedCache _cache;
-        private readonly string _accountsRedisrecordKey = $"Accounts_{DateTime.Now:yyyyMMdd_hh}";
+        private readonly string _accountsRedisrecordKey = ApplicationMessages.AccountRedisKey;
         public AccountRepository(ILogger<AccountRepository> logger, IDistributedCache cache) 
         {
             _logger = logger;
@@ -98,17 +98,22 @@ namespace GoldinAccountManager.Database.Abstract
                             newAccounts.Add(newAccount);
                         }
                         else
-                        {
-                            _logger.LogError(ApplicationMessages.AccountAlreadyExistError);    
-                            throw new Exception(ApplicationMessages.AccountAlreadyExistError);
-                        }
+                            _logger.LogError(string.Format(ApplicationMessages.AccountAlreadyExistError, existingAccount.AccountID));
                     }
-                    return newAccounts;
+
+                    if (newAccounts?.Count > 0)
+                    {
+                        _logger.LogInformation(ApplicationMessages.AddedAccountsToRedis);
+                        await _cache.SetRecordAsync(_accountsRedisrecordKey, newAccounts);
+                        return newAccounts;
+                    }
+                    else
+                        return new List<Account>();
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogCritical(ex.Message);  
+                _logger.LogCritical(ex.Message);
                 throw new Exception(ex.Message);
             }
         }
@@ -332,11 +337,12 @@ namespace GoldinAccountManager.Database.Abstract
                     var existingAccount = await GetAccountByIdAsync(accountId);
                     if (existingAccount != null)
                     {
+                        var currentBalace = existingAccount.Balance;
                         if (transactionType == TransactionType.Debit)
                             amount = -1 * amount;
 
                         existingAccount.Balance = existingAccount.Balance + amount;
-                        _logger.LogInformation(string.Format(ApplicationMessages.UpdateAccountBalance));
+                        _logger.LogInformation(string.Format(ApplicationMessages.UpdateAccountBalance,currentBalace,existingAccount.Balance));
                         await UpdateAccountAsync(existingAccount);
                     }
                 }
