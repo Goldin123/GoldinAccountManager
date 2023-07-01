@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GoldinAccountManager.Model\GoldinAccountManager.Model.csproj" />
+    <ProjectReference Include="..\GoldinAccountManager.RedisCache\GoldinAccountManager.RedisCache.csproj" />
   </ItemGroup>
 
 </Project>

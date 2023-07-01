@@ -19,5 +19,12 @@ namespace GoldinAccountManager.Model
         public static readonly string DateFromGreaterThanDateToError = $"Date from must be greater or equal than date to.";
         public static readonly string InsufficientFundsAvailable = $"Account has insufficient funds available.";
         public static readonly string NoAccountsFound = $"No accounts found.";
+        public static readonly string AddedAccount = "Successfully added account with id {0} to the database.";
+        public static readonly string FoundAccount = "Successfully retrieved account with id {0} on the database.";
+        public static readonly string UpdateAccountDetails = "Successfully updated account with id {0} on the database.";
+        public static readonly string UpdateAccountBalance = "About to updated account balance for account with id {0} on the database.";
+        public static readonly string AddedAccountsToRedis = $"Added accounts to redis cache.";
+        public static readonly string LoadingFromDatabase = $"Loading data from the database.";
+        public static readonly string LoadingFromCache = $"Loading data from redis cache.";
     }
 }

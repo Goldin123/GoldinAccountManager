@@ -1,7 +1,9 @@
-﻿using GoldinAccountManager.Database.Interface;
+﻿using GoldinAccountManager.API.Helper;
+using GoldinAccountManager.Database.Interface;
 using GoldinAccountManager.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Distributed;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,13 +15,16 @@ namespace GoldinAccountManager.API.Controllers
     public class AccountController : ControllerBase
     {
         private readonly ILogger<AccountController> _logger;
-
         private readonly IAccountRepository _account;
+        private readonly IDistributedCache _cache;
+        private readonly string _accountsRedisrecordKey = $"Accounts_{DateTime.Now:yyyyMMdd_hh}";
+        private string _fetchLoadLocation = "";
 
-        public AccountController(IAccountRepository account, ILogger<AccountController> logger)
+        public AccountController(IAccountRepository account, ILogger<AccountController> logger, IDistributedCache cache)
         {
             _account = account;
             _logger = logger;
+            _cache = cache;
         }
         // GET: api/<AccountController>
         [HttpGet]
@@ -31,9 +36,10 @@ namespace GoldinAccountManager.API.Controllers
         {
             try
             {
-                var accounts = await _account.GetAllAccountsAsync();
+                List<Account>? accounts;
+                accounts = await _account.GetAllAccountsAsync();
                 if (accounts?.Count > 0)
-                    return Ok(await _account.GetAllAccountsAsync());
+                    return Ok(accounts);
                 else
                     return NoContent();
             }
@@ -76,7 +82,7 @@ namespace GoldinAccountManager.API.Controllers
                     var addAccount = await _account.AddAccountAsync(value);
                     return CreatedAtAction(nameof(Post), new { id = addAccount }, addAccount);
                 }
-                else 
+                else
                 {
                     _logger.LogError(ApplicationMessages.AccountDetailsEntry);
                     return BadRequest(ApplicationMessages.AccountDetailsEntry);
@@ -131,7 +137,7 @@ namespace GoldinAccountManager.API.Controllers
                     var updateAccount = await _account.UpdateAccountAsync(value);
                     return CreatedAtAction(nameof(Post), new { id = updateAccount }, updateAccount);
                 }
-                else 
+                else
                 {
                     _logger.LogError(ApplicationMessages.AccountDetailsEntry);
                     return BadRequest(ApplicationMessages.AccountDetailsEntry);
@@ -143,7 +149,5 @@ namespace GoldinAccountManager.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
-
     }
 }
