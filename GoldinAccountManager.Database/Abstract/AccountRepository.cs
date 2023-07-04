@@ -45,9 +45,6 @@ namespace GoldinAccountManager.Database.Abstract
                         db.Accounts.Add(newAccount);
                         await db.SaveChangesAsync();
                         _logger.LogInformation(string.Format(ApplicationMessages.AddedAccount, newAccount.AccountID));
-
-                        _logger.LogInformation(ApplicationMessages.AddedAccountsToRedis);
-                        await _cache.SetRecordAsync(_accountsRedisrecordKey, newAccount);
                         return newAccount;
                     }
                     else
