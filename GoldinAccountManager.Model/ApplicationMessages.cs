@@ -10,6 +10,7 @@ namespace GoldinAccountManager.Model
     {
         public static readonly string AccountHasZeroBalanceError = $"Account has zero balance.";
         public static readonly string AccountRedisKey = $"Accounts_{DateTime.Now:yyyyMMdd_hh}";
+        public static readonly string TransactionRedisKey = $"Transaction_{DateTime.Now:yyyyMMdd_hh}";
         public static readonly string AmountShouldBeGreaterThanZero = $"Amount should greater than zero.";
         public static readonly string BankingDetailsEntry = $"Please enter banking details.";
         public static readonly string CardDetailsEntry = $"Please enter credit card details.";
