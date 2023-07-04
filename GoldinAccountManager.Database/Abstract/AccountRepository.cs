@@ -5,6 +5,8 @@ using GoldinAccountManager.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace GoldinAccountManager.Database.Abstract
 {
@@ -43,6 +45,9 @@ namespace GoldinAccountManager.Database.Abstract
                         db.Accounts.Add(newAccount);
                         await db.SaveChangesAsync();
                         _logger.LogInformation(string.Format(ApplicationMessages.AddedAccount, newAccount.AccountID));
+
+                        _logger.LogInformation(ApplicationMessages.AddedAccountsToRedis);
+                        await _cache.SetRecordAsync(_accountsRedisrecordKey, newAccount);
                         return newAccount;
                     }
                     else
@@ -198,13 +203,30 @@ namespace GoldinAccountManager.Database.Abstract
         {
             try
             {
-                List<Account>? accounts;
-                accounts = await _cache.GetRecordAsync<List<Account>>(_accountsRedisrecordKey);
+                List<Account>? accounts = null;
 
-                if (accounts == null) //No accounts on cache
+                using (var db = new GoldinAccountMangerContext())
                 {
-                    using (var db = new GoldinAccountMangerContext())
+                    if (db.Accounts.Count() > 0)
                     {
+                        var cacheAccounts = await _cache.GetRecordAsync<dynamic>(_accountsRedisrecordKey);
+                        var jsonAccounts = Convert.ToString(cacheAccounts) as string;
+                        if (!string.IsNullOrEmpty(jsonAccounts))
+                        {
+                            if (jsonAccounts.StartsWith("["))
+                            {
+                                accounts = JsonConvert.DeserializeObject<List<Account>>(jsonAccounts);
+                                if (accounts != null)
+                                    if (accounts.Count() == db.Accounts.Count())
+                                    {
+                                        _logger.LogInformation(ApplicationMessages.LoadingFromCache);
+                                        return accounts;
+
+                                    }
+                            }
+                        }
+                    
+                                              
                         accounts = await (from a in db.Accounts
                                           select new Account
                                           {
@@ -222,9 +244,14 @@ namespace GoldinAccountManager.Database.Abstract
 
                         if (accounts?.Count > 0)
                         {
-                            _logger.LogInformation(ApplicationMessages.AddedAccountsToRedis);
+                           
                             _logger.LogInformation(ApplicationMessages.LoadingFromDatabase);
-                            await _cache.SetRecordAsync(_accountsRedisrecordKey, accounts);
+
+                            if (accounts.Count() > 1)
+                            {
+                                _logger.LogInformation(ApplicationMessages.AddedAccountsToRedis);
+                                await _cache.SetRecordAsync(_accountsRedisrecordKey, accounts);
+                            }
                             return accounts;
                         }
                         else
@@ -234,11 +261,12 @@ namespace GoldinAccountManager.Database.Abstract
                             return accounts;
                         }
                     }
-                }
-                else //Loading accounts from cache
-                {
-                    _logger.LogInformation(ApplicationMessages.LoadingFromCache);
-                    return accounts;
+                    else
+                    {
+                        _logger.LogInformation(ApplicationMessages.NoAccountsFound);
+                        accounts = new List<Account>();
+                        return accounts;
+                    }
                 }
 
             }
@@ -248,7 +276,6 @@ namespace GoldinAccountManager.Database.Abstract
                 throw new Exception(ex.Message);
             }
         }
-
         public async Task<Account> UpdateAccountAsync(AccountRequest account)
         {
             try

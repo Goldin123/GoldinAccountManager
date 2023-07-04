@@ -25,6 +25,7 @@ namespace GoldinAccountManager.Model
         public static readonly string UpdateAccountDetails = "Successfully updated account with id {0} on the database.";
         public static readonly string UpdateAccountBalance = "About to updated account balance for account with id {0} on the database from {1} to {2}.";
         public static readonly string AddedAccountsToRedis = $"Added accounts to redis cache.";
+        public static readonly string AddedAccountToRedis = $"Added account to redis cache.";
         public static readonly string LoadingFromDatabase = $"Loading data from the database.";
         public static readonly string LoadingFromCache = $"Loading data from redis cache.";
         public static readonly string AddedTransaction = "Added {2} transaction with id {0} for account {1}.";
