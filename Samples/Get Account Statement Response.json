@@ -1,0 +1,127 @@
+{
+  "accountId": 1,
+  "dateFrom": "2023-07-04T11:00:00",
+  "dateTo": "2023-07-04T15:00:00",
+  "accountTotal": 12968,
+  "transactions": [
+    {
+      "transactionID": 1,
+      "accountID": 1,
+      "transactioTypeId": 2,
+      "amount": 1000,
+      "transactioDate": "2023-07-04T11:51:01.4205212+02:00"
+    },
+    {
+      "transactionID": 2,
+      "accountID": 1,
+      "transactioTypeId": 2,
+      "amount": 1000,
+      "transactioDate": "2023-07-04T11:51:50.2401+02:00"
+    },
+    {
+      "transactionID": 3,
+      "accountID": 1,
+      "transactioTypeId": 2,
+      "amount": 1000,
+      "transactioDate": "2023-07-04T11:51:50.4387654+02:00"
+    },
+    {
+      "transactionID": 4,
+      "accountID": 1,
+      "transactioTypeId": 2,
+      "amount": 1000,
+      "transactioDate": "2023-07-04T11:51:50.635585+02:00"
+    },
+    {
+      "transactionID": 5,
+      "accountID": 1,
+      "transactioTypeId": 2,
+      "amount": 1000,
+      "transactioDate": "2023-07-04T11:51:50.8641883+02:00"
+    },
+    {
+      "transactionID": 6,
+      "accountID": 1,
+      "transactioTypeId": 2,
+      "amount": 1000,
+      "transactioDate": "2023-07-04T11:51:51.05643+02:00"
+    },
+    {
+      "transactionID": 7,
+      "accountID": 1,
+      "transactioTypeId": 2,
+      "amount": 1000,
+      "transactioDate": "2023-07-04T11:51:51.2437298+02:00"
+    },
+    {
+      "transactionID": 8,
+      "accountID": 1,
+      "transactioTypeId": 2,
+      "amount": 1000,
+      "transactioDate": "2023-07-04T11:51:51.4560397+02:00"
+    },
+    {
+      "transactionID": 9,
+      "accountID": 1,
+      "transactioTypeId": 2,
+      "amount": 1000,
+      "transactioDate": "2023-07-04T11:51:51.7042108+02:00"
+    },
+    {
+      "transactionID": 10,
+      "accountID": 1,
+      "transactioTypeId": 2,
+      "amount": 1000,
+      "transactioDate": "2023-07-04T11:51:51.9512486+02:00"
+    },
+    {
+      "transactionID": 11,
+      "accountID": 1,
+      "transactioTypeId": 2,
+      "amount": 1000,
+      "transactioDate": "2023-07-04T11:51:56.1245883+02:00"
+    },
+    {
+      "transactionID": 12,
+      "accountID": 1,
+      "transactioTypeId": 2,
+      "amount": 1000,
+      "transactioDate": "2023-07-04T11:51:56.3263797+02:00"
+    },
+    {
+      "transactionID": 13,
+      "accountID": 1,
+      "transactioTypeId": 2,
+      "amount": 1000,
+      "transactioDate": "2023-07-04T11:51:56.5414408+02:00"
+    },
+    {
+      "transactionID": 14,
+      "accountID": 1,
+      "transactioTypeId": 1,
+      "amount": 8,
+      "transactioDate": "2023-07-04T11:52:21.0416724+02:00"
+    },
+    {
+      "transactionID": 15,
+      "accountID": 1,
+      "transactioTypeId": 1,
+      "amount": 8,
+      "transactioDate": "2023-07-04T11:52:27.0308408+02:00"
+    },
+    {
+      "transactionID": 16,
+      "accountID": 1,
+      "transactioTypeId": 1,
+      "amount": 8,
+      "transactioDate": "2023-07-04T11:52:27.1939392+02:00"
+    },
+    {
+      "transactionID": 17,
+      "accountID": 1,
+      "transactioTypeId": 1,
+      "amount": 8,
+      "transactioDate": "2023-07-04T11:52:27.3626994+02:00"
+    }
+  ]
+}

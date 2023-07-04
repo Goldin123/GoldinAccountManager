@@ -55,7 +55,7 @@ namespace GoldinAccountManager.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<IActionResult> Get(string value)
+        public async Task<IActionResult> Get(int value)
         {
             try
             {

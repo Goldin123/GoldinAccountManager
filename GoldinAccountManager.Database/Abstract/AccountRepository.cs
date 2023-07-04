@@ -110,7 +110,7 @@ namespace GoldinAccountManager.Database.Abstract
             }
         }
 
-        public async Task<Account> GetAccountByIdAsync(string id)
+        public async Task<Account> GetAccountByIdentityNumberAsync(string id)
         {
             try
             {

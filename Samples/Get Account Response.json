@@ -1,0 +1,50 @@
+[
+  {
+    "accountID": 1,
+    "firstName": "jabu",
+    "lastName": "jabu",
+    "email": "user@example.com",
+    "telephone": "123456778",
+    "identityNumber": "1234567890987",
+    "balance": 0,
+    "active": true,
+    "dateCreated": "2023-07-04T10:51:36.1384232+02:00",
+    "dateUpdated": "2023-07-04T10:51:36.1384562+02:00"
+  },
+  {
+    "accountID": 2,
+    "firstName": "bob",
+    "lastName": "bob",
+    "email": "user@example.com",
+    "telephone": "123456778",
+    "identityNumber": "1234567890111",
+    "balance": 0,
+    "active": true,
+    "dateCreated": "2023-07-04T10:51:36.2090338+02:00",
+    "dateUpdated": "2023-07-04T10:51:36.209036+02:00"
+  },
+  {
+    "accountID": 3,
+    "firstName": "john",
+    "lastName": "john",
+    "email": "user@example.com",
+    "telephone": "123456778",
+    "identityNumber": "1234567890113",
+    "balance": 0,
+    "active": true,
+    "dateCreated": "2023-07-04T10:51:36.2157242+02:00",
+    "dateUpdated": "2023-07-04T10:51:36.2157264+02:00"
+  },
+  {
+    "accountID": 4,
+    "firstName": "john",
+    "lastName": "john",
+    "email": "user@example.com",
+    "telephone": "123456778",
+    "identityNumber": "1234567890116",
+    "balance": 0,
+    "active": true,
+    "dateCreated": "2023-07-04T10:53:45.3718091+02:00",
+    "dateUpdated": "2023-07-04T10:53:45.3718106+02:00"
+  }
+]

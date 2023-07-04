@@ -1,0 +1,25 @@
+[
+  {
+    "firstName": "jabu",
+    "lastName": "jabu",
+    "email": "user@example.com",
+    "telephone": "123456778",
+    "identityNumber": "1234567890987"
+  },
+
+  {
+    "firstName": "bob",
+    "lastName": "bob",
+    "email": "user@example.com",
+    "telephone": "123456778",
+    "identityNumber": "1234567890111"
+  },
+
+  {
+    "firstName": "john",
+    "lastName": "john",
+    "email": "user@example.com",
+    "telephone": "123456778",
+    "identityNumber": "1234567890113"
+  }
+]
