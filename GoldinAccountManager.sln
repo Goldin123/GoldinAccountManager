@@ -25,11 +25,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoldinAccountManager.RedisC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authentication", "Authentication", "{577C960F-30A4-4581-9C7C-F34AAFCBF9D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldinAccountManager.JwtAuthentification", "GoldinAccountManager.JwtAuthentification\GoldinAccountManager.JwtAuthentification.csproj", "{61DFA951-C68D-4743-A77D-A73E42159014}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoldinAccountManager.JwtAuthentification", "GoldinAccountManager.JwtAuthentification\GoldinAccountManager.JwtAuthentification.csproj", "{61DFA951-C68D-4743-A77D-A73E42159014}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Banking", "Banking", "{97DC6B0E-010B-4494-B57B-D7AF95D4DA3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldinAccountManager.Banking", "GoldinAccountManager.Banking\GoldinAccountManager.Banking.csproj", "{DC3228D2-E18E-41A9-8100-FF2260979796}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoldinAccountManager.Banking", "GoldinAccountManager.Banking\GoldinAccountManager.Banking.csproj", "{DC3228D2-E18E-41A9-8100-FF2260979796}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F4556273-AAD1-4E51-95C1-89E1E0496279}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
