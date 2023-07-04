@@ -1,0 +1,12 @@
+{
+  "accountID": 1,
+  "firstName": "jabu",
+  "lastName": "jabu",
+  "email": "user@example.com",
+  "telephone": "123456778",
+  "identityNumber": "1234567890987",
+  "balance": 0,
+  "active": true,
+  "dateCreated": "2023-07-04T11:49:16.3852137+02:00",
+  "dateUpdated": "2023-07-04T11:49:16.3852594+02:00"
+}
