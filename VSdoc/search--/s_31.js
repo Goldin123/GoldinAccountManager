@@ -1,1 +1,1 @@
-search_result['31']=["topic_000000000000000C_vars--.html","AuthenticateController Fields",""];
+search_result['31']=["topic_000000000000000C_methods--.html","AuthenticateController Methods",""];

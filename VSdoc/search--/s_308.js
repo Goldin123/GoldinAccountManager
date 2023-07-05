@@ -1,1 +1,1 @@
-search_result['308']=["topic_00000000000000A9_methods--.html","BankEFTRequest Methods",""];
+search_result['308']=["topic_00000000000000A9_attached_props--.html","BankEFTRequest Attached Properties",""];

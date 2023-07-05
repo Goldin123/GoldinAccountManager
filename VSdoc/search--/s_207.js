@@ -1,1 +1,1 @@
-search_result['207']=["topic_000000000000006D_events--.html","ApplicationMessages Events",""];
+search_result['207']=["topic_000000000000006D.html","ApplicationMessages Class",""];

@@ -1,1 +1,1 @@
-search_result['60']=["topic_000000000000001A.html","CacheHelper.SetRecordAsync\u0026lt;T\u0026gt; Method","Sets data to the Redis cache database with a given key."];
+search_result['60']=["topic_0000000000000019_props--.html","CacheHelper Properties",""];

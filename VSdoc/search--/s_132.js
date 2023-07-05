@@ -1,1 +1,1 @@
-search_result['132']=["topic_0000000000000042.html","TransactionRepository.GetAllTransactions Method",""];
+search_result['132']=["topic_0000000000000040.html","TransactionRepository.DebitAccountAsync Method",""];

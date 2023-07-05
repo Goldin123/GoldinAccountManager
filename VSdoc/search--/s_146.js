@@ -1,1 +1,1 @@
-search_result['146']=["topic_0000000000000049_events--.html","CacheHelper Events",""];
+search_result['146']=["topic_0000000000000049.html","CacheHelper Class",""];

@@ -1,1 +1,1 @@
-search_result['37']=["topic_0000000000000011_attached_props--.html","TransactionController Attached Properties",""];
+search_result['37']=["topic_0000000000000010.html","AuthenticateController.RegisterAdmin Method","This registers a new admin api user, only administrators the ability to add the user"];

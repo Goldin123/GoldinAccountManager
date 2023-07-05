@@ -1,1 +1,1 @@
-search_result['45']=["topic_0000000000000014.html","TransactionController.Post (BankEFTRequest) Method","This credits an account via bank accoun."];
+search_result['45']=["topic_0000000000000013.html","TransactionController.Post (CrebitByCardRequest) Method","This credits an account via credit cards or debit cards."];

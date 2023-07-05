@@ -1,1 +1,1 @@
-search_result['165']=["topic_0000000000000054.html","IAccountRepository.UpdateAccountBalanceAsync Method","Interface that updates an account balance."];
+search_result['165']=["topic_0000000000000052.html","IAccountRepository.GetAccountByIdAsync Method","Interface that returns account details based an accoundID."];

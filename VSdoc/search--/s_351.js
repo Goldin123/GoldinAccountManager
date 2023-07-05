@@ -1,1 +1,1 @@
-search_result['351']=["topic_00000000000000CA_events--.html","UserRoles Events",""];
+search_result['351']=["topic_00000000000000CA.html","UserRoles Class",""];

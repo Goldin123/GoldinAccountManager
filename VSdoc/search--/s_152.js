@@ -1,1 +1,1 @@
-search_result['152']=["topic_000000000000004C.html","GoldinAccountManager.Database.Interface Namespace",""];
+search_result['152']=["topic_000000000000004A.html","CacheHelper.SetRecordAsync\u0026lt;T\u0026gt; Method",""];

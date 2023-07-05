@@ -1,1 +1,1 @@
-search_result['22']=["topic_0000000000000009_overloads--.html","AccountController.Post Method","This add a single account to the database."];
+search_result['22']=["topic_0000000000000008_overloads--.html","AccountController.Get Method","This gets account details by linked to an AccountID,"];

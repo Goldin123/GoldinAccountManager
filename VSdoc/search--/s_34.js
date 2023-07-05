@@ -1,1 +1,1 @@
-search_result['34']=["topic_000000000000000F.html","AuthenticateController.Register Method","This registers a new api user, only administrators the ability to add the user."];
+search_result['34']=["topic_000000000000000D.html","AuthenticateController Constructor",""];

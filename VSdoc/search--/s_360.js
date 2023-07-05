@@ -1,1 +1,1 @@
-search_result['360']=["topic_00000000000000CE_events--.html","CacheHelperRespository Events",""];
+search_result['360']=["topic_00000000000000CE.html","CacheHelperRespository Class",""];

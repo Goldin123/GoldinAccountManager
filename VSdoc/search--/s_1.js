@@ -1,1 +1,1 @@
-search_result['1']=["topic_0000000000000001.html","ApplicationDbContext Class","This is the (localdb) used for JWT Authentication."];
+search_result['1']=["search--.html","Search",""];

@@ -1,1 +1,1 @@
-search_result['366']=["topic_00000000000000D1.html","GoldinAccountManager.RedisCache.Helper Namespace",""];
+search_result['366']=["topic_00000000000000CF.html","CacheHelperRespository.SetRecordAsync\u0026lt;T\u0026gt; Method",""];

@@ -1,1 +1,1 @@
-search_result['241']=["topic_000000000000008A_events--.html","AuthenticationModel Events",""];
+search_result['241']=["topic_000000000000008A.html","AuthenticationModel Class",""];

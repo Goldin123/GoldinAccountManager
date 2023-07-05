@@ -1,1 +1,1 @@
-search_result['62']=["topic_000000000000001C.html","GoldinAccountManager.API.Migrations Namespace",""];
+search_result['62']=["topic_000000000000001A.html","CacheHelper.SetRecordAsync\u0026lt;T\u0026gt; Method","Sets data to the Redis cache database with a given key."];

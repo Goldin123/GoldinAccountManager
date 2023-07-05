@@ -1,1 +1,1 @@
-search_result['258']=["topic_0000000000000091_events--.html","RegisterModel Events",""];
+search_result['258']=["topic_0000000000000091.html","RegisterModel Class",""];

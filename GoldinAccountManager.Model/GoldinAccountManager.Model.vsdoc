@@ -45,7 +45,7 @@
     <add key="VBdocman_SupportedNetCore"><![CDATA[]]></add>
     <add key="VBdocman_customVar3"><![CDATA[]]></add>
     <add key="VBdocman_unbreakSourceLines"><![CDATA[0]]></add>
-    <add key="VBdocman_supportedNetFramework"><![CDATA[4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2, 4.7, 4.7.1, 4.7.2, 4.8]]></add>
+    <add key="VBdocman_supportedNetFramework"><![CDATA[]]></add>
     <add key="VBdocman_pageFooterText"><![CDATA[Generated with <see href="http://www.helixoft.com/vsdocman/overview.html">VSdocman</see>]]></add>
     <add key="VBdocman_comConstant"><![CDATA[-1]]></add>
     <add key="VBdocman_supportedOthers"><![CDATA[]]></add>
@@ -56,7 +56,7 @@
     <add key="VBdocman_ConstantValueDisplay"><![CDATA[1]]></add>
     <add key="VBdocman_helpTitle"><![CDATA[GoldinAccountManager.Model Reference]]></add>
     <add key="VBdocman_insertSourceGlobal"><![CDATA[0]]></add>
-    <add key="VBdocman_SupportedNetStandard"><![CDATA[]]></add>
+    <add key="VBdocman_SupportedNetStandard"><![CDATA[7]]></add>
     <add key="VBdocman_SupportedXamarinMac"><![CDATA[]]></add>
     <add key="VBdocman_comFriend"><![CDATA[0]]></add>
     <add key="VBdocman_templatePath"><![CDATA[html_msdn2019.vbdt]]></add>

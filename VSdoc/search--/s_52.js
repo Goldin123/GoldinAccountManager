@@ -1,1 +1,1 @@
-search_result['52']=["topic_0000000000000017_overloads--.html","TransactionController.Get Method","This get all transactions in the database."];
+search_result['52']=["topic_0000000000000016_overloads--.html","TransactionController.Get Method","This returns an account statement based on a given date range."];

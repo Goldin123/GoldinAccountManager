@@ -1,1 +1,1 @@
-search_result['21']=["topic_0000000000000009.html","AccountController.Post (AccountRequest) Method","This add a single account to the database."];
+search_result['21']=["topic_0000000000000008.html","AccountController.Get (Int32) Method","This gets account details by linked to an AccountID,"];

@@ -1,1 +1,1 @@
-search_result['102']=["topic_0000000000000030.html","WeatherForecast.Summary Property",""];
+search_result['102']=["topic_000000000000002E.html","WeatherForecast.TemperatureC Property",""];

@@ -1,1 +1,1 @@
-search_result['216']=["topic_0000000000000073.html","CardDetailsEntry Field",""];
+search_result['216']=["topic_0000000000000071.html","AmountShouldBeGreaterThanZero Field",""];

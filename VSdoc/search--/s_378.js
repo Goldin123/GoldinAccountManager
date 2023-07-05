@@ -1,1 +1,1 @@
-search_result['378']=["topic_00000000000000D6_events--.html","ICacheHelperRespository Events",""];
+search_result['378']=["topic_00000000000000D6.html","ICacheHelperRespository Interface",""];

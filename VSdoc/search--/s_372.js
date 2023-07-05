@@ -1,1 +1,1 @@
-search_result['372']=["topic_00000000000000D2_vars--.html","CacheHelper Fields",""];
+search_result['372']=["topic_00000000000000D2_methods--.html","CacheHelper Methods",""];

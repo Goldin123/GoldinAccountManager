@@ -1,1 +1,1 @@
-search_result['172']=["topic_0000000000000056.html","ITransactionRepository.CreditAccountByCardAsync Method","Interface that credits an account by card."];
+search_result['172']=["topic_0000000000000055_props--.html","ITransactionRepository Properties",""];

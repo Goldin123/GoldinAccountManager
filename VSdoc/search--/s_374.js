@@ -1,1 +1,1 @@
-search_result['374']=["topic_00000000000000D4.html","CacheHelper.GetRecordAsync\u0026lt;T\u0026gt; Method",""];
+search_result['374']=["topic_00000000000000D2_vars--.html","CacheHelper Fields",""];

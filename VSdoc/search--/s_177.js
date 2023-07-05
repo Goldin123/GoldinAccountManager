@@ -1,1 +1,1 @@
-search_result['177']=["topic_000000000000005B.html","GoldinAccountManager.Model Namespace",""];
+search_result['177']=["topic_0000000000000059.html","ITransactionRepository.GetAccountStatementAsync Method","Interface that returns an account statement."];

@@ -1,1 +1,1 @@
-search_result['397']=["topic_00000000000000E1.html","IAuthenticationRepository Interface",""];
+search_result['397']=["topic_00000000000000DF.html","AuthenticationRepository.RegisterAdminAsync Method",""];

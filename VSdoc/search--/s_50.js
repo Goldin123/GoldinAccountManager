@@ -1,1 +1,1 @@
-search_result['50']=["topic_0000000000000016_overloads--.html","TransactionController.Get Method","This returns an account statement based on a given date range."];
+search_result['50']=["topic_0000000000000015_overloads--.html","TransactionController.Post Method","This debits an account with the entered amount, the account must have a balance greater than zero."];

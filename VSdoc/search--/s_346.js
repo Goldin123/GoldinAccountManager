@@ -1,1 +1,1 @@
-search_result['346']=["topic_00000000000000BE.html","CardType Enumeration",""];
+search_result['346']=["topic_00000000000000BC.html","AccountStatementRequest.DateFrom Property",""];

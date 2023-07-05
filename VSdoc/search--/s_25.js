@@ -1,1 +1,1 @@
-search_result['25']=["topic_000000000000000B.html","AccountController.Put Method","This updates an account based on a matching identity number."];
+search_result['25']=["topic_000000000000000A.html","AccountController.Post (List\u0026lt;AccountRequest\u0026gt;) Method","This add a collection of accounts to the database."];

@@ -1,1 +1,1 @@
-search_result['250']=["topic_000000000000008E_events--.html","LoginRequest Events",""];
+search_result['250']=["topic_000000000000008E.html","LoginRequest Class",""];

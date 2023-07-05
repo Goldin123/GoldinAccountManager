@@ -1,1 +1,1 @@
-search_result['407']=["topic_00000000000000E6.html","GoldinAccountManager.Banking Namespace",""];
+search_result['407']=["topic_00000000000000E4.html","IAuthenticationRepository.RegisterUserAsync Method","Interface that register an api user"];

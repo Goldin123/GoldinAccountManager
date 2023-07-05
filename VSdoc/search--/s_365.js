@@ -1,1 +1,1 @@
-search_result['365']=["topic_00000000000000D0.html","CacheHelperRespository.GetRecordAsync\u0026lt;T\u0026gt; Method",""];
+search_result['365']=["topic_00000000000000CE_vars--.html","CacheHelperRespository Fields",""];

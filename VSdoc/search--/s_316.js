@@ -1,1 +1,1 @@
-search_result['316']=["topic_00000000000000AF.html","BankEFTRequest.AccountId Property",""];
+search_result['316']=["topic_00000000000000AD.html","BankEFTRequest.AccountTypeId Property",""];

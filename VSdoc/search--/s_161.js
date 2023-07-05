@@ -1,1 +1,1 @@
-search_result['161']=["topic_0000000000000050.html","IAccountRepository.GetAllAccountsAsync Method","Interface that returns a list of all accounts."];
+search_result['161']=["topic_000000000000004E.html","IAccountRepository.AddAccountsAsync Method","Interface that allows you to add a list accounts to the database."];

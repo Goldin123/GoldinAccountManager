@@ -1,1 +1,1 @@
-search_result['291']=["topic_00000000000000A0.html","Transaction.TransactioDate Property",""];
+search_result['291']=["topic_000000000000009E.html","Transaction.TransactioTypeId Property",""];

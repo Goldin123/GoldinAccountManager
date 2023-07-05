@@ -1,1 +1,1 @@
-search_result['270']=["topic_0000000000000095_vars--.html","RegisterResponse Fields",""];
+search_result['270']=["topic_0000000000000095_methods--.html","RegisterResponse Methods",""];

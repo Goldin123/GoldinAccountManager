@@ -1,1 +1,1 @@
-search_result['46']=["topic_0000000000000014_overloads--.html","TransactionController.Post Method","This credits an account via bank accoun."];
+search_result['46']=["topic_0000000000000013_overloads--.html","TransactionController.Post Method","This credits an account via credit cards or debit cards."];

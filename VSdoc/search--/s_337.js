@@ -1,1 +1,1 @@
-search_result['337']=["topic_00000000000000BA.html","AccountStatementRequest Class",""];
+search_result['337']=["topic_00000000000000B8.html","AccountStatement.Transactions Property",""];

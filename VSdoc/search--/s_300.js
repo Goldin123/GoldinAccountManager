@@ -1,1 +1,1 @@
-search_result['300']=["topic_00000000000000A4.html","CrebitByCardRequest.NameOnCard Property",""];
+search_result['300']=["topic_00000000000000A2.html","CrebitByCardRequest.CardTypeId Property",""];

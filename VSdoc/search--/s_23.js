@@ -1,1 +1,1 @@
-search_result['23']=["topic_000000000000000A.html","AccountController.Post (List\u0026lt;AccountRequest\u0026gt;) Method","This add a collection of accounts to the database."];
+search_result['23']=["topic_0000000000000009.html","AccountController.Post (AccountRequest) Method","This add a single account to the database."];

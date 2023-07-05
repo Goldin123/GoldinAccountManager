@@ -1,1 +1,1 @@
-search_result['136']=["topic_0000000000000044_events--.html","GoldinAccountMangerContext Events",""];
+search_result['136']=["topic_0000000000000044.html","GoldinAccountMangerContext Class","This the the in memory database used to store accounts and transactions."];

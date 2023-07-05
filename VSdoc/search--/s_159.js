@@ -1,1 +1,1 @@
-search_result['159']=["topic_000000000000004E.html","IAccountRepository.AddAccountsAsync Method","Interface that allows you to add a list accounts to the database."];
+search_result['159']=["topic_000000000000004D_props--.html","IAccountRepository Properties",""];
