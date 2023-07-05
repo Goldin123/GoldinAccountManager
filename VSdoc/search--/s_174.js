@@ -1,0 +1,1 @@
+search_result['174']=["topic_0000000000000056.html","ITransactionRepository.CreditAccountByCardAsync Method","Interface that credits an account by card."];

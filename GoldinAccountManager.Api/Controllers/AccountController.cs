@@ -26,7 +26,10 @@ namespace GoldinAccountManager.API.Controllers
             _logger = logger;
             _cache = cache;
         }
-        // GET: api/<AccountController>
+        /// <summary>
+        /// This gets all the accounts created on the database.
+        /// </summary>
+        /// <returns>If founds, returns all the accounts from MS SQL or Redis cache.</returns>
         [HttpGet]
         [Route("GetAccounts")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -49,7 +52,11 @@ namespace GoldinAccountManager.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        // GET: api/<AccountController>/1234567890123
+        /// <summary>
+        /// This gets account details by linked to an AccountID, 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns>Returns account details that matches to the AccountID.</returns>
         [HttpGet]
         [Route("GetAccountById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -67,7 +74,11 @@ namespace GoldinAccountManager.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        // POST api/<AccountController>
+        /// <summary>
+        /// This add a single account to the database.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns>Returns the recently added account.</returns>
         [Route("AddAccount")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -94,14 +105,17 @@ namespace GoldinAccountManager.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
+        /// <summary>
+        /// This add a collection of accounts to the database.
+        /// </summary>
+        /// <param name="values"></param>
+        /// <returns>Returns the newly created list of accounts.</returns>
         [Route("AddAccounts")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-
         public async Task<IActionResult> Post([FromBody] List<AccountRequest> values)
         {
             try
@@ -123,8 +137,11 @@ namespace GoldinAccountManager.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
-        // PUT api/<AccountController>/5
+        /// <summary>
+        /// This updates an account based on a matching identity number.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns> Returns the newly updated account details.</returns>
         [HttpPut]
         [Route("UpdateAccount")]
         [ProducesResponseType(StatusCodes.Status201Created)]

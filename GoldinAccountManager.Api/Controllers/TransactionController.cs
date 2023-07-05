@@ -21,14 +21,17 @@ namespace GoldinAccountManager.API.Controllers
             _logger = logger;
         }
 
-        // POST api/<TransactionController>
+        /// <summary>
+        /// This credits an account via credit cards or debit cards.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns> Returns a newly added transaction.</returns>
         [Route("CreditAccountByCard")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-
         public async Task<IActionResult> Post([FromBody] CrebitByCardRequest value)
         {
             try
@@ -58,14 +61,17 @@ namespace GoldinAccountManager.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
+        /// <summary>
+        /// This credits an account via bank accoun.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns> Returns a newly added transaction.</returns>
         [Route("CreditAccountByBank")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-
         public async Task<IActionResult> Post([FromBody] BankEFTRequest value)
         {
             try
@@ -97,14 +103,17 @@ namespace GoldinAccountManager.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
+        /// <summary>
+        /// This debits an account with the entered amount, the account must have a balance greater than zero.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns> Returns a newly added transaction.</returns>
         [Route("DebitAccount")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-
         public async Task<IActionResult> Post([FromBody] DebitRequest value)
         {
             try
@@ -136,7 +145,11 @@ namespace GoldinAccountManager.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
+        /// <summary>
+        /// This returns an account statement based on a given date range.
+        /// </summary>
+        /// <param name="accountStatementRequest"></param>
+        /// <returns> Returns an account statement with a total balance based on a gate range.</returns>
         [Route("GetAccountStatement")]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -156,7 +169,10 @@ namespace GoldinAccountManager.API.Controllers
             }
         }
 
-        // GET: api/<AccountController>
+        /// <summary>
+        /// This get all transactions in the database.
+        /// </summary>
+        /// <returns> Returns all transactions on the database via MS SQL or Redis cache.</returns>
         [HttpGet]
         [Route("GetTransactions")]
         [ProducesResponseType(StatusCodes.Status200OK)]

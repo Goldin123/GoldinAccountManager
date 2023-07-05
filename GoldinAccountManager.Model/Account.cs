@@ -2,6 +2,9 @@
 
 namespace GoldinAccountManager.Model
 {
+    /// <summary>
+    /// Account class with all account related sub-classes or main classes.
+    /// </summary>
     public class Account
     {
         [Key]
@@ -22,6 +25,7 @@ namespace GoldinAccountManager.Model
         public DateTime DateCreated { get; set; }
         public DateTime DateUpdated { get; set; }
     }
+
 
     public class AccountRequest
     {

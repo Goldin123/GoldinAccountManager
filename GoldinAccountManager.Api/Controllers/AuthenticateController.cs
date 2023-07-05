@@ -21,9 +21,15 @@ namespace GoldinAccountManager.API.Controllers
         {
             _authenticationRepository = authenticationRepository;
         }
-
+        /// <summary>
+        /// Login API User by using username and password. 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>The JWT Access token with an expiry date.</returns>
         [HttpPost]
         [Route("Login")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> Login([FromBody] LoginRequest model)
         {
             if (ModelState.IsValid)
@@ -45,10 +51,17 @@ namespace GoldinAccountManager.API.Controllers
                 return Unauthorized();
 
         }
-
+        /// <summary>
+        /// This registers a new api user, only administrators the ability to add the user. 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns> Successfully created new user if valid request.</returns>
         [HttpPost]
         [Route("RegisterUser")]
         [Authorize(Roles = "Admin")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Register([FromBody] RegisterModel model)
         {
             var userExists = await _authenticationRepository.GetIdentityUserByUsernameAsync(model.Username);
@@ -63,10 +76,18 @@ namespace GoldinAccountManager.API.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = registerUser.Message });
 
         }
+        /// <summary>
+        /// This registers a new admin api user, only administrators the ability to add the user
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns> Successfully created new user if valid request.</returns>
 
         [HttpPost]
         [Route("RegisterAdmin")]
         [Authorize(Roles = "Admin")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> RegisterAdmin([FromBody] RegisterModel model)
         {
             var userExists = await _authenticationRepository.GetIdentityUserByUsernameAsync(model.Username);
