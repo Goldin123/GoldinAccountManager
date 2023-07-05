@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace GoldinAccountManager.Database.DB
 {
+    /// <summary>
+    /// This the the in memory database used to store accounts and transactions.
+    /// </summary>
     public class GoldinAccountMangerContext : DbContext
     {
         protected override void OnConfiguring

@@ -4,6 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GoldinAccountManager.API.Auth
 {
+    /// <summary>
+    /// This is the (localdb) used for JWT Authentication.
+    /// </summary>
     public class ApplicationDbContext: IdentityDbContext<IdentityUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)

@@ -1,0 +1,1 @@
+search_result['134']=["topic_0000000000000044.html","GoldinAccountMangerContext Class","This the the in memory database used to store accounts and transactions."];

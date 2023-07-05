@@ -1,0 +1,1 @@
+var breadcrumbs=[['-1',"",""],['2',"GoldinAccountManager.Model Reference","topic_0000000000000072.html"],['4',"GoldinAccountManager.Model Namespace","topic_0000000000000000.html"],['110',"Transaction Class","topic_0000000000000040.html"],['111',"Properties","topic_0000000000000040_props--.html"],['113',"Amount Property","topic_0000000000000044.html"]];

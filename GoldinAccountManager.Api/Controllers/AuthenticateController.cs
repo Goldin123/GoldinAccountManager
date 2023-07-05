@@ -21,7 +21,11 @@ namespace GoldinAccountManager.API.Controllers
         {
             _authenticationRepository = authenticationRepository;
         }
-
+        /// <summary>
+        /// Login API User by using username and password. 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>The JWT Access token with an expiry date.</returns>
         [HttpPost]
         [Route("Login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest model)
@@ -45,7 +49,11 @@ namespace GoldinAccountManager.API.Controllers
                 return Unauthorized();
 
         }
-
+        /// <summary>
+        /// This registers a new api user, only administrators the ability to add the user. 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns> Successfully created new user if valid request.</returns>
         [HttpPost]
         [Route("RegisterUser")]
         [Authorize(Roles = "Admin")]
@@ -63,6 +71,11 @@ namespace GoldinAccountManager.API.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = registerUser.Message });
 
         }
+        /// <summary>
+        /// This registers a new admin api user, only administrators the ability to add the user
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns> Successfully created new user if valid request.</returns>
 
         [HttpPost]
         [Route("RegisterAdmin")]

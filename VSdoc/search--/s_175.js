@@ -1,0 +1,1 @@
+search_result['175']=["topic_0000000000000059.html","ITransactionRepository.GetAccountStatementAsync Method","Interface that returns an account statement."];

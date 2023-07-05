@@ -1,0 +1,1 @@
+search_result['165']=["topic_0000000000000054.html","IAccountRepository.UpdateAccountBalanceAsync Method","Interface that updates an account balance."];

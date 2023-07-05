@@ -1,0 +1,1 @@
+search_result['174']=["topic_0000000000000058.html","ITransactionRepository.DebitAccountAsync Method","Interface that debits an account by an amount."];
