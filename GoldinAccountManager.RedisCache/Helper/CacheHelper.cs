@@ -18,7 +18,7 @@ namespace GoldinAccountManager.RedisCache.Helper
         {
             var options = new DistributedCacheEntryOptions();
 
-            options.AbsoluteExpirationRelativeToNow = absoluteExpireTime ?? TimeSpan.FromSeconds(60);
+            options.AbsoluteExpirationRelativeToNow = absoluteExpireTime ?? TimeSpan.FromMinutes(60);
             options.SlidingExpiration = slidingExpireTime;
 
             var jsonData = JsonSerializer.Serialize(data);

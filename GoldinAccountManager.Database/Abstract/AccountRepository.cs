@@ -5,6 +5,8 @@ using GoldinAccountManager.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace GoldinAccountManager.Database.Abstract
 {
@@ -95,8 +97,11 @@ namespace GoldinAccountManager.Database.Abstract
 
                     if (newAccounts?.Count > 0)
                     {
-                        _logger.LogInformation(ApplicationMessages.AddedAccountsToRedis);
-                        await _cache.SetRecordAsync(_accountsRedisrecordKey, newAccounts);
+                        if (newAccounts.Count() > 1)
+                        {
+                            _logger.LogInformation(ApplicationMessages.AddedAccountsToRedis);
+                            await _cache.SetRecordAsync(_accountsRedisrecordKey, newAccounts);
+                        }
                         return newAccounts;
                     }
                     else
@@ -194,17 +199,56 @@ namespace GoldinAccountManager.Database.Abstract
             }
         }
 
+        private async Task<List<Account>> GetCachedAccount() 
+        {
+            try
+            {
+                using (var db = new GoldinAccountMangerContext())
+                {
+                    if (db.Accounts.Count() > 0)
+                    {
+                        var cacheAccounts = await _cache.GetRecordAsync<dynamic>(_accountsRedisrecordKey);
+                        var jsonAccounts = Convert.ToString(cacheAccounts) as string;
+                        if (!string.IsNullOrEmpty(jsonAccounts))
+                        {
+                            if (jsonAccounts.StartsWith("["))
+                            {
+                                var accounts = JsonConvert.DeserializeObject<List<Account>>(jsonAccounts);
+                                if (accounts != null)
+                                    if (accounts.Count() == db.Accounts.Count())
+                                    {
+                                        _logger.LogInformation(ApplicationMessages.LoadingFromCache);
+                                        return accounts;
+
+                                    }
+                            }
+                        }
+                    }
+                }
+                return new List<Account>();
+            }catch (Exception ex) 
+            {
+                _logger.LogCritical(ex.Message);    
+                throw new Exception(ex.Message);
+            }
+        }
+
         public async Task<List<Account>> GetAllAccountsAsync()
         {
             try
             {
-                List<Account>? accounts;
-                accounts = await _cache.GetRecordAsync<List<Account>>(_accountsRedisrecordKey);
+                List<Account>? accounts = null;
 
-                if (accounts == null) //No accounts on cache
+                using (var db = new GoldinAccountMangerContext())
                 {
-                    using (var db = new GoldinAccountMangerContext())
+                    if (db.Accounts.Count() > 0)
                     {
+                        var cachedAccounts = await GetCachedAccount();
+
+                        if (cachedAccounts?.Count > 0)
+                            return cachedAccounts;
+
+
                         accounts = await (from a in db.Accounts
                                           select new Account
                                           {
@@ -222,9 +266,14 @@ namespace GoldinAccountManager.Database.Abstract
 
                         if (accounts?.Count > 0)
                         {
-                            _logger.LogInformation(ApplicationMessages.AddedAccountsToRedis);
+
                             _logger.LogInformation(ApplicationMessages.LoadingFromDatabase);
-                            await _cache.SetRecordAsync(_accountsRedisrecordKey, accounts);
+
+                            if (accounts.Count() > 1)
+                            {
+                                _logger.LogInformation(ApplicationMessages.AddedAccountsToRedis);
+                                await _cache.SetRecordAsync(_accountsRedisrecordKey, accounts);
+                            }
                             return accounts;
                         }
                         else
@@ -234,11 +283,12 @@ namespace GoldinAccountManager.Database.Abstract
                             return accounts;
                         }
                     }
-                }
-                else //Loading accounts from cache
-                {
-                    _logger.LogInformation(ApplicationMessages.LoadingFromCache);
-                    return accounts;
+                    else
+                    {
+                        _logger.LogInformation(ApplicationMessages.NoAccountsFound);
+                        accounts = new List<Account>();
+                        return accounts;
+                    }
                 }
 
             }
@@ -248,7 +298,6 @@ namespace GoldinAccountManager.Database.Abstract
                 throw new Exception(ex.Message);
             }
         }
-
         public async Task<Account> UpdateAccountAsync(AccountRequest account)
         {
             try
