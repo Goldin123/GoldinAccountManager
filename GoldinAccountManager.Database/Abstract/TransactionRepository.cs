@@ -15,7 +15,6 @@ namespace GoldinAccountManager.Database.Abstract
         private readonly ILogger<TransactionRepository> _logger;
         private readonly IDistributedCache _cache;
         private readonly string _transactionsRedisrecordKey = ApplicationMessages.TransactionRedisKey;
-
         public TransactionRepository(IAccountRepository account, ILogger<TransactionRepository> logger, IDistributedCache cache)
         {
             _account = account;
@@ -61,7 +60,6 @@ namespace GoldinAccountManager.Database.Abstract
             }
 
         }
-
         public async Task<GoldinAccountManager.Model.Transaction> CreditAccountByCardAsync(CrebitByCardRequest crebitByCardRequest)
         {
             try
@@ -97,7 +95,6 @@ namespace GoldinAccountManager.Database.Abstract
                 throw new Exception(ex.ToString());
             }
         }
-
         public async Task<GoldinAccountManager.Model.Transaction> DebitAccountAsync(DebitRequest debitRequest)
         {
             try
@@ -144,7 +141,6 @@ namespace GoldinAccountManager.Database.Abstract
                 throw new Exception(ex.ToString());
             }
         }
-
         private async Task<List<Model.Transaction>> GetCachedTransactions()
         {
             try 
@@ -179,7 +175,6 @@ namespace GoldinAccountManager.Database.Abstract
                 throw new Exception(ex.ToString());
             }
         }
-
         private async Task<List<Model.Transaction>> GetAllDabaseTransactions()
         {
             try
@@ -210,7 +205,6 @@ namespace GoldinAccountManager.Database.Abstract
                 throw new Exception(ex.ToString());
             }
         }
-
         public async Task<GoldinAccountManager.Model.AccountStatement> GetAccountStatementAsync(AccountStatementRequest accountStatementRequest)
         {
             try
@@ -224,11 +218,8 @@ namespace GoldinAccountManager.Database.Abstract
 
                         List<Model.Transaction> transactions = new List<Transaction>();
 
-                        var cachedTrans = await GetCachedTransactions();
-                        if (cachedTrans.Count() > 1)
-                            transactions = cachedTrans;
-                        else
-                            transactions = await GetAllDabaseTransactions();
+
+                        transactions = await GetAllTransactions();
 
                         transactions = (from a in transactions
                                         where a.AccountID == accountStatementRequest.AccountId
@@ -255,11 +246,10 @@ namespace GoldinAccountManager.Database.Abstract
             }
             catch (Exception ex)
             {
-                _logger.LogCritical(ex.ToString());
+                _logger.LogCritical(ex.Message);
                 throw new Exception(ex.ToString());
             }
         }
-
         private async Task<GoldinAccountManager.Model.Transaction> AddTransaction(GoldinAccountManager.Model.Transaction transaction)
         {
 
@@ -285,6 +275,24 @@ namespace GoldinAccountManager.Database.Abstract
                     _logger.LogCritical(ex.ToString());
                     return new Model.Transaction();
                 }
+            }
+        }
+        public async Task<List<Model.Transaction>> GetAllTransactions() 
+        {
+            try
+            {
+                List<Model.Transaction> transactions = new List<Model.Transaction>();
+                var cachedTrans = await GetCachedTransactions();
+                if (cachedTrans.Count() > 1)
+                    transactions = cachedTrans;
+                else
+                    transactions = await GetAllDabaseTransactions();
+
+                return transactions;
+            }catch (Exception ex) 
+            {
+                _logger.LogCritical(ex.Message);
+                throw new Exception(ex.ToString());
             }
         }
     }
