@@ -12,13 +12,11 @@ namespace GoldinAccountManager.API.Controllers
     [ApiController]
     public class TransactionController : ControllerBase
     {
-        private readonly IAccountRepository _account;
         private readonly ITransactionRepository _transaction;
         private readonly ILogger<TransactionController> _logger;
 
         public TransactionController(IAccountRepository account, ITransactionRepository transaction, ILogger<TransactionController> logger)
         {
-            _account = account;
             _transaction = transaction;
             _logger = logger;
         }
@@ -150,6 +148,30 @@ namespace GoldinAccountManager.API.Controllers
             try
             {
                     return Ok(await _transaction.GetAccountStatementAsync(accountStatementRequest));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return BadRequest(ex.Message);
+            }
+        }
+
+        // GET: api/<AccountController>
+        [HttpGet]
+        [Route("GetTransactions")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<IActionResult> Get()
+        {
+            try
+            {
+                List<Transaction>? trans;
+                trans = await _transaction.GetAllTransactions();
+                if (trans?.Count > 0)
+                    return Ok(trans);
+                else
+                    return NoContent();
             }
             catch (Exception ex)
             {
