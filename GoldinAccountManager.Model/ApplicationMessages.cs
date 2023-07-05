@@ -10,7 +10,7 @@ namespace GoldinAccountManager.Model
     {
         public static readonly string AccountHasZeroBalanceError = $"Account has zero balance.";
         public static readonly string AccountRedisKey = $"Accounts_{DateTime.Now:yyyyMMdd_hh}";
-        public static readonly string TransactionRedisKey = $"Transaction_{DateTime.Now:yyyyMMdd_hh}";
+        public static readonly string TransactionRedisKey = $"Transactions_{DateTime.Now:yyyyMMdd_hh}";
         public static readonly string AmountShouldBeGreaterThanZero = $"Amount should greater than zero.";
         public static readonly string BankingDetailsEntry = $"Please enter banking details.";
         public static readonly string CardDetailsEntry = $"Please enter credit card details.";
@@ -21,11 +21,13 @@ namespace GoldinAccountManager.Model
         public static readonly string DateFromGreaterThanDateToError = $"Date from must be greater or equal than date to.";
         public static readonly string InsufficientFundsAvailable = $"Account has insufficient funds available.";
         public static readonly string NoAccountsFound = $"No accounts found.";
+        public static readonly string NoTransactionsFound = $"No transactions found.";
         public static readonly string AddedAccount = "Successfully added account with id {0} to the database.";
         public static readonly string FoundAccount = "Successfully retrieved account with id {0} on the database.";
         public static readonly string UpdateAccountDetails = "Successfully updated account with id {0} on the database.";
         public static readonly string UpdateAccountBalance = "About to updated account balance for account with id {0} on the database from {1} to {2}.";
         public static readonly string AddedAccountsToRedis = $"Added accounts to redis cache.";
+        public static readonly string AddedTransactionsToRedis = $"Added transactions to redis cache.";
         public static readonly string AddedAccountToRedis = $"Added account to redis cache.";
         public static readonly string LoadingFromDatabase = $"Loading data from the database.";
         public static readonly string LoadingFromCache = $"Loading data from redis cache.";

@@ -1,17 +1,11 @@
 ﻿using GoldinAccountManager.Database.DB;
+using GoldinAccountManager.Database.Helper;
 using GoldinAccountManager.Database.Interface;
 using GoldinAccountManager.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlTypes;
-using System.Diagnostics;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using Newtonsoft.Json;
 
 namespace GoldinAccountManager.Database.Abstract
 {
@@ -19,12 +13,14 @@ namespace GoldinAccountManager.Database.Abstract
     {
         private readonly IAccountRepository _account;
         private readonly ILogger<TransactionRepository> _logger;
+        private readonly IDistributedCache _cache;
+        private readonly string _transactionsRedisrecordKey = ApplicationMessages.TransactionRedisKey;
 
-
-        public TransactionRepository(IAccountRepository account, ILogger<TransactionRepository> logger)
+        public TransactionRepository(IAccountRepository account, ILogger<TransactionRepository> logger, IDistributedCache cache)
         {
             _account = account;
             _logger = logger;
+            _cache = cache;
         }
         public async Task<GoldinAccountManager.Model.Transaction> CreditAccountByBankAsync(BankEFTRequest bankEFTRequest)
         {
@@ -51,7 +47,7 @@ namespace GoldinAccountManager.Database.Abstract
                     TransactioDate = DateTime.Now,
                     TransactioTypeId = (int)TransactionType.Credit,
                 };
-                
+
                 var trans = await AddTransaction(newTransaction);
                 await _account.UpdateAccountBalanceAsync(trans.AccountID, trans.Amount, TransactionType.Credit);
 
@@ -63,7 +59,7 @@ namespace GoldinAccountManager.Database.Abstract
                 _logger.LogCritical(ex.Message);
                 throw new NotImplementedException();
             }
-            
+
         }
 
         public async Task<GoldinAccountManager.Model.Transaction> CreditAccountByCardAsync(CrebitByCardRequest crebitByCardRequest)
@@ -90,9 +86,9 @@ namespace GoldinAccountManager.Database.Abstract
                     TransactioTypeId = (int)TransactionType.Credit,
                 };
 
-                var trans =  await AddTransaction(newTransaction);
+                var trans = await AddTransaction(newTransaction);
                 await _account.UpdateAccountBalanceAsync(trans.AccountID, trans.Amount, TransactionType.Credit);
-                
+
                 return trans;
             }
             catch (Exception ex)
@@ -104,7 +100,7 @@ namespace GoldinAccountManager.Database.Abstract
 
         public async Task<GoldinAccountManager.Model.Transaction> DebitAccountAsync(DebitRequest debitRequest)
         {
-            try 
+            try
             {
                 var existingAccount = await _account.GetAccountByIdAsync(debitRequest.AccountId);
 
@@ -126,7 +122,7 @@ namespace GoldinAccountManager.Database.Abstract
                     throw new Exception(ApplicationMessages.InsufficientFundsAvailable);
                 }
 
-                _logger.LogInformation(ApplicationMessages.PerformingDebit,existingAccount.AccountID);
+                _logger.LogInformation(ApplicationMessages.PerformingDebit, existingAccount.AccountID);
 
                 var newTransaction = new GoldinAccountManager.Model.Transaction
                 {
@@ -142,8 +138,74 @@ namespace GoldinAccountManager.Database.Abstract
                 return trans;
 
             }
+            catch (Exception ex)
+            {
+                _logger.LogCritical(ex.Message);
+                throw new Exception(ex.ToString());
+            }
+        }
+
+        private async Task<List<Model.Transaction>> GetCachedTransactions()
+        {
+            try 
+            {
+                using (var db = new GoldinAccountMangerContext())
+                {
+                    if (db.Transactions.Count() > 0)
+                    {
+                        var cachedTranasctions = await _cache.GetRecordAsync<dynamic>(_transactionsRedisrecordKey);
+                        var jsonTransactions = Convert.ToString(cachedTranasctions) as string;
+                        if (!string.IsNullOrEmpty(jsonTransactions))
+                        {
+                            if (jsonTransactions.StartsWith("["))
+                            {
+                                var trans = JsonConvert.DeserializeObject<List<Model.Transaction>>(jsonTransactions);
+                                if (trans != null)
+                                    if (trans.Count() == db.Transactions.Count())
+                                    {
+                                        _logger.LogInformation(ApplicationMessages.LoadingFromCache);
+                                        return trans;
+
+                                    }
+                            }
+                        }
+                    }
+                    return new List<Model.Transaction>();
+                }
+            }
             catch (Exception ex) 
-            { 
+            {
+                _logger.LogCritical(ex.Message);
+                throw new Exception(ex.ToString());
+            }
+        }
+
+        private async Task<List<Model.Transaction>> GetAllDabaseTransactions()
+        {
+            try
+            {
+                using (var db = new GoldinAccountMangerContext())
+                {
+                    if (db.Transactions?.Count() > 0)
+                    {
+                        var transactions = await db.Transactions.ToListAsync();
+                        if (transactions.Count() > 1)
+                        {
+                            _logger.LogInformation(ApplicationMessages.AddedTransactionsToRedis);
+                            await _cache.SetRecordAsync(_transactionsRedisrecordKey, transactions);
+                        }
+                        _logger.LogInformation(ApplicationMessages.LoadingFromDatabase);
+                        return transactions;
+                    }
+                    else
+                    {
+                        _logger.LogInformation(ApplicationMessages.NoTransactionsFound);
+                        return new List<Model.Transaction>();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
                 _logger.LogCritical(ex.Message);
                 throw new Exception(ex.ToString());
             }
@@ -160,19 +222,23 @@ namespace GoldinAccountManager.Database.Abstract
                     {
                         var accountStatement = new AccountStatement(accountStatementRequest.AccountId, 0, accountStatementRequest.DateFrom, accountStatementRequest.DateTo);
 
-                        using (var db = new GoldinAccountMangerContext())
-                        {
-                            var transactions = await (from a in db.Transactions
-                                                      where a.AccountID == accountStatementRequest.AccountId
-                                                      where a.TransactioDate >= accountStatementRequest.DateFrom
-                                                      where a.TransactioDate < accountStatementRequest.DateTo
-                                                      select a).ToListAsync();
+                        List<Model.Transaction> transactions = new List<Transaction>();
 
-                            accountStatement.Transactions = transactions;
+                        var cachedTrans = await GetCachedTransactions();
+                        if (cachedTrans.Count() > 1)
+                            transactions = cachedTrans;
+                        else
+                            transactions = await GetAllDabaseTransactions();
 
-                            accountStatement.AccountTotal = transactions.Sum(a => a.TransactioTypeId == 2 ? a.Amount : (-1 * a.Amount));
-                        }
-                        _logger.LogInformation(ApplicationMessages.StatementDetails, accountStatementRequest.AccountId, accountStatementRequest.DateFrom, accountStatementRequest.DateTo, accountStatement.AccountTotal);
+                        transactions = (from a in transactions
+                                        where a.AccountID == accountStatementRequest.AccountId
+                                        where a.TransactioDate >= accountStatementRequest.DateFrom
+                                        where a.TransactioDate < accountStatementRequest.DateTo
+                                        select a).ToList();
+
+                        accountStatement.Transactions = transactions;
+
+                        accountStatement.AccountTotal = accountStatement.Transactions.Sum(a => a.TransactioTypeId == 2 ? a.Amount : (-1 * a.Amount));
                         return accountStatement;
                     }
                     else
@@ -216,7 +282,7 @@ namespace GoldinAccountManager.Database.Abstract
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogCritical(ex.ToString()); 
+                    _logger.LogCritical(ex.ToString());
                     return new Model.Transaction();
                 }
             }
