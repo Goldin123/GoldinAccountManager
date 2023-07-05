@@ -29,7 +29,7 @@ builder.Services.AddScoped<IAuthenticationRepository, AuthenticationRepository>(
 builder.Services.AddStackExchangeRedisCache(options =>
 {
     options.Configuration = builder.Configuration.GetConnectionString("Redis");
-    options.InstanceName = "my-redis";
+    options.InstanceName = "GoldinAccountManager_";
 });
 
 // For Identity
