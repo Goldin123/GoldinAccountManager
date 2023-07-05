@@ -1,5 +1,6 @@
 ﻿using GoldinAccountManager.JwtAuthentification.Interface;
 using GoldinAccountManager.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -47,6 +48,7 @@ namespace GoldinAccountManager.API.Controllers
 
         [HttpPost]
         [Route("RegisterUser")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Register([FromBody] RegisterModel model)
         {
             var userExists = await _authenticationRepository.GetIdentityUserByUsernameAsync(model.Username);
@@ -64,6 +66,7 @@ namespace GoldinAccountManager.API.Controllers
 
         [HttpPost]
         [Route("RegisterAdmin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> RegisterAdmin([FromBody] RegisterModel model)
         {
             var userExists = await _authenticationRepository.GetIdentityUserByUsernameAsync(model.Username);
