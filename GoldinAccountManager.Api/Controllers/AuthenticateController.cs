@@ -28,6 +28,8 @@ namespace GoldinAccountManager.API.Controllers
         /// <returns>The JWT Access token with an expiry date.</returns>
         [HttpPost]
         [Route("Login")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> Login([FromBody] LoginRequest model)
         {
             if (ModelState.IsValid)
@@ -57,6 +59,9 @@ namespace GoldinAccountManager.API.Controllers
         [HttpPost]
         [Route("RegisterUser")]
         [Authorize(Roles = "Admin")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Register([FromBody] RegisterModel model)
         {
             var userExists = await _authenticationRepository.GetIdentityUserByUsernameAsync(model.Username);
@@ -80,6 +85,9 @@ namespace GoldinAccountManager.API.Controllers
         [HttpPost]
         [Route("RegisterAdmin")]
         [Authorize(Roles = "Admin")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> RegisterAdmin([FromBody] RegisterModel model)
         {
             var userExists = await _authenticationRepository.GetIdentityUserByUsernameAsync(model.Username);
