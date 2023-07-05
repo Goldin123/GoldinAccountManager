@@ -8,6 +8,16 @@
   <li>The application uses in-memory MS SQL database as a main storage, the auth db is a MS SQL (localdb) and also Redis as cache data storage needed by the application.</li>
   <li>Sample file can be found on the 'Samples' folder</>
 </ul>
+<h4>How it all works.</h4>
+<ol>
+<li>You first need to authenticate your API user to get an access token, if no user available, you can create a new one. Note that the token expires, so you will need to re-login to get a new one.</li>
+<li>After you have logged in, you will need to create accounts, if you only have one account, data will be loaded strainght from the database else if will be loaded from a Redis cached database on the 2nd load.</li>
+<li>No can not use the credit or debit functionality if no accounts exists, make use of sample data if required.</li>
+<li>Once you have accounts, you can now perfome debits and credits to account(s).</li>
+<li>No debits can be performed on accounts with zero balances and if the debit amount is greter than the available balance, the debit will be rejected.</li>
+<li>Statements for account can be pulled on a daterange and also shows the balance for that perticular period, transactions are pulled similarly to how accounts are pulled, either on database or on the cached database.</li>
+<ol>
+<br/>
 <h4>Preview of application.</h4>
 <p>Main application.</p>
 
