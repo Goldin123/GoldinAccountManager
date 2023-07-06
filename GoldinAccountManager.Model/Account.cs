@@ -39,4 +39,11 @@ namespace GoldinAccountManager.Model
         [MinLength(13), MaxLength(13)]
         public string IdentityNumber { get; set; }
     }
+    public class AccountDetails
+    {
+        public Account? Account { get; set; }
+        public List<Transaction>? Transactions { get; set; }
+
+    }
+
 }

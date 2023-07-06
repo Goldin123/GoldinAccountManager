@@ -48,7 +48,7 @@ namespace GoldinAccountManager.API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.ToString());
+                _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ex.ToString()));
                 return BadRequest(ex.Message);
             }
         }
@@ -70,7 +70,7 @@ namespace GoldinAccountManager.API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.ToString());
+                _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ex.ToString()));
                 return BadRequest(ex.Message);
             }
         }
@@ -95,13 +95,13 @@ namespace GoldinAccountManager.API.Controllers
                 }
                 else
                 {
-                    _logger.LogError(ApplicationMessages.AccountDetailsEntry);
+                    _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.AccountDetailsEntry));
                     return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = ApplicationMessages.AccountDetailsEntry }); ;
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.ToString());
+                _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ex.ToString()));
                 return BadRequest(ex.Message);
             }
         }
@@ -127,13 +127,13 @@ namespace GoldinAccountManager.API.Controllers
                 }
                 else
                 {
-                    _logger.LogError(ApplicationMessages.AccountDetailsEntry);
+                    _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.AccountDetailsEntry));
                     return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = ApplicationMessages.AccountDetailsEntry }); ;
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.ToString());
+                _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ex.ToString()));
                 return BadRequest(ex.Message);
             }
         }
@@ -159,14 +159,14 @@ namespace GoldinAccountManager.API.Controllers
                 }
                 else
                 {
-                    _logger.LogError(ApplicationMessages.AccountDetailsEntry);
+                    _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.AccountDetailsEntry));
                     return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = ApplicationMessages.AccountDetailsEntry }); ;
 
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.ToString());
+                _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ex.ToString()));
                 return BadRequest(ex.Message);
             }
         }

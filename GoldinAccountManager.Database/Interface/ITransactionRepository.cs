@@ -37,6 +37,11 @@ namespace GoldinAccountManager.Database.Interface
         /// Interface that returns all transactions in the database.
         /// </summary>
         /// <returns></returns>
-        Task<List<Transaction>> GetAllTransactions();
+        Task<List<Transaction>> GetAllTransactionsAsync();
+        /// <summary>
+        /// Interface that returns all transactions in the database associated with an accountID.
+        /// </summary>
+        /// <returns></returns>
+        Task<List<Model.Transaction>> GetAccountTransactionsAsync(int accounId);
     }
 }

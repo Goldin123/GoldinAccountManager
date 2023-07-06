@@ -44,19 +44,19 @@ namespace GoldinAccountManager.Database.Abstract
 
                         db.Accounts.Add(newAccount);
                         await db.SaveChangesAsync();
-                        _logger.LogInformation(string.Format(ApplicationMessages.AddedAccount, newAccount.AccountID));
+                        _logger.LogInformation(string.Format("{0} - {1}", DateTime.Now, string.Format(ApplicationMessages.AddedAccount, newAccount.AccountID)));
                         return newAccount;
                     }
                     else
                     {
-                        _logger.LogError(ApplicationMessages.AccountAlreadyExistError);
-                        throw new Exception(ApplicationMessages.AccountAlreadyExistError);
+                        _logger.LogError(string.Format("{0} - {1}", DateTime.Now, string.Format(ApplicationMessages.AccountAlreadyExistError, existingAccount.AccountID)));
+                        throw new InvalidOperationException(ApplicationMessages.AccountAlreadyExistError);
                     }
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogCritical(ex.Message);
+                _logger.LogCritical(string.Format("{0} - {1}", DateTime.Now, ex.Message));
                 throw new Exception(ex.Message);
             }
         }
@@ -88,7 +88,7 @@ namespace GoldinAccountManager.Database.Abstract
 
                             db.Accounts.Add(newAccount);
                             await db.SaveChangesAsync();
-                            _logger.LogInformation(string.Format(ApplicationMessages.AddedAccount, newAccount.AccountID));
+                            _logger.LogInformation(string.Format("{0} - {1}", DateTime.Now, string.Format(ApplicationMessages.AddedAccount, newAccount.AccountID)));
                             newAccounts.Add(newAccount);
                         }
                         else
@@ -99,7 +99,7 @@ namespace GoldinAccountManager.Database.Abstract
                     {
                         if (newAccounts.Count() > 1)
                         {
-                            _logger.LogInformation(ApplicationMessages.AddedAccountsToRedis);
+                            _logger.LogInformation(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.AddedAccountsToRedis));
                             await _cache.SetRecordAsync(_accountsRedisrecordKey, newAccounts);
                         }
                         return newAccounts;
@@ -110,7 +110,7 @@ namespace GoldinAccountManager.Database.Abstract
             }
             catch (Exception ex)
             {
-                _logger.LogCritical(ex.Message);
+                _logger.LogCritical(string.Format("{0} - {1}", DateTime.Now, ex.Message));
                 throw new Exception(ex.Message);
             }
         }
@@ -139,20 +139,20 @@ namespace GoldinAccountManager.Database.Abstract
 
                     if (account?.AccountID > 0)
                     {
-                        _logger.LogInformation(string.Format(ApplicationMessages.FoundAccount, account.AccountID));
+                        _logger.LogInformation(string.Format("{0} - {1}", DateTime.Now, string.Format(ApplicationMessages.FoundAccount, account.AccountID)));
                         return account;
                     }
                     else
                     {
-                        _logger.LogError(ApplicationMessages.AccountNotExistError);
-                        throw new Exception(ApplicationMessages.AccountNotExistError);
+                        _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.AccountNotExistError));
+                        throw new InvalidOperationException(ApplicationMessages.AccountNotExistError);
                     }
                 }
 
             }
             catch (Exception ex)
             {
-                _logger.LogCritical(ex.Message);
+                _logger.LogCritical(string.Format("{0} - {1}", DateTime.Now, ex.Message));
                 throw new Exception(ex.Message);
             }
         }
@@ -182,19 +182,19 @@ namespace GoldinAccountManager.Database.Abstract
 
                     if (account?.AccountID > 0)
                     {
-                        _logger.LogInformation(string.Format(ApplicationMessages.FoundAccount, account.AccountID));
+                        _logger.LogInformation(string.Format("{0} - {1}", DateTime.Now, string.Format(ApplicationMessages.FoundAccount, account.AccountID)));
                         return account;
                     }
                     else
                     {
-                        _logger.LogError(ApplicationMessages.AccountNotExistError);
-                        throw new Exception(ApplicationMessages.AccountNotExistError);
+                        _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.AccountNotExistError));
+                        throw new InvalidOperationException(ApplicationMessages.AccountNotExistError);
                     }
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogCritical(ex.Message);
+                _logger.LogCritical(string.Format("{0} - {1}", DateTime.Now, ex.Message));
                 throw new Exception(ex.Message);
             }
         }
@@ -217,7 +217,7 @@ namespace GoldinAccountManager.Database.Abstract
                                 if (accounts != null)
                                     if (accounts.Count() == db.Accounts.Count())
                                     {
-                                        _logger.LogInformation(ApplicationMessages.LoadingFromCache);
+                                        _logger.LogInformation(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.LoadingFromCache));
                                         return accounts;
 
                                     }
@@ -228,7 +228,7 @@ namespace GoldinAccountManager.Database.Abstract
                 return new List<Account>();
             }catch (Exception ex) 
             {
-                _logger.LogCritical(ex.Message);    
+                _logger.LogCritical(string.Format("{0} - {1}", DateTime.Now, ex.Message));    
                 throw new Exception(ex.Message);
             }
         }
@@ -267,25 +267,25 @@ namespace GoldinAccountManager.Database.Abstract
                         if (accounts?.Count > 0)
                         {
 
-                            _logger.LogInformation(ApplicationMessages.LoadingFromDatabase);
+                            _logger.LogInformation(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.LoadingFromDatabase));
 
                             if (accounts.Count() > 1)
                             {
-                                _logger.LogInformation(ApplicationMessages.AddedAccountsToRedis);
+                                _logger.LogInformation(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.AddedAccountsToRedis));
                                 await _cache.SetRecordAsync(_accountsRedisrecordKey, accounts);
                             }
                             return accounts;
                         }
                         else
                         {
-                            _logger.LogInformation(ApplicationMessages.NoAccountsFound);
+                            _logger.LogInformation(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.NoAccountsFound));
                             accounts = new List<Account>();
                             return accounts;
                         }
                     }
                     else
                     {
-                        _logger.LogInformation(ApplicationMessages.NoAccountsFound);
+                        _logger.LogInformation(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.NoAccountsFound));
                         accounts = new List<Account>();
                         return accounts;
                     }
@@ -294,7 +294,7 @@ namespace GoldinAccountManager.Database.Abstract
             }
             catch (Exception ex)
             {
-                _logger.LogCritical(ex.Message);
+                _logger.LogCritical(string.Format("{0} - {1}", DateTime.Now, ex.Message));
                 throw new Exception(ex.Message);
             }
         }
@@ -316,19 +316,19 @@ namespace GoldinAccountManager.Database.Abstract
                         existingAccount.Email = account.Email;
                         existingAccount.DateUpdated = DateTime.Now;
                         await db.SaveChangesAsync();
-                        _logger.LogInformation(string.Format(ApplicationMessages.UpdateAccountDetails, existingAccount.AccountID));
+                        _logger.LogInformation(string.Format("{0} - {1}", DateTime.Now, string.Format(ApplicationMessages.UpdateAccountDetails, existingAccount.AccountID)));
                         return existingAccount;
                     }
                     else
                     {
-                        _logger.LogError(ApplicationMessages.AccountNotExistError);
-                        throw new Exception(ApplicationMessages.AccountNotExistError);
+                        _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.AccountNotExistError));
+                        throw new InvalidOperationException(ApplicationMessages.AccountNotExistError);
                     }
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogCritical(ex.Message);
+                _logger.LogCritical(string.Format("{0} - {1}", DateTime.Now, ex.Message));
                 throw new Exception(ex.Message);
             }
         }
@@ -351,20 +351,20 @@ namespace GoldinAccountManager.Database.Abstract
                         existingAccount.DateUpdated = DateTime.Now;
                         existingAccount.Balance = account.Balance;
                         await db.SaveChangesAsync();
-                        _logger.LogInformation(string.Format(ApplicationMessages.UpdateAccountDetails, existingAccount.AccountID));
+                        _logger.LogInformation(string.Format("{0} - {1}", DateTime.Now, string.Format(ApplicationMessages.UpdateAccountDetails, existingAccount.AccountID)));
 
                         return existingAccount;
                     }
                     else
                     {
-                        _logger.LogError(ApplicationMessages.AccountNotExistError);
-                        throw new Exception(ApplicationMessages.AccountNotExistError);
+                        _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.AccountNotExistError));
+                        throw new InvalidOperationException(ApplicationMessages.AccountNotExistError);
                     }
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogCritical(ex.Message);
+                _logger.LogCritical(string.Format("{0} - {1}", DateTime.Now, ex.Message));
                 throw new Exception(ex.Message);
             }
         }
@@ -383,14 +383,14 @@ namespace GoldinAccountManager.Database.Abstract
                             amount = -1 * amount;
 
                         existingAccount.Balance = existingAccount.Balance + amount;
-                        _logger.LogInformation(string.Format(ApplicationMessages.UpdateAccountBalance, existingAccount.AccountID, currentBalace, existingAccount.Balance));
+                        _logger.LogInformation(string.Format("{0} - {1}", DateTime.Now, string.Format(ApplicationMessages.UpdateAccountBalance, existingAccount.AccountID, currentBalace, existingAccount.Balance)));
                         await UpdateAccountAsync(existingAccount);
                     }
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogCritical(ex.Message);
+                _logger.LogCritical(string.Format("{0} - {1}", DateTime.Now, ex.Message));
                 throw new Exception(ex.Message);
             }
         }
