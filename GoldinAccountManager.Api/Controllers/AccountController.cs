@@ -172,7 +172,11 @@ namespace GoldinAccountManager.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
+        /// <summary>
+        /// This returns account details with a list of transactions
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("GetAccountTransactions")]
         [ProducesResponseType(StatusCodes.Status200OK)]
