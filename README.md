@@ -7,6 +7,7 @@
  <li>Log activity can be located on console while application and also on the windows event.</li>
   <li>The application uses in-memory MS SQL database as a main storage, the auth db is a MS SQL (localdb) and also Redis as cache data storage needed by the application.</li>
   <li>Sample file can be found on the 'Samples' folder</>
+  <li>Application documentation can be found on the 'VSdoc' folder, just open the index.html page.</>
 </ul>
 <h4>How it all works.</h4>
 <ol>
