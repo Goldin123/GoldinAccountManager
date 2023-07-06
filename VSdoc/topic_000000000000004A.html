@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="GENERATOR" content="VSdocman - documentation generator; https://www.helixoft.com" />
 	<link rel="icon" href="favicon.ico">
-	<title>CacheHelper.SetRecordAsync&lt;T&gt; Method</title>
+	<title>GoldinAccountMangerContext.Transactions Property</title>
 
 	<link rel="stylesheet" type="text/css" href="msdn2019/toc.css" />
 	<script src="msdn2019/toc.js"></script>
@@ -74,11 +74,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
   </div>
 
 <div id="mainBody">
-		<h1 class="title">CacheHelper.SetRecordAsync&lt;T&gt; Method</h1>
+		<h1 class="title">GoldinAccountMangerContext.Transactions Property</h1>
         
 		<div class="metadata">
         Namespace:
-<a href="topic_0000000000000048.html">GoldinAccountManager.Database.Helper</a>
+<a href="topic_0000000000000046.html">GoldinAccountManager.Database.DB</a>
 
 
 
@@ -138,7 +138,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeVB">
-					<pre xml:space="preserve" class="brush: vb">&lt;Extension()&gt; _&nbsp;<br />Public Shared Function SetRecordAsync(Of  _&nbsp;<br />   <i>T</i>)( _&nbsp;<br />   ByVal <i>cache</i> As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache">IDistributedCache</a>, _&nbsp;<br />   ByVal <i>recordId</i> As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>, _&nbsp;<br />   ByVal <i>data</i> As T, _&nbsp;<br />   Optional ByVal <i>absoluteExpireTime</i> As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>(Of <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.timespan">TimeSpan</a>) = null, _&nbsp;<br />   Optional ByVal <i>slidingExpireTime</i> As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>(Of <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.timespan">TimeSpan</a>) = null _&nbsp;<br />) As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task">Task</a></pre>			
+					<pre xml:space="preserve" class="brush: vb">Public Property Transactions() As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbset-1">DbSet</a>(Of <a target="_top" href="topic_00000000000000A2.html" onclick="this.target='';return true;">Transaction</a>)</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -177,7 +177,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCsharp">
-					<pre xml:space="preserve" class="brush: csharp">public static <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task">Task</a> SetRecordAsync&lt;T&gt;(&nbsp;<br />   this <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache">IDistributedCache</a> <i>cache</i>,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">string</a> <i>recordId</i>,&nbsp;<br />   T <i>data</i>,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.timespan">TimeSpan</a>&gt; <i>absoluteExpireTime</i> = null,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.timespan">TimeSpan</a>&gt; <i>slidingExpireTime</i> = null&nbsp;<br />)</pre>			
+					<pre xml:space="preserve" class="brush: csharp">public <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbset-1">DbSet</a>&lt;<a target="_top" href="topic_00000000000000A2.html" onclick="this.target='';return true;">Transaction</a>&gt; Transactions {get; set;}</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -217,7 +217,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCpp">
-					<pre xml:space="preserve" class="brush: cpp">[Extension()]&nbsp;<br />generic&lt;typename T&gt;&nbsp;<br />public: &nbsp;<br />static <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task">Task</a>^ SetRecordAsync(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache">IDistributedCache</a>^ <i>cache</i>,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>^ <i>recordId</i>,&nbsp;<br />   T^ <i>data</i>,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.timespan">TimeSpan</a>^&gt; <i>absoluteExpireTime</i>,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.timespan">TimeSpan</a>^&gt; <i>slidingExpireTime</i>&nbsp;<br />) </pre>			
+					<pre xml:space="preserve" class="brush: cpp">public: &nbsp;<br />property <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbset-1">DbSet</a>&lt;<a target="_top" href="topic_00000000000000A2.html" onclick="this.target='';return true;">Transaction</a>^&gt;^ Transactions {&nbsp;<br /> <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbset-1">DbSet</a>&lt;<a target="_top" href="topic_00000000000000A2.html" onclick="this.target='';return true;">Transaction</a>^&gt;^ get( );&nbsp;<br /> void set(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbset-1">DbSet</a>&lt;<a target="_top" href="topic_00000000000000A2.html" onclick="this.target='';return true;">Transaction</a>^&gt;^ value&nbsp;<br /> );&nbsp;<br />}</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -266,95 +266,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 		
 	</div>
 
-<h4 class="subHeading">
-	Type Parameters</h4><dl paramName="T" class="parameterList">
-	<dt>
-		<span class="parameter">
-			
-			T
-		</span>
-	</dt>
-	<dd>
-	</dd>
-</dl>
-<p>
-	 
-</p>
 
-<p />
-
-<h4 class="subHeading">
-	Parameters</h4><dl paramName="cache" class="parameterList">
-	<dt>
-		<span class="parameter">
-			cache
-		</span>
-	</dt>
-	<dd>
-		<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache">IDistributedCache</a> 
-	</dd>
-</dl>
-<p>
-	 
-</p>
-<dl paramName="recordId" class="parameterList">
-	<dt>
-		<span class="parameter">
-			recordId
-		</span>
-	</dt>
-	<dd>
-		<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">string</a> 
-	</dd>
-</dl>
-<p>
-	 
-</p>
-<dl paramName="data" class="parameterList">
-	<dt>
-		<span class="parameter">
-			data
-		</span>
-	</dt>
-	<dd>
-		T 
-	</dd>
-</dl>
-<p>
-	 
-</p>
-<dl paramName="absoluteExpireTime" class="parameterList">
-	<dt>
-		<span class="parameter">
-			absoluteExpireTime
-		</span>
-	</dt>
-	<dd>
-		<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.timespan">TimeSpan</a>&gt; 
-	</dd>
-</dl>
-<p>
-	 
-</p>
-<dl paramName="slidingExpireTime" class="parameterList">
-	<dt>
-		<span class="parameter">
-			slidingExpireTime
-		</span>
-	</dt>
-	<dd>
-		<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.timespan">TimeSpan</a>&gt; 
-	</dd>
-</dl>
-<p>
-	 
-</p>
-
-<p />
 
 	<h4 class="subHeading">
-		Return Value</h4>
-	<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task">Task</a> 
+		Property Value</h4>
+	<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbset-1">DbSet</a>&lt;<a target="_top" href="topic_00000000000000A2.html" onclick="this.target='';return true;">Transaction</a>&gt; 
 	
 
 
@@ -443,11 +359,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 	<div id="seeAlsoSection" class="section">	
 		<div>
-			<a href="topic_0000000000000049.html">CacheHelper Class</a><br />
+			<a href="topic_0000000000000047.html">GoldinAccountMangerContext Class</a><br />
 
 
 
-<a href="topic_0000000000000048.html">GoldinAccountManager.Database.Helper Namespace</a><br />
+<a href="topic_0000000000000046.html">GoldinAccountManager.Database.DB Namespace</a><br />
 
 
 			

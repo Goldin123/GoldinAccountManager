@@ -1,1 +1,1 @@
-search_result['248']=["topic_000000000000008C.html","AuthenticationModel.Token Property",""];
+search_result['248']=["topic_000000000000005B.html","ITransactionRepository.DebitAccountAsync Method","Interface that debits an account by an amount."];

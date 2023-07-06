@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="GENERATOR" content="VSdocman - documentation generator; https://www.helixoft.com" />
 	<link rel="icon" href="favicon.ico">
-	<title>AuthenticateController.Register Method</title>
+	<title>AuthenticateController.Login Method</title>
 
 	<link rel="stylesheet" type="text/css" href="msdn2019/toc.css" />
 	<script src="msdn2019/toc.js"></script>
@@ -74,7 +74,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
   </div>
 
 <div id="mainBody">
-		<h1 class="title">AuthenticateController.Register Method</h1>
+		<h1 class="title">AuthenticateController.Login Method</h1>
         
 		<div class="metadata">
         Namespace:
@@ -89,7 +89,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
        
        
-        <summary-info>This registers a new api user, only administrators the ability to add the user.</summary-info>
+        <summary-info>Login API User by using username and password.</summary-info>
 
 
 
@@ -139,7 +139,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeVB">
-					<pre xml:space="preserve" class="brush: vb">&lt;HttpPost()&gt; _&nbsp;<br />&lt;Route(&quot;RegisterUser&quot;)&gt; _&nbsp;<br />&lt;Authorize(Roles = &quot;Admin&quot;)&gt; _&nbsp;<br />Public Function Register( _&nbsp;<br />   &lt;FromBody()&gt; _&nbsp;<br />   ByVal <i>model</i> As <a target="_top" href="topic_0000000000000091.html" onclick="this.target='';return true;">RegisterModel</a> _&nbsp;<br />) As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>(Of <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>)</pre>			
+					<pre xml:space="preserve" class="brush: vb">&lt;HttpPost()&gt; _&nbsp;<br />&lt;Route(&quot;Login&quot;)&gt; _&nbsp;<br />&lt;ProducesResponseType(StatusCodes.Status200OK)&gt; _&nbsp;<br />&lt;ProducesResponseType(StatusCodes.Status401Unauthorized)&gt; _&nbsp;<br />Public Function Login( _&nbsp;<br />   &lt;FromBody()&gt; _&nbsp;<br />   ByVal <i>model</i> As <a target="_top" href="topic_0000000000000095.html" onclick="this.target='';return true;">LoginRequest</a> _&nbsp;<br />) As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>(Of <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>)</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -178,7 +178,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCsharp">
-					<pre xml:space="preserve" class="brush: csharp">[HttpPost()]&nbsp;<br />[Route(&quot;RegisterUser&quot;)]&nbsp;<br />[Authorize(Roles = &quot;Admin&quot;)]&nbsp;<br />public <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>&gt; Register(&nbsp;<br />   [FromBody()]&nbsp;<br />   <a target="_top" href="topic_0000000000000091.html" onclick="this.target='';return true;">RegisterModel</a> <i>model</i>&nbsp;<br />)</pre>			
+					<pre xml:space="preserve" class="brush: csharp">[HttpPost()]&nbsp;<br />[Route(&quot;Login&quot;)]&nbsp;<br />[ProducesResponseType(StatusCodes.Status200OK)]&nbsp;<br />[ProducesResponseType(StatusCodes.Status401Unauthorized)]&nbsp;<br />public <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>&gt; Login(&nbsp;<br />   [FromBody()]&nbsp;<br />   <a target="_top" href="topic_0000000000000095.html" onclick="this.target='';return true;">LoginRequest</a> <i>model</i>&nbsp;<br />)</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -218,7 +218,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCpp">
-					<pre xml:space="preserve" class="brush: cpp">[HttpPost()]&nbsp;<br />[Route(&quot;RegisterUser&quot;)]&nbsp;<br />[Authorize(Roles = &quot;Admin&quot;)]&nbsp;<br />public: &nbsp;<br /><a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>^&gt;^ Register(&nbsp;<br />   [FromBody()]&nbsp;<br />   <a target="_top" href="topic_0000000000000091.html" onclick="this.target='';return true;">RegisterModel</a>^ <i>model</i>&nbsp;<br />) </pre>			
+					<pre xml:space="preserve" class="brush: cpp">[HttpPost()]&nbsp;<br />[Route(&quot;Login&quot;)]&nbsp;<br />[ProducesResponseType(StatusCodes.Status200OK)]&nbsp;<br />[ProducesResponseType(StatusCodes.Status401Unauthorized)]&nbsp;<br />public: &nbsp;<br /><a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>^&gt;^ Login(&nbsp;<br />   [FromBody()]&nbsp;<br />   <a target="_top" href="topic_0000000000000095.html" onclick="this.target='';return true;">LoginRequest</a>^ <i>model</i>&nbsp;<br />) </pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -276,7 +276,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 		</span>
 	</dt>
 	<dd>
-		<a target="_top" href="topic_0000000000000091.html" onclick="this.target='';return true;">RegisterModel</a> 
+		<a target="_top" href="topic_0000000000000095.html" onclick="this.target='';return true;">LoginRequest</a> 
 	</dd>
 </dl>
 <p>
@@ -289,7 +289,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 		Return Value</h4>
 	<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>&gt; 
 		<p>
-		Successfully created new user if valid request. 
+		The JWT Access token with an expiry date. 
 	</p>
 	
 
@@ -355,7 +355,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 	</div>
 
 	<div id="frameworksSection" class="section">	
-  <h4 class="subHeading">.NET Framework</h4>Supported in: 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2, 4.7, 4.7.1, 4.7.2, 4.8<br />
+  <h4 class="subHeading">.NET Framework</h4>Supported in: .net 7<br />
 
 
 
@@ -379,7 +379,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 	<div id="seeAlsoSection" class="section">	
 		<div>
-			<a href="topic_000000000000000C.html">AuthenticateController Class</a><br />
+			<a href="topic_000000000000000D.html">AuthenticateController Class</a><br />
 
 
 

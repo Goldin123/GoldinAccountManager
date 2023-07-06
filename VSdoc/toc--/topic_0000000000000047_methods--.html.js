@@ -1,0 +1,1 @@
+var breadcrumbs=[['-1',"",""],['2',"SOLUTION-WIDE PROPERTIES Reference","topic_00000000000000EF.html"],['73',"GoldinAccountManager.Database.DB Namespace","topic_0000000000000046.html"],['74',"GoldinAccountMangerContext Class","topic_0000000000000047.html"],['78',"Methods","topic_0000000000000047_methods--.html"]];

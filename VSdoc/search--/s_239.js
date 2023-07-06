@@ -1,1 +1,1 @@
-search_result['239']=["topic_0000000000000088.html","PerformingDebit Field",""];
+search_result['239']=["topic_0000000000000057.html","IAccountRepository.UpdateAccountBalanceAsync Method","Interface that updates an account balance."];

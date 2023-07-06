@@ -1,1 +1,1 @@
-c['82']=[['83',"IAccountRepository Interface","topic_000000000000004D.html",1],['92',"ITransactionRepository Interface","topic_0000000000000055.html",1]];
+c['82']=[['83',"GetRecordAsync\u003cT\u003e Method","topic_000000000000004E.html",0],['84',"SetRecordAsync\u003cT\u003e Method","topic_000000000000004D.html",0]];

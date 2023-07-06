@@ -1,1 +1,1 @@
-search_result['407']=["topic_00000000000000E4.html","IAuthenticationRepository.RegisterUserAsync Method","Interface that register an api user"];
+search_result['407']=["topic_00000000000000A5.html","Transaction.TransactioTypeId Property",""];

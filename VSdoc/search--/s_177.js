@@ -1,1 +1,1 @@
-search_result['177']=["topic_0000000000000059.html","ITransactionRepository.GetAccountStatementAsync Method","Interface that returns an account statement."];
+search_result['177']=["topic_000000000000003E_methods--.html","TransactionRepository Methods",""];

@@ -1,1 +1,1 @@
-search_result['70']=["topic_000000000000001D_vars--.html","Initial Fields",""];
+search_result['70']=["topic_0000000000000019_methods--.html","CacheHelper Methods",""];

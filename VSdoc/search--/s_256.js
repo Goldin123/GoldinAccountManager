@@ -1,1 +1,1 @@
-search_result['256']=["topic_000000000000008F.html","LoginRequest.Username Property",""];
+search_result['256']=["topic_000000000000005E.html","ITransactionRepository.GetAccountTransactionsAsync Method","Interface that returns all transactions in the database associated with an accountID."];

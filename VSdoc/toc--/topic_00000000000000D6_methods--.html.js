@@ -1,1 +1,0 @@
-var breadcrumbs=[['-1',"",""],['2',"SOLUTION-WIDE PROPERTIES Reference","topic_00000000000000E8.html"],['244',"GoldinAccountManager.RedisCache.Interface Namespace","topic_00000000000000D5.html"],['245',"ICacheHelperRespository Interface","topic_00000000000000D6.html"],['246',"Methods","topic_00000000000000D6_methods--.html"]];

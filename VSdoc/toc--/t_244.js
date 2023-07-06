@@ -1,1 +1,1 @@
-c['244']=[['245',"ICacheHelperRespository Interface","topic_00000000000000D6.html",1]];
+c['244']=[['245',"GetRecordAsync\u003cT\u003e Method","topic_00000000000000D7.html",0],['246',"SetRecordAsync\u003cT\u003e Method","topic_00000000000000D6.html",0]];

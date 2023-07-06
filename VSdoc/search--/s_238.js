@@ -1,1 +1,1 @@
-search_result['238']=["topic_0000000000000087.html","PerformingCreditAccountByCard Field",""];
+search_result['238']=["topic_0000000000000056.html","IAccountRepository.UpdateAccountAsync Method","Interface that updated account details."];

@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="GENERATOR" content="VSdocman - documentation generator; https://www.helixoft.com" />
 	<link rel="icon" href="favicon.ico">
-	<title>CacheHelper.SetRecordAsync&lt;T&gt; Method</title>
+	<title>User Field</title>
 
 	<link rel="stylesheet" type="text/css" href="msdn2019/toc.css" />
 	<script src="msdn2019/toc.js"></script>
@@ -74,16 +74,16 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
   </div>
 
 <div id="mainBody">
-		<h1 class="title">CacheHelper.SetRecordAsync&lt;T&gt; Method</h1>
+		<h1 class="title">User Field</h1>
         
 		<div class="metadata">
         Namespace:
-<a href="topic_00000000000000D1.html">GoldinAccountManager.RedisCache.Helper</a>
+<a href="topic_000000000000005F.html">GoldinAccountManager.Model</a>
 
 
 
 
-        <br />Assembly: GoldinAccountManager.RedisCache (in GoldinAccountManager.RedisCache.dll)
+        <br />Assembly: GoldinAccountManager.Model (in GoldinAccountManager.Model.dll)
 
 		</div>
 
@@ -138,7 +138,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeVB">
-					<pre xml:space="preserve" class="brush: vb">&lt;Extension()&gt; _&nbsp;<br />Public Shared Function SetRecordAsync(Of  _&nbsp;<br />   <i>T</i>)( _&nbsp;<br />   ByVal <i>cache</i> As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache">IDistributedCache</a>, _&nbsp;<br />   ByVal <i>recordId</i> As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>, _&nbsp;<br />   ByVal <i>data</i> As T, _&nbsp;<br />   Optional ByVal <i>absoluteExpireTime</i> As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>(Of <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.timespan">TimeSpan</a>) = null, _&nbsp;<br />   Optional ByVal <i>slidingExpireTime</i> As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>(Of <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.timespan">TimeSpan</a>) = null _&nbsp;<br />) As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task">Task</a></pre>			
+					<pre xml:space="preserve" class="brush: vb">Public Const User As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a> = &quot;User&quot;</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -177,7 +177,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCsharp">
-					<pre xml:space="preserve" class="brush: csharp">public static <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task">Task</a> SetRecordAsync&lt;T&gt;(&nbsp;<br />   this <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache">IDistributedCache</a> <i>cache</i>,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">string</a> <i>recordId</i>,&nbsp;<br />   T <i>data</i>,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.timespan">TimeSpan</a>&gt; <i>absoluteExpireTime</i> = null,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.timespan">TimeSpan</a>&gt; <i>slidingExpireTime</i> = null&nbsp;<br />)</pre>			
+					<pre xml:space="preserve" class="brush: csharp">public const <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">string</a> User = @&quot;User&quot;</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -217,7 +217,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCpp">
-					<pre xml:space="preserve" class="brush: cpp">[Extension()]&nbsp;<br />generic&lt;typename T&gt;&nbsp;<br />public: &nbsp;<br />static <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task">Task</a>^ SetRecordAsync(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache">IDistributedCache</a>^ <i>cache</i>,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>^ <i>recordId</i>,&nbsp;<br />   T^ <i>data</i>,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.timespan">TimeSpan</a>^&gt; <i>absoluteExpireTime</i>,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.timespan">TimeSpan</a>^&gt; <i>slidingExpireTime</i>&nbsp;<br />) </pre>			
+					<pre xml:space="preserve" class="brush: cpp">public: &nbsp;<br />const <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>^ User = &quot;User&quot;;</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -256,7 +256,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeJScript">
-					<pre xml:space="preserve" class="brush: js">JScript does not support generic types and methods.</pre>			
+					<pre xml:space="preserve" class="brush: js">public const User : <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a> = &quot;User&quot;</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -266,95 +266,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 		
 	</div>
 
-<h4 class="subHeading">
-	Type Parameters</h4><dl paramName="T" class="parameterList">
-	<dt>
-		<span class="parameter">
-			
-			T
-		</span>
-	</dt>
-	<dd>
-	</dd>
-</dl>
-<p>
-	 
-</p>
 
-<p />
-
-<h4 class="subHeading">
-	Parameters</h4><dl paramName="cache" class="parameterList">
-	<dt>
-		<span class="parameter">
-			cache
-		</span>
-	</dt>
-	<dd>
-		<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache">IDistributedCache</a> 
-	</dd>
-</dl>
-<p>
-	 
-</p>
-<dl paramName="recordId" class="parameterList">
-	<dt>
-		<span class="parameter">
-			recordId
-		</span>
-	</dt>
-	<dd>
-		<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">string</a> 
-	</dd>
-</dl>
-<p>
-	 
-</p>
-<dl paramName="data" class="parameterList">
-	<dt>
-		<span class="parameter">
-			data
-		</span>
-	</dt>
-	<dd>
-		T 
-	</dd>
-</dl>
-<p>
-	 
-</p>
-<dl paramName="absoluteExpireTime" class="parameterList">
-	<dt>
-		<span class="parameter">
-			absoluteExpireTime
-		</span>
-	</dt>
-	<dd>
-		<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.timespan">TimeSpan</a>&gt; 
-	</dd>
-</dl>
-<p>
-	 
-</p>
-<dl paramName="slidingExpireTime" class="parameterList">
-	<dt>
-		<span class="parameter">
-			slidingExpireTime
-		</span>
-	</dt>
-	<dd>
-		<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.nullable-1">Nullable</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.timespan">TimeSpan</a>&gt; 
-	</dd>
-</dl>
-<p>
-	 
-</p>
-
-<p />
 
 	<h4 class="subHeading">
-		Return Value</h4>
-	<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task">Task</a> 
+		Field Value</h4>
+	<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">string</a> 
 	
 
 
@@ -372,6 +288,8 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 	</div>
 </div>
+
+
 
 
 
@@ -404,8 +322,6 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 
 
-
-
 	
 	
 	
@@ -419,9 +335,9 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 	</div>
 
 	<div id="frameworksSection" class="section">	
-  <h4 class="subHeading">.NET Framework</h4>Supported in: 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2, 4.7, 4.7.1, 4.7.2, 4.8<br />
 
 
+  <h4 class="subHeading">.NET Standard</h4>Supported in: 7<br />
 
 
 
@@ -443,11 +359,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 	<div id="seeAlsoSection" class="section">	
 		<div>
-			<a href="topic_00000000000000D2.html">CacheHelper Class</a><br />
+			<a href="topic_00000000000000D1.html">UserRoles Class</a><br />
 
 
 
-<a href="topic_00000000000000D1.html">GoldinAccountManager.RedisCache.Helper Namespace</a><br />
+<a href="topic_000000000000005F.html">GoldinAccountManager.Model Namespace</a><br />
 
 
 			
@@ -473,4 +389,3 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
     </div>
   </body>
 </html>
-

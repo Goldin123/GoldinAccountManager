@@ -1,1 +1,1 @@
-var breadcrumbs=[['-1',"",""],['2',"SOLUTION-WIDE PROPERTIES Reference","topic_00000000000000E8.html"],['99',"GoldinAccountManager.JwtAuthentification.Abstract Namespace","topic_00000000000000D9.html"]];
+var breadcrumbs=[['-1',"",""],['2',"SOLUTION-WIDE PROPERTIES Reference","topic_00000000000000EF.html"],['247',"GoldinAccountManager.RedisCache.Helper Namespace","topic_00000000000000D8.html"],['248',"CacheHelper Class","topic_00000000000000D9.html"]];

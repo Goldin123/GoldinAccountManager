@@ -1,1 +1,1 @@
-search_result['246']=["topic_000000000000008A_vars--.html","AuthenticationModel Fields",""];
+search_result['246']=["topic_0000000000000059.html","ITransactionRepository.CreditAccountByCardAsync Method","Interface that credits an account by card."];

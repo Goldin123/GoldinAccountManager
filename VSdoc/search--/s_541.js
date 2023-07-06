@@ -1,0 +1,1 @@
+search_result['541']=["topic_00000000000000DE.html","ICacheHelperRespository.SetRecordAsync\u0026lt;T\u0026gt; Method","Interface that allows you to add records into Redis cache."];

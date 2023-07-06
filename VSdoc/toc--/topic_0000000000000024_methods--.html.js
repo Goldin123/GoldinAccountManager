@@ -1,0 +1,1 @@
+var breadcrumbs=[['-1',"",""],['2',"SOLUTION-WIDE PROPERTIES Reference","topic_00000000000000EF.html"],['264',"GoldinAccountManger.Website.Controllers Namespace","topic_0000000000000023.html"],['265',"WeatherForecastController Class","topic_0000000000000024.html"],['267',"Methods","topic_0000000000000024_methods--.html"]];

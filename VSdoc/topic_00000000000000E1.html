@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="GENERATOR" content="VSdocman - documentation generator; https://www.helixoft.com" />
 	<link rel="icon" href="favicon.ico">
-	<title>IAuthenticationRepository Interface</title>
+	<title>AuthenticationRepository Class</title>
 
 	<link rel="stylesheet" type="text/css" href="msdn2019/toc.css" />
 	<script src="msdn2019/toc.js"></script>
@@ -74,11 +74,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
   </div>
 
 <div id="mainBody">
-		<h1 class="title">IAuthenticationRepository Interface</h1>
+		<h1 class="title">AuthenticationRepository Class</h1>
         
 		<div class="metadata">
         Namespace:
-<a href="topic_00000000000000E0.html">GoldinAccountManager.JwtAuthentification.Interface</a>
+<a href="topic_00000000000000E0.html">GoldinAccountManager.JwtAuthentification.Abstract</a>
 
 
 
@@ -138,7 +138,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeVB">
-					<pre xml:space="preserve" class="brush: vb">Public Interface IAuthenticationRepository</pre>			
+					<pre xml:space="preserve" class="brush: vb">Public Class AuthenticationRepository&nbsp;<br />    Implements <a target="_top" href="topic_00000000000000E8.html" onclick="this.target='';return true;">IAuthenticationRepository</a></pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -177,7 +177,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCsharp">
-					<pre xml:space="preserve" class="brush: csharp">public interface IAuthenticationRepository</pre>			
+					<pre xml:space="preserve" class="brush: csharp">public class AuthenticationRepository : <a target="_top" href="topic_00000000000000E8.html" onclick="this.target='';return true;">IAuthenticationRepository</a></pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -217,7 +217,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCpp">
-					<pre xml:space="preserve" class="brush: cpp">public interface class IAuthenticationRepository</pre>			
+					<pre xml:space="preserve" class="brush: cpp">public ref class AuthenticationRepository  : public <a target="_top" href="topic_00000000000000E8.html" onclick="this.target='';return true;">IAuthenticationRepository</a>^</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -256,7 +256,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeJScript">
-					<pre xml:space="preserve" class="brush: js">public interface IAuthenticationRepository</pre>			
+					<pre xml:space="preserve" class="brush: js">public class AuthenticationRepository&nbsp;<br />   implements <a target="_top" href="topic_00000000000000E8.html" onclick="this.target='';return true;">IAuthenticationRepository</a></pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -286,6 +286,57 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 
 
+<div class="section_container">
+	<div class="section_heading">
+		<span><a href="javascript:void(0)" title="Collapse" onclick="toggleSection(this);">Constructors</a></span>
+		<div>&nbsp;</div>
+	</div>
+
+	<div id="ConstructorsSection" class="section">	
+  <table class="memberListTable">
+    <tr>
+      <th></th>
+      <th>
+        Name
+      </th>
+      <th>
+        Description
+      </th>
+    </tr>
+
+
+	
+			<tr class="
+	
+	
+	">
+	  <td>
+    <img alt="Public constructor" title="Public constructor" src="msdn2019/pubmethod.png"></img>
+
+	
+	    
+	  </td>
+	  <td>
+	    <a href="topic_00000000000000E2.html">AuthenticationRepository(UserManager&lt;IdentityUser&gt;, RoleManager&lt;IdentityRole&gt;, IConfiguration, ILogger&lt;AuthenticationRepository&gt;)</a>
+
+	  </td>
+	  <td>
+	
+	
+	
+		</td>
+	</tr>
+	
+
+
+  </table>
+
+  <a href="#mainBody">
+    Top
+  </a>
+
+	</div>					
+</div>
 
 
 
@@ -325,40 +376,12 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
     
 	</td>
 	<td>
-	<a href="topic_00000000000000E3.html">GetIdentityUserByUsernameAsync(string)</a>
+	<a href="topic_00000000000000E4.html">GetIdentityUserByUsernameAsync(string)</a>
 
 	</td>
 	<td>
 
-Interface that returns an api user given a username.
 
-	</td>
-</tr>
-
-
-
-
-
-
-
-
-	<tr class="
-
-
-">
-	<td>
-<img alt="Public method" title="Public method" src="msdn2019/pubmethod.png"></img>
-
-
-    
-	</td>
-	<td>
-	<a href="topic_00000000000000E2.html">LoginAsync(LoginRequest)</a>
-
-	</td>
-	<td>
-
-Interface that exposes login for api user.
 
 	</td>
 </tr>
@@ -381,12 +404,12 @@ Interface that exposes login for api user.
     
 	</td>
 	<td>
-	<a href="topic_00000000000000E5.html">RegisterAdminAsync(RegisterModel)</a>
+	<a href="topic_00000000000000E3.html">LoginAsync(LoginRequest)</a>
 
 	</td>
 	<td>
 
-Interface that registers an admin api user.
+
 
 	</td>
 </tr>
@@ -409,12 +432,40 @@ Interface that registers an admin api user.
     
 	</td>
 	<td>
-	<a href="topic_00000000000000E4.html">RegisterUserAsync(RegisterModel)</a>
+	<a href="topic_00000000000000E6.html">RegisterAdminAsync(RegisterModel)</a>
 
 	</td>
 	<td>
 
-Interface that register an api user
+
+
+	</td>
+</tr>
+
+
+
+
+
+
+
+
+	<tr class="
+
+
+">
+	<td>
+<img alt="Public method" title="Public method" src="msdn2019/pubmethod.png"></img>
+
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000000E5.html">RegisterUserAsync(RegisterModel)</a>
+
+	</td>
+	<td>
+
+
 
 	</td>
 </tr>
@@ -525,6 +576,7 @@ Interface that register an api user
 	</div>					
 </div>
 
+
 <div class="section_container">
 	<div class="section_heading">
 		<span><a href="javascript:void(0)" title="Collapse" onclick="toggleSection(this);">See Also</a></span>
@@ -533,7 +585,7 @@ Interface that register an api user
 
 	<div id="seeAlsoSection" class="section">	
 		<div>
-	<a href="topic_00000000000000E0.html">GoldinAccountManager.JwtAuthentification.Interface Namespace</a><br />
+	<a href="topic_00000000000000E0.html">GoldinAccountManager.JwtAuthentification.Abstract Namespace</a><br />
 
 
 	

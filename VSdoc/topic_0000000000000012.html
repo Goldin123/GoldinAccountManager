@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="GENERATOR" content="VSdocman - documentation generator; https://www.helixoft.com" />
 	<link rel="icon" href="favicon.ico">
-	<title>TransactionController Constructor</title>
+	<title>TransactionController Class</title>
 
 	<link rel="stylesheet" type="text/css" href="msdn2019/toc.css" />
 	<script src="msdn2019/toc.js"></script>
@@ -74,7 +74,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
   </div>
 
 <div id="mainBody">
-		<h1 class="title">TransactionController Constructor</h1>
+		<h1 class="title">TransactionController Class</h1>
         
 		<div class="metadata">
         Namespace:
@@ -138,7 +138,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeVB">
-					<pre xml:space="preserve" class="brush: vb">Public Sub New( _&nbsp;<br />   ByVal <i>account</i> As <a target="_top" href="topic_000000000000004D.html" onclick="this.target='';return true;">IAccountRepository</a>, _&nbsp;<br />   ByVal <i>transaction</i> As <a target="_top" href="topic_0000000000000055.html" onclick="this.target='';return true;">ITransactionRepository</a>, _&nbsp;<br />   ByVal <i>logger</i> As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.ilogger-1">ILogger</a>(Of <a target="_top" href="topic_0000000000000011.html" onclick="this.target='';return true;">TransactionController</a>) _&nbsp;<br />)</pre>			
+					<pre xml:space="preserve" class="brush: vb">&lt;Authorize()&gt; _&nbsp;<br />&lt;Route(&quot;api/[controller]&quot;)&gt; _&nbsp;<br />&lt;ApiController()&gt; _&nbsp;<br />Public Class TransactionController&nbsp;<br />    Inherits <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.controllerbase">ControllerBase</a></pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -177,7 +177,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCsharp">
-					<pre xml:space="preserve" class="brush: csharp">public TransactionController(&nbsp;<br />   <a target="_top" href="topic_000000000000004D.html" onclick="this.target='';return true;">IAccountRepository</a> <i>account</i>,&nbsp;<br />   <a target="_top" href="topic_0000000000000055.html" onclick="this.target='';return true;">ITransactionRepository</a> <i>transaction</i>,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.ilogger-1">ILogger</a>&lt;<a target="_top" href="topic_0000000000000011.html" onclick="this.target='';return true;">TransactionController</a>&gt; <i>logger</i>&nbsp;<br />)</pre>			
+					<pre xml:space="preserve" class="brush: csharp">[Authorize()]&nbsp;<br />[Route(&quot;api/[controller]&quot;)]&nbsp;<br />[ApiController()]&nbsp;<br />public class TransactionController : <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.controllerbase">ControllerBase</a></pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -217,7 +217,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCpp">
-					<pre xml:space="preserve" class="brush: cpp">public: &nbsp;<br />TransactionController(&nbsp;<br />   <a target="_top" href="topic_000000000000004D.html" onclick="this.target='';return true;">IAccountRepository</a>^ <i>account</i>,&nbsp;<br />   <a target="_top" href="topic_0000000000000055.html" onclick="this.target='';return true;">ITransactionRepository</a>^ <i>transaction</i>,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.ilogger-1">ILogger</a>&lt;<a target="_top" href="topic_0000000000000011.html" onclick="this.target='';return true;">TransactionController</a>^&gt;^ <i>logger</i>&nbsp;<br />) </pre>			
+					<pre xml:space="preserve" class="brush: cpp">[Authorize()]&nbsp;<br />[Route(&quot;api/[controller]&quot;)]&nbsp;<br />[ApiController()]&nbsp;<br />public ref class TransactionController : public <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft::aspnetcore::mvc::controllerbase">ControllerBase</a>^</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -256,7 +256,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeJScript">
-					<pre xml:space="preserve" class="brush: js">JScript does not support generic types and methods.</pre>			
+					<pre xml:space="preserve" class="brush: js">public &nbsp;<br />   Authorize()&nbsp;<br />   Route(&quot;api/[controller]&quot;)&nbsp;<br />   ApiController()&nbsp;<br />class TransactionController&nbsp;<br />   extends <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.controllerbase">ControllerBase</a></pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -266,49 +266,6 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 		
 	</div>
 
-
-<h4 class="subHeading">
-	Parameters</h4><dl paramName="account" class="parameterList">
-	<dt>
-		<span class="parameter">
-			account
-		</span>
-	</dt>
-	<dd>
-		<a target="_top" href="topic_000000000000004D.html" onclick="this.target='';return true;">IAccountRepository</a> 
-	</dd>
-</dl>
-<p>
-	 
-</p>
-<dl paramName="transaction" class="parameterList">
-	<dt>
-		<span class="parameter">
-			transaction
-		</span>
-	</dt>
-	<dd>
-		<a target="_top" href="topic_0000000000000055.html" onclick="this.target='';return true;">ITransactionRepository</a> 
-	</dd>
-</dl>
-<p>
-	 
-</p>
-<dl paramName="logger" class="parameterList">
-	<dt>
-		<span class="parameter">
-			logger
-		</span>
-	</dt>
-	<dd>
-		<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.ilogger-1">ILogger</a>&lt;<a target="_top" href="topic_0000000000000011.html" onclick="this.target='';return true;">TransactionController</a>&gt; 
-	</dd>
-</dl>
-<p>
-	 
-</p>
-
-<p />
 
 
 
@@ -326,6 +283,258 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 	</div>
 </div>
+
+
+
+<div class="section_container">
+	<div class="section_heading">
+		<span><a href="javascript:void(0)" title="Collapse" onclick="toggleSection(this);">Constructors</a></span>
+		<div>&nbsp;</div>
+	</div>
+
+	<div id="ConstructorsSection" class="section">	
+  <table class="memberListTable">
+    <tr>
+      <th></th>
+      <th>
+        Name
+      </th>
+      <th>
+        Description
+      </th>
+    </tr>
+
+
+	
+			<tr class="
+	
+	
+	">
+	  <td>
+    <img alt="Public constructor" title="Public constructor" src="msdn2019/pubmethod.png"></img>
+
+	
+	    
+	  </td>
+	  <td>
+	    <a href="topic_0000000000000013.html">TransactionController(IAccountRepository, ITransactionRepository, ILogger&lt;TransactionController&gt;)</a>
+
+	  </td>
+	  <td>
+	
+	
+	
+		</td>
+	</tr>
+	
+
+
+  </table>
+
+  <a href="#mainBody">
+    Top
+  </a>
+
+	</div>					
+</div>
+
+
+
+
+
+
+
+<div class="section_container">
+	<div class="section_heading">
+		<span><a href="javascript:void(0)" title="Collapse" onclick="toggleSection(this);">Methods</a></span>
+		<div>&nbsp;</div>
+	</div>
+
+	<div id="MethodsSection" class="section">	
+  <table class="memberListTable">
+    <tr>
+      <th></th>
+      <th>
+        Name
+      </th>
+      <th>
+        Description
+      </th>
+    </tr>
+
+
+
+			<tr class="
+
+
+">
+	<td>
+<img alt="Public method" title="Public method" src="msdn2019/pubmethod.png"></img>
+
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000000019.html">Get(int)</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+			<tr class="
+
+
+">
+	<td>
+<img alt="Public method" title="Public method" src="msdn2019/pubmethod.png"></img>
+
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000000018.html">Get()</a>
+
+	</td>
+	<td>
+
+This get all transactions in the database.
+
+	</td>
+</tr>
+			<tr class="
+
+
+">
+	<td>
+<img alt="Public method" title="Public method" src="msdn2019/pubmethod.png"></img>
+
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000000017.html">Get(AccountStatementRequest)</a>
+
+	</td>
+	<td>
+
+This returns an account statement based on a given date range.
+
+	</td>
+</tr>
+	
+
+
+
+
+
+
+
+			<tr class="
+
+
+">
+	<td>
+<img alt="Public method" title="Public method" src="msdn2019/pubmethod.png"></img>
+
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000000015.html">Post(BankEFTRequest)</a>
+
+	</td>
+	<td>
+
+This credits an account via bank accoun.
+
+	</td>
+</tr>
+			<tr class="
+
+
+">
+	<td>
+<img alt="Public method" title="Public method" src="msdn2019/pubmethod.png"></img>
+
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000000014.html">Post(CrebitByCardRequest)</a>
+
+	</td>
+	<td>
+
+This credits an account via credit cards or debit cards.
+
+	</td>
+</tr>
+			<tr class="
+
+
+">
+	<td>
+<img alt="Public method" title="Public method" src="msdn2019/pubmethod.png"></img>
+
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000000016.html">Post(DebitRequest)</a>
+
+	</td>
+	<td>
+
+This debits an account with the entered amount, the account must have a balance greater than zero.
+
+	</td>
+</tr>
+	
+
+
+
+
+
+
+  </table>
+
+  <a href="#mainBody">
+    Top
+  </a>
+
+	</div>					
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+<!-- Classes -->
+
+<!-- Classes End -->
+
+<!-- Standard Modules -->
+
+<!-- Standard Modules End -->
+
+  
+
+
+
 
 
 
@@ -373,7 +582,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 	</div>
 
 	<div id="frameworksSection" class="section">	
-  <h4 class="subHeading">.NET Framework</h4>Supported in: 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2, 4.7, 4.7.1, 4.7.2, 4.8<br />
+  <h4 class="subHeading">.NET Framework</h4>Supported in: .net 7<br />
 
 
 
@@ -389,6 +598,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 	</div>					
 </div>
 
+
 <div class="section_container">
 	<div class="section_heading">
 		<span><a href="javascript:void(0)" title="Collapse" onclick="toggleSection(this);">See Also</a></span>
@@ -397,14 +607,10 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 	<div id="seeAlsoSection" class="section">	
 		<div>
-			<a href="topic_0000000000000011.html">TransactionController Class</a><br />
+	<a href="topic_0000000000000004.html">GoldinAccountManager.API.Controllers Namespace</a><br />
 
 
-
-<a href="topic_0000000000000004.html">GoldinAccountManager.API.Controllers Namespace</a><br />
-
-
-			
+	
 
 		</div>
 	</div>					

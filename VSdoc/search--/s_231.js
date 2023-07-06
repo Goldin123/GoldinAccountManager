@@ -1,1 +1,1 @@
-search_result['231']=["topic_0000000000000080.html","AddedAccountsToRedis Field",""];
+search_result['231']=["topic_0000000000000054.html","IAccountRepository.GetAccountByIdentityNumberAsync Method","Interface that returns account details based on an identity number."];

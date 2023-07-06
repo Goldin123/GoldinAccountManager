@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="GENERATOR" content="VSdocman - documentation generator; https://www.helixoft.com" />
 	<link rel="icon" href="favicon.ico">
-	<title>TransactionController.Post (BankEFTRequest) Method</title>
+	<title>TransactionController.Post (CrebitByCardRequest) Method</title>
 
 	<link rel="stylesheet" type="text/css" href="msdn2019/toc.css" />
 	<script src="msdn2019/toc.js"></script>
@@ -74,7 +74,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
   </div>
 
 <div id="mainBody">
-		<h1 class="title">TransactionController.Post (BankEFTRequest) Method</h1>
+		<h1 class="title">TransactionController.Post (CrebitByCardRequest) Method</h1>
         
 		<div class="metadata">
         Namespace:
@@ -89,7 +89,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
        
        
-        <summary-info>This credits an account via bank accoun.</summary-info>
+        <summary-info>This credits an account via credit cards or debit cards.</summary-info>
 
 
 
@@ -139,7 +139,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeVB">
-					<pre xml:space="preserve" class="brush: vb">&lt;Route(&quot;CreditAccountByBank&quot;)&gt; _&nbsp;<br />&lt;HttpPost()&gt; _&nbsp;<br />&lt;ProducesResponseType(StatusCodes.Status201Created)&gt; _&nbsp;<br />&lt;ProducesResponseType(StatusCodes.Status400BadRequest)&gt; _&nbsp;<br />&lt;ProducesResponseType(StatusCodes.Status401Unauthorized)&gt; _&nbsp;<br />&lt;ProducesResponseType(StatusCodes.Status500InternalServerError)&gt; _&nbsp;<br />Public Function Post( _&nbsp;<br />   &lt;FromBody()&gt; _&nbsp;<br />   ByVal <i>value</i> As <a target="_top" href="topic_00000000000000A9.html" onclick="this.target='';return true;">BankEFTRequest</a> _&nbsp;<br />) As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>(Of <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>)</pre>			
+					<pre xml:space="preserve" class="brush: vb">&lt;Route(&quot;CreditAccountByCard&quot;)&gt; _&nbsp;<br />&lt;HttpPost()&gt; _&nbsp;<br />&lt;ProducesResponseType(StatusCodes.Status201Created)&gt; _&nbsp;<br />&lt;ProducesResponseType(StatusCodes.Status400BadRequest)&gt; _&nbsp;<br />&lt;ProducesResponseType(StatusCodes.Status401Unauthorized)&gt; _&nbsp;<br />&lt;ProducesResponseType(StatusCodes.Status500InternalServerError)&gt; _&nbsp;<br />Public Function Post( _&nbsp;<br />   &lt;FromBody()&gt; _&nbsp;<br />   ByVal <i>value</i> As <a target="_top" href="topic_00000000000000A8.html" onclick="this.target='';return true;">CrebitByCardRequest</a> _&nbsp;<br />) As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>(Of <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>)</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -178,7 +178,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCsharp">
-					<pre xml:space="preserve" class="brush: csharp">[Route(&quot;CreditAccountByBank&quot;)]&nbsp;<br />[HttpPost()]&nbsp;<br />[ProducesResponseType(StatusCodes.Status201Created)]&nbsp;<br />[ProducesResponseType(StatusCodes.Status400BadRequest)]&nbsp;<br />[ProducesResponseType(StatusCodes.Status401Unauthorized)]&nbsp;<br />[ProducesResponseType(StatusCodes.Status500InternalServerError)]&nbsp;<br />public <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>&gt; Post(&nbsp;<br />   [FromBody()]&nbsp;<br />   <a target="_top" href="topic_00000000000000A9.html" onclick="this.target='';return true;">BankEFTRequest</a> <i>value</i>&nbsp;<br />)</pre>			
+					<pre xml:space="preserve" class="brush: csharp">[Route(&quot;CreditAccountByCard&quot;)]&nbsp;<br />[HttpPost()]&nbsp;<br />[ProducesResponseType(StatusCodes.Status201Created)]&nbsp;<br />[ProducesResponseType(StatusCodes.Status400BadRequest)]&nbsp;<br />[ProducesResponseType(StatusCodes.Status401Unauthorized)]&nbsp;<br />[ProducesResponseType(StatusCodes.Status500InternalServerError)]&nbsp;<br />public <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>&gt; Post(&nbsp;<br />   [FromBody()]&nbsp;<br />   <a target="_top" href="topic_00000000000000A8.html" onclick="this.target='';return true;">CrebitByCardRequest</a> <i>value</i>&nbsp;<br />)</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -218,7 +218,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCpp">
-					<pre xml:space="preserve" class="brush: cpp">[Route(&quot;CreditAccountByBank&quot;)]&nbsp;<br />[HttpPost()]&nbsp;<br />[ProducesResponseType(StatusCodes.Status201Created)]&nbsp;<br />[ProducesResponseType(StatusCodes.Status400BadRequest)]&nbsp;<br />[ProducesResponseType(StatusCodes.Status401Unauthorized)]&nbsp;<br />[ProducesResponseType(StatusCodes.Status500InternalServerError)]&nbsp;<br />public: &nbsp;<br /><a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>^&gt;^ Post(&nbsp;<br />   [FromBody()]&nbsp;<br />   <a target="_top" href="topic_00000000000000A9.html" onclick="this.target='';return true;">BankEFTRequest</a>^ <i>value</i>&nbsp;<br />) </pre>			
+					<pre xml:space="preserve" class="brush: cpp">[Route(&quot;CreditAccountByCard&quot;)]&nbsp;<br />[HttpPost()]&nbsp;<br />[ProducesResponseType(StatusCodes.Status201Created)]&nbsp;<br />[ProducesResponseType(StatusCodes.Status400BadRequest)]&nbsp;<br />[ProducesResponseType(StatusCodes.Status401Unauthorized)]&nbsp;<br />[ProducesResponseType(StatusCodes.Status500InternalServerError)]&nbsp;<br />public: &nbsp;<br /><a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.iactionresult">IActionResult</a>^&gt;^ Post(&nbsp;<br />   [FromBody()]&nbsp;<br />   <a target="_top" href="topic_00000000000000A8.html" onclick="this.target='';return true;">CrebitByCardRequest</a>^ <i>value</i>&nbsp;<br />) </pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -276,7 +276,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 		</span>
 	</dt>
 	<dd>
-		<a target="_top" href="topic_00000000000000A9.html" onclick="this.target='';return true;">BankEFTRequest</a> 
+		<a target="_top" href="topic_00000000000000A8.html" onclick="this.target='';return true;">CrebitByCardRequest</a> 
 	</dd>
 </dl>
 <p>
@@ -355,7 +355,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 	</div>
 
 	<div id="frameworksSection" class="section">	
-  <h4 class="subHeading">.NET Framework</h4>Supported in: 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2, 4.7, 4.7.1, 4.7.2, 4.8<br />
+  <h4 class="subHeading">.NET Framework</h4>Supported in: .net 7<br />
 
 
 
@@ -379,7 +379,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 	<div id="seeAlsoSection" class="section">	
 		<div>
-			<a href="topic_0000000000000011.html">TransactionController Class</a><br />
+			<a href="topic_0000000000000012.html">TransactionController Class</a><br />
 
 
 

@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="GENERATOR" content="VSdocman - documentation generator; https://www.helixoft.com" />
 	<link rel="icon" href="favicon.ico">
-	<title>AuthenticationRepository.RegisterAdminAsync Method</title>
+	<title>ICacheHelperRespository.GetRecordAsync&lt;T&gt; Method</title>
 
 	<link rel="stylesheet" type="text/css" href="msdn2019/toc.css" />
 	<script src="msdn2019/toc.js"></script>
@@ -74,21 +74,22 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
   </div>
 
 <div id="mainBody">
-		<h1 class="title">AuthenticationRepository.RegisterAdminAsync Method</h1>
+		<h1 class="title">ICacheHelperRespository.GetRecordAsync&lt;T&gt; Method</h1>
         
 		<div class="metadata">
         Namespace:
-<a href="topic_00000000000000D9.html">GoldinAccountManager.JwtAuthentification.Abstract</a>
+<a href="topic_00000000000000DC.html">GoldinAccountManager.RedisCache.Interface</a>
 
 
 
 
-        <br />Assembly: GoldinAccountManager.JwtAuthentification (in GoldinAccountManager.JwtAuthentification.dll)
+        <br />Assembly: GoldinAccountManager.RedisCache (in GoldinAccountManager.RedisCache.dll)
 
 		</div>
 
        
        
+        <summary-info>Interface that allows you to get cache data from Redis.</summary-info>
 
 
 
@@ -138,7 +139,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeVB">
-					<pre xml:space="preserve" class="brush: vb">Public Function RegisterAdminAsync( _&nbsp;<br />   ByVal <i>model</i> As <a target="_top" href="topic_0000000000000091.html" onclick="this.target='';return true;">RegisterModel</a> _&nbsp;<br />) As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>(Of <a target="_top" href="topic_0000000000000095.html" onclick="this.target='';return true;">RegisterResponse</a>)</pre>			
+					<pre xml:space="preserve" class="brush: vb">Function GetRecordAsync(Of  _&nbsp;<br />   <i>T</i>)( _&nbsp;<br />   ByVal <i>cache</i> As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache">IDistributedCache</a>, _&nbsp;<br />   ByVal <i>recordId</i> As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a> _&nbsp;<br />) As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>(Of T)</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -177,7 +178,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCsharp">
-					<pre xml:space="preserve" class="brush: csharp">public <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="topic_0000000000000095.html" onclick="this.target='';return true;">RegisterResponse</a>&gt; RegisterAdminAsync(&nbsp;<br />   <a target="_top" href="topic_0000000000000091.html" onclick="this.target='';return true;">RegisterModel</a> <i>model</i>&nbsp;<br />)</pre>			
+					<pre xml:space="preserve" class="brush: csharp"><a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt; GetRecordAsync&lt;T&gt;(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache">IDistributedCache</a> <i>cache</i>,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">string</a> <i>recordId</i>&nbsp;<br />)</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -217,7 +218,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCpp">
-					<pre xml:space="preserve" class="brush: cpp">public: &nbsp;<br /><a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="topic_0000000000000095.html" onclick="this.target='';return true;">RegisterResponse</a>^&gt;^ RegisterAdminAsync(&nbsp;<br />   <a target="_top" href="topic_0000000000000091.html" onclick="this.target='';return true;">RegisterModel</a>^ <i>model</i>&nbsp;<br />) </pre>			
+					<pre xml:space="preserve" class="brush: cpp">generic&lt;typename T&gt;&nbsp;<br />&nbsp;<br /><a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T^&gt;^ GetRecordAsync(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache">IDistributedCache</a>^ <i>cache</i>,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">String</a>^ <i>recordId</i>&nbsp;<br />) </pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -266,16 +267,45 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 		
 	</div>
 
-
 <h4 class="subHeading">
-	Parameters</h4><dl paramName="model" class="parameterList">
+	Type Parameters</h4><dl paramName="T" class="parameterList">
 	<dt>
 		<span class="parameter">
-			model
+			
+			T
 		</span>
 	</dt>
 	<dd>
-		<a target="_top" href="topic_0000000000000091.html" onclick="this.target='';return true;">RegisterModel</a> 
+	</dd>
+</dl>
+<p>
+	 
+</p>
+
+<p />
+
+<h4 class="subHeading">
+	Parameters</h4><dl paramName="cache" class="parameterList">
+	<dt>
+		<span class="parameter">
+			cache
+		</span>
+	</dt>
+	<dd>
+		<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache">IDistributedCache</a> 
+	</dd>
+</dl>
+<p>
+	 
+</p>
+<dl paramName="recordId" class="parameterList">
+	<dt>
+		<span class="parameter">
+			recordId
+		</span>
+	</dt>
+	<dd>
+		<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.string">string</a> 
 	</dd>
 </dl>
 <p>
@@ -286,7 +316,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 	<h4 class="subHeading">
 		Return Value</h4>
-	<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="topic_0000000000000095.html" onclick="this.target='';return true;">RegisterResponse</a>&gt; 
+	<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;T&gt; 
 	
 
 
@@ -375,11 +405,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 	<div id="seeAlsoSection" class="section">	
 		<div>
-			<a href="topic_00000000000000DA.html">AuthenticationRepository Class</a><br />
+			<a href="topic_00000000000000DD.html">ICacheHelperRespository Interface</a><br />
 
 
 
-<a href="topic_00000000000000D9.html">GoldinAccountManager.JwtAuthentification.Abstract Namespace</a><br />
+<a href="topic_00000000000000DC.html">GoldinAccountManager.RedisCache.Interface Namespace</a><br />
 
 
 			

@@ -1,1 +1,1 @@
-search_result['258']=["topic_0000000000000091.html","RegisterModel Class",""];
+search_result['258']=["topic_0000000000000060.html","Account Class","Account class with all account related sub-classes or main classes."];

@@ -1,1 +1,1 @@
-search_result['62']=["topic_000000000000001A.html","CacheHelper.SetRecordAsync\u0026lt;T\u0026gt; Method","Sets data to the Redis cache database with a given key."];
+search_result['62']=["topic_0000000000000016_overloads--.html","TransactionController.Post Method","This debits an account with the entered amount, the account must have a balance greater than zero."];

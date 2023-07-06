@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="GENERATOR" content="VSdocman - documentation generator; https://www.helixoft.com" />
 	<link rel="icon" href="favicon.ico">
-	<title>ITransactionRepository.CreditAccountByBankAsync Method</title>
+	<title>IAccountRepository.UpdateAccountBalanceAsync Method</title>
 
 	<link rel="stylesheet" type="text/css" href="msdn2019/toc.css" />
 	<script src="msdn2019/toc.js"></script>
@@ -74,11 +74,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
   </div>
 
 <div id="mainBody">
-		<h1 class="title">ITransactionRepository.CreditAccountByBankAsync Method</h1>
+		<h1 class="title">IAccountRepository.UpdateAccountBalanceAsync Method</h1>
         
 		<div class="metadata">
         Namespace:
-<a href="topic_000000000000004C.html">GoldinAccountManager.Database.Interface</a>
+<a href="topic_000000000000004F.html">GoldinAccountManager.Database.Interface</a>
 
 
 
@@ -89,7 +89,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
        
        
-        <summary-info>Interface that credits an accont by bank.</summary-info>
+        <summary-info>Interface that updates an account balance.</summary-info>
 
 
 
@@ -139,7 +139,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeVB">
-					<pre xml:space="preserve" class="brush: vb">Function CreditAccountByBankAsync( _&nbsp;<br />   ByVal <i>bankEFTRequest</i> As <a target="_top" href="topic_00000000000000A9.html" onclick="this.target='';return true;">BankEFTRequest</a> _&nbsp;<br />) As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>(Of <a target="_top" href="topic_000000000000009B.html" onclick="this.target='';return true;">Transaction</a>)</pre>			
+					<pre xml:space="preserve" class="brush: vb">Function UpdateAccountBalanceAsync( _&nbsp;<br />   ByVal <i>accountId</i> As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32">Integer</a>, _&nbsp;<br />   ByVal <i>amount</i> As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.decimal">Decimal</a>, _&nbsp;<br />   ByVal <i>transactionType</i> As <a target="_top" href="topic_00000000000000C8.html" onclick="this.target='';return true;">TransactionType</a> _&nbsp;<br />) As <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task">Task</a></pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -178,7 +178,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCsharp">
-					<pre xml:space="preserve" class="brush: csharp"><a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="topic_000000000000009B.html" onclick="this.target='';return true;">Transaction</a>&gt; CreditAccountByBankAsync(&nbsp;<br />   <a target="_top" href="topic_00000000000000A9.html" onclick="this.target='';return true;">BankEFTRequest</a> <i>bankEFTRequest</i>&nbsp;<br />)</pre>			
+					<pre xml:space="preserve" class="brush: csharp"><a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task">Task</a> UpdateAccountBalanceAsync(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32">int</a> <i>accountId</i>,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.decimal">decimal</a> <i>amount</i>,&nbsp;<br />   <a target="_top" href="topic_00000000000000C8.html" onclick="this.target='';return true;">TransactionType</a> <i>transactionType</i>&nbsp;<br />)</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -218,7 +218,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeCpp">
-					<pre xml:space="preserve" class="brush: cpp">&nbsp;<br /><a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="topic_000000000000009B.html" onclick="this.target='';return true;">Transaction</a>^&gt;^ CreditAccountByBankAsync(&nbsp;<br />   <a target="_top" href="topic_00000000000000A9.html" onclick="this.target='';return true;">BankEFTRequest</a>^ <i>bankEFTRequest</i>&nbsp;<br />) </pre>			
+					<pre xml:space="preserve" class="brush: cpp">&nbsp;<br /><a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task">Task</a>^ UpdateAccountBalanceAsync(&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32">int</a> <i>accountId</i>,&nbsp;<br />   <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.decimal">Decimal</a> <i>amount</i>,&nbsp;<br />   <a target="_top" href="topic_00000000000000C8.html" onclick="this.target='';return true;">TransactionType</a> <i>transactionType</i>&nbsp;<br />) </pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -257,7 +257,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 				</div>
 				
 				<div class="codeSnippetCode codeJScript">
-					<pre xml:space="preserve" class="brush: js">JScript does not support generic types and methods.</pre>			
+					<pre xml:space="preserve" class="brush: js">function UpdateAccountBalanceAsync(&nbsp;<br />    <i>accountId</i> : <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32">int</a>,&nbsp;<br />    <i>amount</i> : <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.decimal">decimal</a>,&nbsp;<br />    <i>transactionType</i> : <a target="_top" href="topic_00000000000000C8.html" onclick="this.target='';return true;">TransactionType</a>&nbsp;<br />) : <a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task">Task</a>;</pre>			
 				</div>
 				<div class="codeSnippetCode codeNA">
 					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
@@ -269,14 +269,40 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 
 <h4 class="subHeading">
-	Parameters</h4><dl paramName="bankEFTRequest" class="parameterList">
+	Parameters</h4><dl paramName="accountId" class="parameterList">
 	<dt>
 		<span class="parameter">
-			bankEFTRequest
+			accountId
 		</span>
 	</dt>
 	<dd>
-		<a target="_top" href="topic_00000000000000A9.html" onclick="this.target='';return true;">BankEFTRequest</a> 
+		<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.int32">int</a> 
+	</dd>
+</dl>
+<p>
+	 
+</p>
+<dl paramName="amount" class="parameterList">
+	<dt>
+		<span class="parameter">
+			amount
+		</span>
+	</dt>
+	<dd>
+		<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.decimal">decimal</a> 
+	</dd>
+</dl>
+<p>
+	 
+</p>
+<dl paramName="transactionType" class="parameterList">
+	<dt>
+		<span class="parameter">
+			transactionType
+		</span>
+	</dt>
+	<dd>
+		<a target="_top" href="topic_00000000000000C8.html" onclick="this.target='';return true;">TransactionType</a> 
 	</dd>
 </dl>
 <p>
@@ -287,7 +313,7 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 	<h4 class="subHeading">
 		Return Value</h4>
-	<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a target="_top" href="topic_000000000000009B.html" onclick="this.target='';return true;">Transaction</a>&gt; 
+	<a target="_top" href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task">Task</a> 
 	
 
 
@@ -376,11 +402,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
 
 	<div id="seeAlsoSection" class="section">	
 		<div>
-			<a href="topic_0000000000000055.html">ITransactionRepository Interface</a><br />
+			<a href="topic_0000000000000050.html">IAccountRepository Interface</a><br />
 
 
 
-<a href="topic_000000000000004C.html">GoldinAccountManager.Database.Interface Namespace</a><br />
+<a href="topic_000000000000004F.html">GoldinAccountManager.Database.Interface Namespace</a><br />
 
 
 			
