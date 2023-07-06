@@ -1,1 +1,1 @@
-c['75']=[['76',"OnConfiguring Method","topic_0000000000000045.html",0]];
+c['75']=[['76',"Accounts Property","topic_0000000000000049.html",0],['77',"Transactions Property","topic_000000000000004A.html",0]];

@@ -1,1 +1,1 @@
-search_result['28']=["topic_000000000000000C.html","AuthenticateController Class",""];
+search_result['28']=["topic_000000000000000C.html","AccountController.GetAccountTransaction Method","This returns account details with a list of transactions"];

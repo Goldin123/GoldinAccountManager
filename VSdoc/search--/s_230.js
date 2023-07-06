@@ -1,1 +1,1 @@
-search_result['230']=["topic_000000000000007F.html","UpdateAccountBalance Field",""];
+search_result['230']=["topic_0000000000000053.html","IAccountRepository.GetAllAccountsAsync Method","Interface that returns a list of all accounts."];

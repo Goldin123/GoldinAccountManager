@@ -1,1 +1,1 @@
-search_result['43']=["topic_0000000000000011_vars--.html","TransactionController Fields",""];
+search_result['43']=["topic_0000000000000011.html","AuthenticateController.RegisterAdmin Method","This registers a new admin api user, only administrators the ability to add the user"];

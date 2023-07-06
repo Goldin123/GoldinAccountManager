@@ -1,1 +1,1 @@
-search_result['95']=["topic_000000000000002C.html","WeatherForecast Class",""];
+search_result['95']=["topic_0000000000000020.html","Initial.Up Method",""];

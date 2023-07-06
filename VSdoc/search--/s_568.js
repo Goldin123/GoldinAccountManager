@@ -1,0 +1,1 @@
+search_result['568']=["topic_00000000000000EA.html","IAuthenticationRepository.GetIdentityUserByUsernameAsync Method","Interface that returns an api user given a username."];

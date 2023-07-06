@@ -1,1 +1,1 @@
-search_result['57']=["topic_0000000000000019_attached_props--.html","CacheHelper Attached Properties",""];
+search_result['57']=["topic_0000000000000014.html","TransactionController.Post (CrebitByCardRequest) Method","This credits an account via credit cards or debit cards."];

@@ -1,1 +1,1 @@
-search_result['249']=["topic_000000000000008D.html","AuthenticationModel.Expiration Property",""];
+search_result['249']=["topic_000000000000005C.html","ITransactionRepository.GetAccountStatementAsync Method","Interface that returns an account statement."];

@@ -1,1 +1,1 @@
-c['257']=[['258',"WeatherForecastController Constructor","topic_0000000000000023.html",0],['259',"Methods","topic_0000000000000022_methods--.html",1]];
+c['257']=[['258',"WeatherForecast Class","topic_000000000000002E.html",1]];

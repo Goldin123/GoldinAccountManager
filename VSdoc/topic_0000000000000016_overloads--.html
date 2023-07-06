@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="GENERATOR" content="VSdocman - documentation generator; https://www.helixoft.com" />
 	<link rel="icon" href="favicon.ico">
-	<title>TransactionController.Get Method</title>
+	<title>TransactionController.Post Method</title>
 
 	<link rel="stylesheet" type="text/css" href="msdn2019/toc.css" />
 	<script src="msdn2019/toc.js"></script>
@@ -75,11 +75,11 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
   </div>
 
 <div id="mainBody">
-		<h1 class="title">TransactionController.Get Method</h1>
+		<h1 class="title">TransactionController.Post Method</h1>
         <p />
        
 
-        <summary-info>This returns an account statement based on a given date range.</summary-info>
+        <summary-info>This debits an account with the entered amount, the account must have a balance greater than zero.</summary-info>
 
 
 <div class="section_container">
@@ -101,24 +101,36 @@ document.write(getCssCustomProperty('--headerTopCustomLineHtml'));
             <tr>
               <td>
 
-<a href="topic_0000000000000017.html">Get()</a>
+<a href="topic_0000000000000015.html">Post(BankEFTRequest)</a>
               
               </td>
               <td>
 
-This get all transactions in the database.
+This credits an account via bank accoun.
 
               </td>
             </tr>
             <tr>
               <td>
 
-<a href="topic_0000000000000016.html">Get(AccountStatementRequest)</a>
+<a href="topic_0000000000000014.html">Post(CrebitByCardRequest)</a>
               
               </td>
               <td>
 
-This returns an account statement based on a given date range.
+This credits an account via credit cards or debit cards.
+
+              </td>
+            </tr>
+            <tr>
+              <td>
+
+<a href="topic_0000000000000016.html">Post(DebitRequest)</a>
+              
+              </td>
+              <td>
+
+This debits an account with the entered amount, the account must have a balance greater than zero.
 
               </td>
             </tr>
@@ -139,7 +151,7 @@ This returns an account statement based on a given date range.
 
 	<div id="seeAlsoSection" class="section">	
 		<div>
-			<a href="topic_0000000000000011.html">TransactionController Class</a><br />
+			<a href="topic_0000000000000012.html">TransactionController Class</a><br />
 
 
 

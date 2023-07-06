@@ -1,1 +1,1 @@
-search_result['384']=["topic_00000000000000D7.html","ICacheHelperRespository.SetRecordAsync\u0026lt;T\u0026gt; Method","Interface that allows you to add records into Redis cache."];
+search_result['384']=["topic_000000000000009D.html","RegisterResponse.Valid Property",""];

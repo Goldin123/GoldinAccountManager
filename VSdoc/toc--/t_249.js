@@ -1,1 +1,1 @@
-c['249']=[['250',"WeatherForecast Class","topic_000000000000002C.html",1]];
+c['249']=[['250',"GetRecordAsync\u003cT\u003e Method","topic_00000000000000DB.html",0],['251',"SetRecordAsync\u003cT\u003e Method","topic_00000000000000DA.html",0]];

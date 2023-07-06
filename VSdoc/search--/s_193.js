@@ -1,1 +1,1 @@
-search_result['193']=["topic_0000000000000064.html","Account.Active Property",""];
+search_result['193']=["topic_0000000000000047.html","GoldinAccountMangerContext Class","This the the in memory database used to store accounts and transactions."];

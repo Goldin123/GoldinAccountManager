@@ -1,1 +1,1 @@
-var breadcrumbs=[['-1',"",""],['2',"SOLUTION-WIDE PROPERTIES Reference","topic_00000000000000E8.html"],['41',"GoldinAccountManager.API.Migrations Namespace","topic_000000000000001C.html"]];
+var breadcrumbs=[['-1',"",""],['2',"SOLUTION-WIDE PROPERTIES Reference","topic_00000000000000EF.html"],['38',"GoldinAccountManager.API.Helper Namespace","topic_000000000000001A.html"],['39',"CacheHelper Class","topic_000000000000001B.html"],['40',"Methods","topic_000000000000001B_methods--.html"],['42',"SetRecordAsync\u003cT\u003e Method","topic_000000000000001C.html"]];

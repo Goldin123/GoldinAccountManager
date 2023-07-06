@@ -1,1 +1,1 @@
-c['199']=[['200',"Properties","topic_00000000000000B0_props--.html",1]];
+c['199']=[['200',"AccountId Property","topic_00000000000000AF.html",0],['201',"Amount Property","topic_00000000000000AE.html",0],['202',"CVV Property","topic_00000000000000AD.html",0],['203',"CardNumber Property","topic_00000000000000AA.html",0],['204',"CardTypeId Property","topic_00000000000000A9.html",0],['205',"Expiry Property","topic_00000000000000AC.html",0],['206',"NameOnCard Property","topic_00000000000000AB.html",0]];

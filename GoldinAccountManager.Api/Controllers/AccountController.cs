@@ -37,7 +37,7 @@ namespace GoldinAccountManager.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetAccounts()
         {
             try
             {
@@ -64,7 +64,7 @@ namespace GoldinAccountManager.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<IActionResult> Get(int value)
+        public async Task<IActionResult> GetAccountById(int value)
         {
             try
             {
@@ -86,14 +86,14 @@ namespace GoldinAccountManager.API.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<IActionResult> Post([FromBody] AccountRequest value)
+        public async Task<IActionResult> AddAccount([FromBody] AccountRequest value)
         {
             try
             {
                 if (value != null)
                 {
                     var addAccount = await _account.AddAccountAsync(value);
-                    return CreatedAtAction(nameof(Post), new { id = addAccount }, addAccount);
+                    return CreatedAtAction(nameof(AddAccount), new { id = addAccount }, addAccount);
                 }
                 else
                 {
@@ -118,14 +118,14 @@ namespace GoldinAccountManager.API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Post([FromBody] List<AccountRequest> values)
+        public async Task<IActionResult> AddAccounts([FromBody] List<AccountRequest> values)
         {
             try
             {
                 if (values != null)
                 {
                     var addAccounts = await _account.AddAccountsAsync(values);
-                    return CreatedAtAction(nameof(Post), new { id = addAccounts }, addAccounts);
+                    return CreatedAtAction(nameof(AddAccounts), new { id = addAccounts }, addAccounts);
                 }
                 else
                 {
@@ -150,14 +150,14 @@ namespace GoldinAccountManager.API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Put([FromBody] AccountRequest value)
+        public async Task<IActionResult> UpdateAccount([FromBody] AccountRequest value)
         {
             try
             {
                 if (value != null)
                 {
                     var updateAccount = await _account.UpdateAccountAsync(value);
-                    return CreatedAtAction(nameof(Post), new { id = updateAccount }, updateAccount);
+                    return CreatedAtAction(nameof(UpdateAccount), new { id = updateAccount }, updateAccount);
                 }
                 else
                 {
@@ -182,7 +182,7 @@ namespace GoldinAccountManager.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<IActionResult> GetAccountTransaction(int value)
+        public async Task<IActionResult> GetAccountTransactions(int value)
         {
             try
             {

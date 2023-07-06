@@ -1,1 +1,1 @@
-c['38']=[['39',"GetRecordAsync\u003cT\u003e Method","topic_000000000000001B.html",0],['40',"SetRecordAsync\u003cT\u003e Method","topic_000000000000001A.html",0]];
+c['38']=[['39',"CacheHelper Class","topic_000000000000001B.html",1]];

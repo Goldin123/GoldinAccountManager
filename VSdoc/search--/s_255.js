@@ -1,1 +1,1 @@
-search_result['255']=["topic_000000000000008E_vars--.html","LoginRequest Fields",""];
+search_result['255']=["topic_000000000000005D.html","ITransactionRepository.GetAllTransactionsAsync Method","Interface that returns all transactions in the database."];

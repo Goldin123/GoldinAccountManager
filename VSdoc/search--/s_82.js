@@ -1,1 +1,1 @@
-search_result['82']=["topic_0000000000000024.html","WeatherForecastController.Get Method",""];
+search_result['82']=["topic_000000000000001D.html","CacheHelper.GetRecordAsync\u0026lt;T\u0026gt; Method","Returns the cached informations from the Redis cache using a given key."];

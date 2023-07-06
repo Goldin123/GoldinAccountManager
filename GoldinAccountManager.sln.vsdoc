@@ -62,7 +62,6 @@
   <string>customTopics</string>
   <string>ListNamespacesWithShortNames</string>
   <string>emptyOutputFolder</string>
-  <string>SupportedNetStandard</string>
   <string>comPublic</string>
   <string>comPrivate</string>
   <string>comFriend</string>

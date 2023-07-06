@@ -1,1 +1,0 @@
-c['20']=[['21',"AuthenticateController Constructor","topic_000000000000000D.html",0],['22',"Methods","topic_000000000000000C_methods--.html",1]];

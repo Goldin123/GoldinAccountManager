@@ -1,1 +1,1 @@
-search_result['229']=["topic_000000000000007E.html","UpdateAccountDetails Field",""];
+search_result['229']=["topic_0000000000000052.html","IAccountRepository.AddAccountAsync Method","Interface that allows you to add an account to the database."];
