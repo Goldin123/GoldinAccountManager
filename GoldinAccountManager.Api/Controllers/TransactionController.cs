@@ -45,19 +45,19 @@ namespace GoldinAccountManager.API.Controllers
                     }
                     else
                     {
-                        _logger.LogError(ApplicationMessages.AmountShouldBeGreaterThanZero);
+                        _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.AmountShouldBeGreaterThanZero));
                         return BadRequest(ApplicationMessages.AmountShouldBeGreaterThanZero);
                     }
                 }
                 else
                 {
-                    _logger.LogError(ApplicationMessages.CardDetailsEntry);
+                    _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.CardDetailsEntry));
                     return BadRequest(ApplicationMessages.CardDetailsEntry);
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.ToString());
+                _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ex.ToString()));
                 return BadRequest(ex.Message);
             }
         }
@@ -85,21 +85,21 @@ namespace GoldinAccountManager.API.Controllers
                     }
                     else
                     {
-                        _logger.LogError(ApplicationMessages.AmountShouldBeGreaterThanZero);
+                        _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.AmountShouldBeGreaterThanZero));
                         return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = ApplicationMessages.AmountShouldBeGreaterThanZero }); ;
 
                     }
                 }
                 else
                 {
-                    _logger.LogError(ApplicationMessages.BankingDetailsEntry);
+                    _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.BankingDetailsEntry));
                     return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = ApplicationMessages.BankingDetailsEntry }); ;
 
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.ToString());
+                _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ex.ToString()));
                 return BadRequest(ex.Message);
             }
         }
@@ -127,21 +127,21 @@ namespace GoldinAccountManager.API.Controllers
                     }
                     else
                     {
-                        _logger.LogError(ApplicationMessages.AmountShouldBeGreaterThanZero);
+                        _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.AmountShouldBeGreaterThanZero));
                         return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = ApplicationMessages.AmountShouldBeGreaterThanZero }); ;
 
                     }
                 }
                 else
                 {
-                    _logger.LogError(ApplicationMessages.DebitDetailsEntry);
+                    _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.DebitDetailsEntry));
                     return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = ApplicationMessages.DebitDetailsEntry }); ;
 
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.ToString());
+                _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ex.ToString()));
                 return BadRequest(ex.Message);
             }
         }
@@ -164,7 +164,7 @@ namespace GoldinAccountManager.API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.ToString());
+                _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ex.ToString()));
                 return BadRequest(ex.Message);
             }
         }
@@ -183,7 +183,7 @@ namespace GoldinAccountManager.API.Controllers
             try
             {
                 List<Transaction>? trans;
-                trans = await _transaction.GetAllTransactions();
+                trans = await _transaction.GetAllTransactionsAsync();
                 if (trans?.Count > 0)
                     return Ok(trans);
                 else
@@ -191,7 +191,34 @@ namespace GoldinAccountManager.API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.ToString());
+                _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ex.ToString()));
+                return BadRequest(ex.Message);
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("GetAccountTransactions")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<IActionResult> Get(int value)
+        {
+            try
+            {
+                List<Transaction>? trans;
+                trans = await _transaction.GetAccountTransactionsAsync(value);
+                if (trans?.Count > 0)
+                    return Ok(trans);
+                else
+                    return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ex.ToString()));
                 return BadRequest(ex.Message);
             }
         }

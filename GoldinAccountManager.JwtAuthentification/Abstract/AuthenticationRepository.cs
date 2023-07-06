@@ -36,7 +36,7 @@ namespace GoldinAccountManager.JwtAuthentification.Abstract
                     var user = await GetIdentityUserByUsernameAsync(model.Username);
                     if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
                     {
-                        _logger.LogInformation(string.Format("User with name {0} found on the database and successfully logged in.", model.Username));
+                        _logger.LogInformation(string.Format("{0} - {1}", DateTime.Now, string.Format("User with name {0} found on the database and successfully logged in.", model.Username)));
 
                         var userRoles = await _userManager.GetRolesAsync(user);
 
@@ -61,14 +61,14 @@ namespace GoldinAccountManager.JwtAuthentification.Abstract
                     }
                     else
                     {
-                        _logger.LogInformation(string.Format("Failed to login user {0}.", model.Username));
+                        _logger.LogInformation(string.Format("{0} - {1}", DateTime.Now, string.Format("Failed to login user {0}.", model.Username)));
                     }
                 }
                 return auth;
             }
             catch (Exception ex)
             {
-                _logger.LogCritical(ex.Message);
+                _logger.LogCritical(string.Format("{0} - {1}", DateTime.Now, ex.Message));
                 throw new Exception(ex.Message);
             }
 
@@ -80,19 +80,19 @@ namespace GoldinAccountManager.JwtAuthentification.Abstract
                 var user = await _userManager.FindByNameAsync(username);
                 if (user == null)
                 {
-                    _logger.LogInformation(string.Format("Failed to find user {0}.", username));
+                    _logger.LogInformation(string.Format("{0} - {1}", DateTime.Now, string.Format("Failed to find user {0}.", username)));
                     return null;
                 }
                 else
                 {
-                    _logger.LogInformation(string.Format("Found user with username {0}.", username));
+                    _logger.LogInformation(string.Format("{0} - {1}", DateTime.Now, string.Format("Found user with username {0}.", username)));
                     return user;
                 }
 
             }
             catch (Exception ex)
             {
-                _logger.LogCritical(ex.Message);
+                _logger.LogCritical(string.Format("{0} - {1}", DateTime.Now, ex.Message));
                 throw new Exception(ex.Message);
             }
         }
@@ -112,21 +112,21 @@ namespace GoldinAccountManager.JwtAuthentification.Abstract
                 {
                     register.Message = "User creation failed! Please check user details and try again.";
                     register.Valid = false;
-                    _logger.LogError(register.Message);
+                    _logger.LogError(string.Format("{0} - {1}", DateTime.Now, register.Message));
                     return register;
                 }
                 else
                 {
                     register.Message = "User created successfully!";
                     register.Valid = true;
-                    _logger.LogInformation(register.Message);
+                    _logger.LogInformation(string.Format("{0} - {1}", DateTime.Now, register.Message));
                     return register;
                 }
 
             }
             catch (Exception ex)
             {
-                _logger.LogCritical(ex.Message);
+                _logger.LogCritical(string.Format("{0} - {1}", DateTime.Now, ex.Message));
                 return new RegisterResponse { Valid = false, Message = ex.Message };
             }
         }
@@ -147,7 +147,7 @@ namespace GoldinAccountManager.JwtAuthentification.Abstract
                 {
                     register.Message = "User creation failed! Please check user details and try again.";
                     register.Valid = false;
-                    _logger.LogError(register.Message);
+                    _logger.LogError(string.Format("{0} - {1}", DateTime.Now, register.Message));
                     return register;
                 }
 
@@ -166,13 +166,13 @@ namespace GoldinAccountManager.JwtAuthentification.Abstract
                 }
                 register.Message = "User created successfully!";
                 register.Valid = true;
-                _logger.LogInformation(register.Message);
+                _logger.LogInformation(string.Format("{0} - {1}", DateTime.Now, register.Message));
                 return register;
 
             }
             catch (Exception ex)
             {
-                _logger.LogCritical(ex.Message);
+                _logger.LogCritical(string.Format("{0} - {1}", DateTime.Now, ex.Message));
                 return new RegisterResponse { Valid = false, Message = ex.Message };
             }
 

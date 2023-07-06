@@ -29,8 +29,8 @@ namespace GoldinAccountManager.Database.Abstract
 
                 if (account == null)
                 {
-                    _logger.LogError(ApplicationMessages.AccountNotExistError);
-                    throw new Exception(ApplicationMessages.AccountNotExistError);
+                    _logger.LogError(string.Format("{0} - {1}",DateTime.Now,ApplicationMessages.AccountNotExistError));
+                    throw new InvalidOperationException(ApplicationMessages.AccountNotExistError);
                 }
 
                 //Verify if banking details 
@@ -38,7 +38,7 @@ namespace GoldinAccountManager.Database.Abstract
                 //Store banking details
 
                 //Add Transaction
-                _logger.LogInformation(ApplicationMessages.PerformingCreditAccountByBank);
+                _logger.LogInformation(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.PerformingCreditAccountByBank));
                 var newTransaction = new GoldinAccountManager.Model.Transaction
                 {
                     AccountID = bankEFTRequest.AccountId,
@@ -55,7 +55,7 @@ namespace GoldinAccountManager.Database.Abstract
             }
             catch (Exception ex)
             {
-                _logger.LogCritical(ex.Message);
+                _logger.LogCritical(string.Format("{0} - {1}", DateTime.Now, ex.Message));
                 throw new NotImplementedException();
             }
 
@@ -67,14 +67,14 @@ namespace GoldinAccountManager.Database.Abstract
                 var account = await _account.GetAccountByIdAsync(crebitByCardRequest.AccountId);
                 if (account == null)
                 {
-                    _logger.LogError(ApplicationMessages.AccountNotExistError);
-                    throw new Exception(ApplicationMessages.AccountNotExistError);
+                    _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.AccountNotExistError));
+                    throw new InvalidOperationException(ApplicationMessages.AccountNotExistError);
                 }
 
                 //Do credit card validations
 
                 //if validation successfully passed store credit card details then add transaction
-                _logger.LogInformation(ApplicationMessages.PerformingCreditAccountByCard);
+                _logger.LogInformation(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.PerformingCreditAccountByCard));
 
                 var newTransaction = new GoldinAccountManager.Model.Transaction
                 {
@@ -91,7 +91,7 @@ namespace GoldinAccountManager.Database.Abstract
             }
             catch (Exception ex)
             {
-                _logger.LogCritical(ex.Message);
+                _logger.LogCritical(string.Format("{0} - {1}", DateTime.Now, ex.Message));
                 throw new Exception(ex.ToString());
             }
         }
@@ -103,23 +103,23 @@ namespace GoldinAccountManager.Database.Abstract
 
                 if (existingAccount == null)
                 {
-                    _logger.LogError(ApplicationMessages.AccountNotExistError);
-                    throw new Exception(ApplicationMessages.AccountNotExistError);
+                    _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.AccountNotExistError));
+                    throw new InvalidOperationException(ApplicationMessages.AccountNotExistError);
                 }
 
                 if (existingAccount.Balance <= 0)
                 {
-                    _logger.LogError(ApplicationMessages.AccountHasZeroBalanceError);
-                    throw new Exception(ApplicationMessages.AccountHasZeroBalanceError);
+                    _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.AccountHasZeroBalanceError));
+                    throw new InvalidOperationException(ApplicationMessages.AccountHasZeroBalanceError);
                 }
 
                 if ((existingAccount.Balance - debitRequest.Amount) < 0)
                 {
-                    _logger.LogError(ApplicationMessages.InsufficientFundsAvailable);
-                    throw new Exception(ApplicationMessages.InsufficientFundsAvailable);
+                    _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.InsufficientFundsAvailable));
+                    throw new InvalidOperationException(ApplicationMessages.InsufficientFundsAvailable);
                 }
 
-                _logger.LogInformation(ApplicationMessages.PerformingDebit, existingAccount.AccountID);
+                _logger.LogInformation(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.PerformingDebit), existingAccount.AccountID);
 
                 var newTransaction = new GoldinAccountManager.Model.Transaction
                 {
@@ -137,7 +137,7 @@ namespace GoldinAccountManager.Database.Abstract
             }
             catch (Exception ex)
             {
-                _logger.LogCritical(ex.Message);
+                _logger.LogCritical(string.Format("{0} - {1}", DateTime.Now, ex.Message));
                 throw new Exception(ex.ToString());
             }
         }
@@ -159,7 +159,7 @@ namespace GoldinAccountManager.Database.Abstract
                                 if (trans != null)
                                     if (trans.Count() == db.Transactions.Count())
                                     {
-                                        _logger.LogInformation(ApplicationMessages.LoadingFromCache);
+                                        _logger.LogInformation(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.LoadingFromCache));
                                         return trans;
 
                                     }
@@ -171,7 +171,7 @@ namespace GoldinAccountManager.Database.Abstract
             }
             catch (Exception ex) 
             {
-                _logger.LogCritical(ex.Message);
+                _logger.LogCritical(string.Format("{0} - {1}", DateTime.Now, ex.Message));
                 throw new Exception(ex.ToString());
             }
         }
@@ -186,22 +186,22 @@ namespace GoldinAccountManager.Database.Abstract
                         var transactions = await db.Transactions.ToListAsync();
                         if (transactions.Count() > 1)
                         {
-                            _logger.LogInformation(ApplicationMessages.AddedTransactionsToRedis);
+                            _logger.LogInformation(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.AddedTransactionsToRedis));
                             await _cache.SetRecordAsync(_transactionsRedisrecordKey, transactions);
                         }
-                        _logger.LogInformation(ApplicationMessages.LoadingFromDatabase);
+                        _logger.LogInformation(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.LoadingFromDatabase));
                         return transactions;
                     }
                     else
                     {
-                        _logger.LogInformation(ApplicationMessages.NoTransactionsFound);
+                        _logger.LogWarning(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.NoTransactionsFound));
                         return new List<Model.Transaction>();
                     }
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogCritical(ex.Message);
+                _logger.LogCritical(string.Format("{0} - {1}", DateTime.Now, ex.Message));
                 throw new Exception(ex.ToString());
             }
         }
@@ -219,7 +219,7 @@ namespace GoldinAccountManager.Database.Abstract
                         List<Model.Transaction> transactions = new List<Transaction>();
 
 
-                        transactions = await GetAllTransactions();
+                        transactions = await GetAllTransactionsAsync();
 
                         transactions = (from a in transactions
                                         where a.AccountID == accountStatementRequest.AccountId
@@ -234,19 +234,19 @@ namespace GoldinAccountManager.Database.Abstract
                     }
                     else
                     {
-                        _logger.LogError(ApplicationMessages.AccountNotExistError);
-                        throw new Exception(ApplicationMessages.AccountNotExistError);
+                        _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.AccountNotExistError));
+                        throw new InvalidOperationException(ApplicationMessages.AccountNotExistError);
                     }
                 }
                 else
                 {
-                    _logger.LogError(ApplicationMessages.DateFromGreaterThanDateToError);
-                    throw new Exception(ApplicationMessages.DateFromGreaterThanDateToError);
+                    _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.DateFromGreaterThanDateToError));
+                    throw new ArgumentException(ApplicationMessages.DateFromGreaterThanDateToError);
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogCritical(ex.Message);
+                _logger.LogCritical(string.Format("{0} - {1}", DateTime.Now, ex.Message));
                 throw new Exception(ex.ToString());
             }
         }
@@ -267,17 +267,17 @@ namespace GoldinAccountManager.Database.Abstract
                     };
                     db.Transactions.Add(newDBTransaction);
                     await db.SaveChangesAsync();
-                    _logger.LogInformation(string.Format(ApplicationMessages.AddedTransaction, newDBTransaction.TransactionID, newDBTransaction.AccountID, transaction.TransactioTypeId == 1 ? "debit" : "credit"));
+                    _logger.LogInformation(string.Format("{0} - {1}", DateTime.Now, string.Format(ApplicationMessages.AddedTransaction, newDBTransaction.TransactionID, newDBTransaction.AccountID, transaction.TransactioTypeId == 1 ? "debit" : "credit")));
                     return newDBTransaction;
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogCritical(ex.ToString());
+                    _logger.LogCritical(string.Format("{0} - {1}", DateTime.Now, ex.ToString()));
                     return new Model.Transaction();
                 }
             }
         }
-        public async Task<List<Model.Transaction>> GetAllTransactions() 
+        public async Task<List<Model.Transaction>> GetAllTransactionsAsync() 
         {
             try
             {
@@ -291,10 +291,30 @@ namespace GoldinAccountManager.Database.Abstract
                 return transactions;
             }catch (Exception ex) 
             {
-                _logger.LogCritical(ex.Message);
+                _logger.LogCritical(string.Format("{0} - {1}", DateTime.Now, ex.Message));
                 throw new Exception(ex.ToString());
             }
         }
+        public async Task<List<Model.Transaction>> GetAccountTransactionsAsync(int accounId) 
+        {
+            try 
+            {
+                var transactions = new List<Model.Transaction>(); 
+                transactions = await GetAllTransactionsAsync();
+                if (transactions?.Count() > 0) 
+                {
+                    transactions = transactions.Where(a => a.AccountID == accounId).ToList();
+                    return transactions;
+                }
+               return new List<Model.Transaction>();
+            }
+            catch(Exception ex) 
+            {
+                _logger.LogCritical(string.Format("{0} - {1}", DateTime.Now, ex.Message));
+                throw new Exception(ex.ToString());
+            }
+        }
+
     }
 }
 

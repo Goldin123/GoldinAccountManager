@@ -16,15 +16,17 @@ namespace GoldinAccountManager.API.Controllers
     {
         private readonly ILogger<AccountController> _logger;
         private readonly IAccountRepository _account;
+        private readonly ITransactionRepository _transaction;
         private readonly IDistributedCache _cache;
         private readonly string _accountsRedisrecordKey = $"Accounts_{DateTime.Now:yyyyMMdd_hh}";
         private string _fetchLoadLocation = "";
 
-        public AccountController(IAccountRepository account, ILogger<AccountController> logger, IDistributedCache cache)
+        public AccountController(IAccountRepository account, ILogger<AccountController> logger, IDistributedCache cache, ITransactionRepository transaction)
         {
             _account = account;
             _logger = logger;
             _cache = cache;
+            _transaction = transaction;
         }
         /// <summary>
         /// This gets all the accounts created on the database.
@@ -48,7 +50,7 @@ namespace GoldinAccountManager.API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.ToString());
+                _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ex.ToString()));
                 return BadRequest(ex.Message);
             }
         }
@@ -70,7 +72,7 @@ namespace GoldinAccountManager.API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.ToString());
+                _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ex.ToString()));
                 return BadRequest(ex.Message);
             }
         }
@@ -95,13 +97,13 @@ namespace GoldinAccountManager.API.Controllers
                 }
                 else
                 {
-                    _logger.LogError(ApplicationMessages.AccountDetailsEntry);
+                    _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.AccountDetailsEntry));
                     return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = ApplicationMessages.AccountDetailsEntry }); ;
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.ToString());
+                _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ex.ToString()));
                 return BadRequest(ex.Message);
             }
         }
@@ -127,13 +129,13 @@ namespace GoldinAccountManager.API.Controllers
                 }
                 else
                 {
-                    _logger.LogError(ApplicationMessages.AccountDetailsEntry);
+                    _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.AccountDetailsEntry));
                     return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = ApplicationMessages.AccountDetailsEntry }); ;
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.ToString());
+                _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ex.ToString()));
                 return BadRequest(ex.Message);
             }
         }
@@ -159,14 +161,44 @@ namespace GoldinAccountManager.API.Controllers
                 }
                 else
                 {
-                    _logger.LogError(ApplicationMessages.AccountDetailsEntry);
+                    _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ApplicationMessages.AccountDetailsEntry));
                     return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = ApplicationMessages.AccountDetailsEntry }); ;
 
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.ToString());
+                _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ex.ToString()));
+                return BadRequest(ex.Message);
+            }
+        }
+        /// <summary>
+        /// This returns account details with a list of transactions
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("GetAccountTransactions")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<IActionResult> GetAccountTransaction(int value)
+        {
+            try
+            {
+                var transactions = new List<Transaction>();
+                var account = await _account.GetAccountByIdAsync(value);
+                if(account?.AccountID>0)
+                    transactions = await _transaction.GetAccountTransactionsAsync(account.AccountID);
+                return Ok(new
+                {
+                    account = account,
+                    transactions = transactions
+                });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(string.Format("{0} - {1}", DateTime.Now, ex.ToString()));
                 return BadRequest(ex.Message);
             }
         }
