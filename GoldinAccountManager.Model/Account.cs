@@ -29,7 +29,9 @@ namespace GoldinAccountManager.Model
 
     public class AccountRequest
     {
+        [Required]
         public string FirstName { get; set; }
+        [Required]
         public string LastName { get; set; }
         [Required]
         [EmailAddress]
