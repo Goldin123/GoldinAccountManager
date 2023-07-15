@@ -1,6 +1,6 @@
 ﻿<h1 align="center">Hi 👋, I'm Goldin Baloyi</h1>
 <h3 align="center">(A passionate full-stack developer from Sandton [SA])</h3>
-<p>This is a project consits of an API which uses JWT Auth to creates customers accounts, and manages the debits and credits transactions associated with those accounts.</P>
+<p>This is a project consits of an API which uses JWT Auth to create customers accounts, and manages the debits and credits transactions associated with those accounts.</P>
 <h4>Getting started.</h4>
 <ul>
 <li>This is a C# .net 7 application. <b>Please make sure the correct SDK is installed before running the application</b>.</li>
