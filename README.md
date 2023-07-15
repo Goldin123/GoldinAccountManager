@@ -12,8 +12,8 @@
 </ul>
 <h4>How it all works.</h4>
 <ol>
-<li>You first need to authenticate your API user to get an <b>access token</b>, if no user available, you can create a new one. Note that the token expires, so you will need to <b>re-login</b> to get a new one.</li>
-<li>After you have logged in, you will <b>need to create accounts</b>, if you only have one account, data will be loaded strainght from the database else if will be loaded from a Redis cached database on the 2nd load.</li>
+<li>You first need to authenticate your API user to get an <b>access token</b>, if no user available, you can create a new one. <u>Note</u> that the token expires, if that happens, please <b>re-authenticate</b> to get a new access token.</li>
+<li>After you have logged in, you will <b>need to create accounts</b>, if you only have one account, data will be loaded straight from the database else if will be loaded from a Redis cached database on the 2nd load.</li>
 <li><b>You can not use the credit or debit functionality if no accounts exists</b>, make use of sample data if required.</li>
 <li>Once you have accounts, you can now perform debits and credits to account(s).</li>
 <li><b>No debits</b> can be performed on accounts with <b>zero balances</b> and if the debit amount is greater than the available balance, the debit request will be rejected.</li>
